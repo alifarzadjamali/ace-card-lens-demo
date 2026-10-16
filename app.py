@@ -96,6 +96,10 @@ def decode_upload(data: bytes):
             img = cv2.cvtColor(np.array(pil), cv2.COLOR_RGB2BGR)
         except Exception:
             return None
+    h, w = img.shape[:2]
+    if max(h, w) > 2400:
+        scale = 2400 / max(h, w)
+        img = cv2.resize(img, (round(w * scale), round(h * scale)), interpolation=cv2.INTER_AREA)
     return img
 
 
@@ -143,6 +147,7 @@ with tab_sample:
         row = by_id.loc[cid]
         src = fetch_image(cid, row.image_large, size="large", keep_alpha=True)
         if src is None:
+            st.session_state.query = None
             st.error("Couldn't download the card image right now — try another card or upload a photo.")
         else:
             rng = np.random.default_rng(seed)
@@ -165,6 +170,7 @@ with tab_upload:
     if up is not None and st.session_state.get("upload_name") != up.name + str(up.size):
         img = decode_upload(up.getvalue())
         if img is None:
+            st.session_state.query = None
             st.error("Couldn't read that image.")
         else:
             st.session_state.update(query=img, truth=None, source=f"upload · {up.name}", true_id=None,
@@ -230,6 +236,8 @@ steps = ["① Detect & rectify", "② Embed", "③ Vector search", "④ Re-rank"
 st.markdown("".join(f'<span class="cl-step done">{s}</span>' for s in steps), unsafe_allow_html=True)
 st.caption(f"Input: {st.session_state.source} · card found by: {det.method} · encoder: {enc.name} · "
            + " · ".join(f"{k_} {v * 1000:.0f} ms" for k_, v in timings.items()))
+if not det.edge_visible:
+    st.warning("A separate card outline was not found. The whole image was treated as a cropped card; use a single card on a plain, contrasting background for reliable corner checks.")
 
 flags = [f for f in rep.findings if f.severity in ("minor", "major")]
 cen = rep.centering
@@ -297,8 +305,6 @@ with t_sim:
 with t_def:
     st.markdown("Indicative **points of interest** for a grader — measured, explainable, with physical units. "
                 "Not a grade.")
-    if not det.edge_visible:
-        st.warning("No separate card outline was found. The full image was treated as a cropped card; corner-rounding checks are unavailable and other measurements may be unreliable. Try a single card on a plain, contrasting background.")
     if top is None or ref is None:
         st.warning("No sufficiently similar catalogue reference was available. Surface marks use a local colour-anomaly check, which can also flag printed artwork or lighting.")
     rows = [{"Check": f.check, "Location": f.location, "Measured": f.value, "Severity": f.severity, "Detail": f.detail}
