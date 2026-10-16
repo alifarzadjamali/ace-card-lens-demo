@@ -87,9 +87,11 @@ def to_rgb(bgr):
 def decode_upload(data: bytes):
     img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
     if img is None:
-        try:  # e.g. HEIC/WebP via Pillow
+        try:  # HEIC/WebP via Pillow
             from PIL import Image, ImageOps
+            from pillow_heif import register_heif_opener
             import io
+            register_heif_opener()
             pil = ImageOps.exif_transpose(Image.open(io.BytesIO(data))).convert("RGB")
             img = cv2.cvtColor(np.array(pil), cv2.COLOR_RGB2BGR)
         except Exception:
