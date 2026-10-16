@@ -1,15 +1,8 @@
-"""Stage 3 - turn a rectified card into a vector.
+"""Turn a card image into numbers the search index can compare.
 
-Two interchangeable encoders, so the demo can show the jump from a classical
-baseline to a modern self-supervised model:
-
-- BaselineEncoder : colour histogram + spatial colour layout + perceptual hash
-                    (no training, no GPU, ~1 ms; weak under lighting/holo changes)
-- DinoEncoder     : DINOv2 ViT-S/14 (self-supervised, Meta 2023) exported to ONNX,
-                    run with onnxruntime on CPU (~88 MB, no PyTorch needed).
-                    Strong at instance-level 'same artwork' retrieval.
-
-Both return L2-normalised float32 vectors, so cosine similarity = dot product.
+The basic encoder uses colour, layout and a perceptual hash. The other runs
+DINOv2 ViT-S/14 through ONNX Runtime on the CPU. Both return normalised vectors,
+so a dot product gives cosine similarity.
 """
 from __future__ import annotations
 
@@ -58,7 +51,7 @@ class DinoEncoder:
                 try:
                     model_path = hf_hub_download(repo, fn)
                     break
-                except Exception as e:  # network / repo moved
+                except Exception as e:  # Try the next model source.
                     err = e
             if model_path is None:
                 raise RuntimeError(f"could not download DINOv2 ONNX weights: {err}")
@@ -70,7 +63,7 @@ class DinoEncoder:
 
     @staticmethod
     def _prep(img_bgr: np.ndarray) -> np.ndarray:
-        # whole card squashed to 224x224: keeps borders/frame (useful for printing ID)
+        # Resize the whole card so the border and printed details stay in view.
         rgb = cv2.cvtColor(cv2.resize(img_bgr, (224, 224), interpolation=cv2.INTER_AREA), cv2.COLOR_BGR2RGB)
         x = (rgb.astype(np.float32) / 255.0 - IMAGENET_MEAN) / IMAGENET_STD
         return x.transpose(2, 0, 1)
@@ -83,7 +76,7 @@ class DinoEncoder:
             tokens = res.get("last_hidden_state")
             if tokens is not None and tokens.ndim == 3:
                 cls, patch = tokens[:, 0], tokens[:, 1:].mean(1)
-                v = np.concatenate([_l2(cls), _l2(patch)], axis=1)   # CLS + mean-patch (DINOv2 paper recipe)
+                v = np.concatenate([_l2(cls), _l2(patch)], axis=1)   # Combine CLS and average patch features.
             else:
                 v = res.get("pooler_output", list(res.values())[0])
             out.append(_l2(v))

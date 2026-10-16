@@ -1,17 +1,8 @@
-"""Stage 2 - explainable defect checks on the rectified card.
+"""Mark possible wear on a straightened card photo.
 
-Each check returns measurements in physical units plus a confidence, never just a
-label. Results are *indicative* and intended to direct a grader's attention
-(points of interest), not to replace the grader.
-
-Checks
-------
-- centering   : border widths L/R and T/B -> ratio such as 55/45, mapped to Ace bands
-- corners     : whitening (white, low-saturation pixels on a coloured border) and
-                rounding (equivalent corner radius in mm from the silhouette)
-- edges       : whitening / chipping along each edge strip
-- surface     : stains & marks; reference-based (diff vs matched catalogue image)
-                with a reference-free fallback (local colour anomalies)
+The checks measure border widths, pale spots on corners and edges, corner shape
+and surface differences. Results point a grader to places worth looking at;
+they are estimates from an image, not a card grade.
 """
 from __future__ import annotations
 
@@ -22,10 +13,10 @@ import numpy as np
 
 from .detect import CARD_H, CARD_W, PX_PER_MM
 
-# Ace Grading front-centering limits (worse side %) for the best grade allowed
+# Published Ace front-centering bands, using the wider side of the ratio.
 ACE_CENTERING_BANDS = [(60, "10 Gem Mint"), (65, "9 Mint"), (70, "8 NM-Mint"), (75, "7 Near Mint"),
                        (80, "6-4"), (85, "3-1")]
-NOMINAL_CORNER_RADIUS_MM = 3.0   # typical die-cut radius of a TCG card
+NOMINAL_CORNER_RADIUS_MM = 3.0   # Approximate radius of a newly cut card corner.
 
 
 @dataclass
@@ -47,13 +38,9 @@ class DefectReport:
     surface_mode: str = ""
 
 
-# --------------------------------------------------------------------------- centering
+# Centering
 def _border_width(card_lab: np.ndarray, side: str) -> tuple[float, float]:
-    """Return (border width px, confidence 0-1) for one side.
-
-    Average many scan-lines across the middle of the side, then find where the
-    colour first departs from the outer border colour and stays different.
-    """
+    """Measure one border from the point where its colour changes."""
     H, W = card_lab.shape[:2]
     if side in ("left", "right"):
         band = card_lab[int(0.3 * H):int(0.7 * H)]
@@ -64,7 +51,7 @@ def _border_width(card_lab: np.ndarray, side: str) -> tuple[float, float]:
         prof = band.mean(1) if side == "top" else band.mean(1)[::-1]
         span = H
     prof = prof[: int(0.2 * span)]
-    skip = int(0.012 * span)                      # ignore the cut edge itself (whitening/bg bleed)
+    skip = int(0.012 * span)                      # Skip the cut edge and nearby background bleed.
     ref = np.median(prof[skip: skip + max(4, int(0.012 * span))], 0)
     d = np.linalg.norm(prof - ref, axis=1)
     d = np.convolve(d, np.ones(3) / 3, mode="same")
@@ -103,7 +90,7 @@ def _fmt_ratio(r):
     return "n/a" if np.isnan(r) else f"{r:.0f}/{100 - r:.0f}"
 
 
-# --------------------------------------------------------------------------- corners & edges
+# Corners and edges
 def _border_colour(card_hsv: np.ndarray) -> np.ndarray:
     H, W = card_hsv.shape[:2]
     s = int(0.012 * W), int(0.03 * W)
@@ -113,7 +100,7 @@ def _border_colour(card_hsv: np.ndarray) -> np.ndarray:
 
 
 def _white_mask(card_bgr, border_hsv):
-    """Whitening = exposed paper core: bright and nearly colourless, on a border that is coloured."""
+    """Find bright, low-colour pixels where the border is usually coloured."""
     hsv = cv2.cvtColor(card_bgr, cv2.COLOR_BGR2HSV)
     s_thr = min(50.0, 0.35 * float(border_hsv[1]))
     return ((hsv[..., 2] >= 170) & (hsv[..., 1] <= s_thr)).astype(np.uint8)
@@ -128,7 +115,7 @@ def check_corners_edges(card_bgr: np.ndarray, mask: np.ndarray, edge_visible: bo
     inside = (mask > 0).astype(np.uint8)
     findings: list[Finding] = []
 
-    # band along the outer edge where whitening shows up (~1.8 mm)
+    # Check the outer 1.8 mm of the card.
     band_px = int(1.8 * PX_PER_MM)
     edge_band = np.zeros((H, W), np.uint8)
     edge_band[:band_px] = edge_band[-band_px:] = 1
@@ -143,7 +130,7 @@ def check_corners_edges(card_bgr: np.ndarray, mask: np.ndarray, edge_visible: bo
         patch_white = white[y:y + c, x:x + c] & patch_band
         frac = patch_white.sum() / max(1, patch_band.sum())
         if border_is_white:
-            sev, detail = "n/a", "white/silver border - whitening not separable by colour; use raking light"
+            sev, detail = "n/a", "The pale border hides whitening. Check it under angled light."
         else:
             sev = "ok" if frac < 0.04 else ("minor" if frac < 0.12 else "major")
             detail = f"{100 * frac:.1f}% of border pixels read white"
@@ -156,12 +143,12 @@ def check_corners_edges(card_bgr: np.ndarray, mask: np.ndarray, edge_visible: bo
             excess = r_mm - NOMINAL_CORNER_RADIUS_MM
             sev = "ok" if excess < 0.6 else ("minor" if excess < 1.4 else "major")
             findings.append(Finding("Corner rounding", name, f"r = {r_mm:.1f} mm", sev,
-                                    f"nominal ~{NOMINAL_CORNER_RADIUS_MM:.1f} mm die-cut radius", (x, y, c, c)))
+                                    f"A fresh corner is roughly {NOMINAL_CORNER_RADIUS_MM:.1f} mm", (x, y, c, c)))
         else:
             findings.append(Finding("Corner rounding", name, "n/a", "n/a",
-                                    "card outline not visible (flat scan) - photograph on a contrasting background"))
+                                    "Card outline not visible. Try a photo on a contrasting background."))
 
-    # edges (exclude corner patches)
+    # Leave corners out of the edge check.
     edges = {"top": (c, 0, W - 2 * c, band_px), "bottom": (c, H - band_px, W - 2 * c, band_px),
              "left": (0, c, band_px, H - 2 * c), "right": (W - band_px, c, band_px, H - 2 * c)}
     for name, (x, y, w, h) in edges.items():
@@ -175,7 +162,7 @@ def check_corners_edges(card_bgr: np.ndarray, mask: np.ndarray, edge_visible: bo
     return findings
 
 
-# --------------------------------------------------------------------------- surface
+# Surface marks
 def _colour_transfer(src_lab, ref_lab, valid):
     out = src_lab.copy()
     for ch in range(3):
@@ -185,8 +172,7 @@ def _colour_transfer(src_lab, ref_lab, valid):
 
 
 def _align_to_reference(card_bgr, ref_bgr):
-    """ECC homography alignment of the query to the catalogue reference (sub-pixel).
-    Coarse-to-fine: quarter then half resolution."""
+    """Line up the card photo with its catalogue image using ECC."""
     warp = np.eye(3, dtype=np.float32)
     ok = False
     for f in (4, 2):
@@ -208,8 +194,7 @@ def _align_to_reference(card_bgr, ref_bgr):
 
 
 def _tolerant_diff(q, r, shift=3):
-    """Per-pixel min difference over small shifts of the reference: forgives residual
-    misregistration (print/die-cut tolerance) while keeping real blobs."""
+    """Allow small shifts before counting a pixel as a surface difference."""
     best = None
     for dy in range(-shift, shift + 1, max(1, shift // 2) or 1):
         for dx in range(-shift, shift + 1, max(1, shift // 2) or 1):
@@ -226,7 +211,7 @@ def check_surface(card_bgr: np.ndarray, ref_bgr: np.ndarray | None, holo_hint: b
     margin = int(2.5 * PX_PER_MM)
     valid = np.zeros((H, W), bool)
     valid[margin:-margin, margin:-margin] = True
-    if mask is not None:   # never compare background showing through damaged corners
+    if mask is not None:   # Ignore background visible around damaged corners.
         valid &= cv2.erode(mask, np.ones((25, 25), np.uint8)) > 0
 
     if ref_bgr is not None:
@@ -236,14 +221,14 @@ def check_surface(card_bgr: np.ndarray, ref_bgr: np.ndarray | None, holo_hint: b
         r = cv2.cvtColor(cv2.GaussianBlur(ref, (5, 5), 0), cv2.COLOR_BGR2LAB).astype(np.float32)
         q = _colour_transfer(q, r, valid)
         diff = cv2.GaussianBlur(_tolerant_diff(q, r, 4), (9, 9), 0)
-        mode = "reference-based (vs matched catalogue image" + (", ECC-aligned)" if ok else ", unaligned)")
+        mode = "Compared with catalogue image" + (" (aligned)" if ok else " (unaligned)")
     else:
         lab = cv2.cvtColor(card_bgr, cv2.COLOR_BGR2LAB).astype(np.float32)
         bg = cv2.medianBlur(card_bgr, 31)
         bgl = cv2.cvtColor(bg, cv2.COLOR_BGR2LAB).astype(np.float32)
         d = np.abs(lab - bgl)
         diff = cv2.GaussianBlur(0.4 * d[..., 0] + 1.2 * d[..., 1] + 1.2 * d[..., 2], (9, 9), 0)
-        mode = "reference-free (local colour anomaly)"
+        mode = "Local colour check (no catalogue reference)"
 
     diff[~valid] = 0
     vals = diff[valid]
@@ -268,12 +253,12 @@ def check_surface(card_bgr: np.ndarray, ref_bgr: np.ndarray | None, holo_hint: b
         findings.append(Finding("Surface mark / stain", "whole card", "none found", "ok", mode))
     if holo_hint and ref_bgr is not None:
         for f in findings:
-            f.detail += " - holo/foil: glare can cause false positives"
+            f.detail += ". Foil glare can look like a mark."
     heat = np.clip(diff / (thr * 2) * 255, 0, 255).astype(np.uint8)
     return findings, cv2.applyColorMap(heat, cv2.COLORMAP_INFERNO), mode
 
 
-# --------------------------------------------------------------------------- orchestration
+# Run the checks and draw the marked card
 SEV_COLOUR = {"ok": (80, 200, 120), "minor": (40, 180, 250), "major": (60, 60, 235), "n/a": (160, 160, 160)}
 
 
@@ -312,7 +297,7 @@ def draw_overlay(card_bgr, rep: DefectReport) -> np.ndarray:
         else:
             cv2.line(out, (0, H - 1 - v), (W, H - 1 - v), col, 2, cv2.LINE_AA)
     rank = {"n/a": 0, "ok": 1, "minor": 2, "major": 3}
-    # one box per corner: worst of whitening/rounding
+    # Draw the stronger flag when two checks cover the same corner.
     boxes = {}
     for f in rep.findings:
         if f.box is None or f.check == "Centering":

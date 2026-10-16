@@ -1,11 +1,8 @@
-"""Stage 4 - catalogue, vector index and hybrid search.
+"""Load card details and images, then search the image vectors.
 
-Storage model (demo -> production)
-- metadata  : data/catalogue.csv           -> Postgres table `cards` (card_id PK, set, number, rarity, ...)
-- images    : fetched from URL + disk cache -> object storage (S3/Azure Blob), key = card_id
-- vectors   : data/index_<encoder>.npz      -> pgvector / FAISS / Qdrant, HNSW index, FK = card_id
-Every vector row carries the card_id, so a hit links straight back to metadata,
-images and (in production) cert history, population and grader notes.
+The demo keeps card details in a CSV and vectors in small NPZ files. It fetches
+images from their public URLs and caches them locally. Each vector keeps its
+card ID so a search result can point back to the right card details.
 """
 from __future__ import annotations
 
@@ -35,7 +32,7 @@ def _decode(raw: bytes, bg=(128, 128, 128)) -> np.ndarray | None:
     arr = cv2.imdecode(np.frombuffer(raw, np.uint8), cv2.IMREAD_UNCHANGED)
     if arr is None:
         return None
-    if arr.ndim == 3 and arr.shape[2] == 4:      # transparent rounded corners -> flat bg
+    if arr.ndim == 3 and arr.shape[2] == 4:      # Put transparent corners on a plain background.
         a = arr[..., 3:4].astype(np.float32) / 255.0
         arr = (arr[..., :3] * a + np.array(bg, np.float32) * (1 - a)).astype(np.uint8)
     elif arr.ndim == 2:
@@ -76,8 +73,7 @@ def fetch_many(df: pd.DataFrame, progress: Callable[[float], None] | None = None
 
 
 class VectorIndex:
-    """Exact cosine search (brute force). 565 x 768 floats = 1.7 MB, < 1 ms per query.
-    Swap for FAISS HNSW / IVF-PQ or pgvector once the catalogue reaches ~1e5-1e6 cards."""
+    """Compare a query with every stored vector. This is fine for 565 cards."""
 
     def __init__(self, ids: np.ndarray, vecs: np.ndarray, encoder_key: str):
         self.ids, self.vecs, self.encoder_key = ids, vecs.astype(np.float32), encoder_key
@@ -124,14 +120,13 @@ class VectorIndex:
         return res
 
 
-# ------------------------------------------------------------------ geometric re-ranking
+# Check the layout of close matches
 _orb = cv2.ORB_create(nfeatures=1500)
 _bf = cv2.BFMatcher(cv2.NORM_HAMMING)
 
 
 def geometric_inliers(query_bgr: np.ndarray, cand_bgr: np.ndarray) -> int:
-    """ORB keypoints + ratio test + RANSAC homography -> number of consistent matches.
-    Verifies that the *same printed artwork and layout* is present, not just similar colours."""
+    """Count printed details that line up between the photo and a match."""
     a = cv2.cvtColor(cv2.resize(query_bgr, (315, 440)), cv2.COLOR_BGR2GRAY)
     b = cv2.cvtColor(cv2.resize(cand_bgr, (315, 440)), cv2.COLOR_BGR2GRAY)
     ka, da = _orb.detectAndCompute(a, None)

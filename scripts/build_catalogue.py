@@ -1,4 +1,4 @@
-"""Build data/catalogue.csv from the open PokemonTCG data repo (metadata only).
+"""Make data/catalogue.csv from the public PokemonTCG card details.
 
 Usage:  python scripts/build_catalogue.py base1 base2 base3 base4 sv3pt5
 """

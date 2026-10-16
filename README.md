@@ -1,57 +1,65 @@
-# CardLens — AI-assisted defect check & similarity search for trading cards
+# CardLens
 
-Concept demo by **Ali (Farzad) Jamali** for the Ace Grading × University of Salford KTP interview
-(*Artificial Intelligence and Computer Vision Engineer*). Not affiliated with or endorsed by Ace Grading.
-It proposes points of interest for a human grader; it does **not** assign or validate a card grade.
+Take a photo of a trading card. CardLens finds close matches in a small Pokémon card catalogue and marks spots you might want to check, such as white corners, worn edges or uneven centring. You can review each flag and download your notes.
 
-**Live demo:** https://ace-card-lens-demo.streamlit.app/ · [QR code for the presentation](assets/ace-card-lens-demo-qr.png)
+I built this for my Ace Grading and University of Salford KTP interview. It's a working demo, not an Ace Grading product or a card grading service. The checks can be fooled by glare, sleeves and a bad photo. A grader still makes the call.
 
-Upload or photograph a card, or generate a synthetic "phone photo" with known defects. The app then:
+[Open the demo](https://ace-card-lens-demo.streamlit.app/) or use the [QR code](assets/ace-card-lens-demo-qr.png).
 
-1. **Detects and rectifies** the card (contours, fitted edge lines, homography) to 63 × 88 mm at 10 px/mm.
-2. **Embeds** it with **DINOv2 ViT-S/14** (ONNX, CPU) or a classical colour + pHash baseline.
-3. **Searches** a catalogue of 565 Pokémon cards (Base, Jungle, Fossil, Base Set 2, 151) by exact cosine similarity,
-   with metadata filters (hybrid search).
-4. **Re-ranks** the shortlist with ORB + RANSAC geometric verification.
-5. **Checks possible defects**: centring ratio against Ace's front-centring bands, corner whitening, corner rounding (mm),
-   edge wear, and stains (difference against the matched catalogue reference after ECC alignment).
-6. **Keeps a human in the loop**: the grader confirms or rejects each flag, and the decisions are exported as an
-   audit record or training label.
+## Give it a go
 
-## Run locally (Windows PowerShell)
+Open the demo and click **Generate photo & analyse**. It starts with a catalogue card, adds some simulated wear and puts it on a desk background. You can choose a different card or change the defects before you run it.
+
+Got a card handy? Upload a photo or use your camera. One card on a plain background works best. You'll see the detected outline, a straightened view, a surface difference map and a shortlist of possible matches. The **Grader review** tab lets you confirm or reject the flags and download a JSON record. The app keeps uploaded photos in the current session; it doesn't save them to a database.
+
+The sample is an artificial photo. Real wear and damage may look different.
+
+## How it works
+
+OpenCV finds the card and straightens it to a 630 × 880 pixel image. The app then compares it with 565 cards from Base Set, Jungle, Fossil, Base Set 2 and 151. You can search with DINOv2 or switch to a simple colour and perceptual-hash baseline. Set, rarity and name filters narrow the search. ORB and RANSAC check whether the printed layout of the closest cards lines up with the photo.
+
+The condition checks use image measurements. They compare border widths for centring, look for pale pixels near corners and edges, measure visible corner shape and look for surface differences against the matched catalogue image. Each result is a place to look, not a grade. If the match or photo is poor, the surface check can flag printed artwork or lighting.
+
+The search uses a small, exact cosine index. There are two prebuilt indexes in `data/`, so visitors don't have to build them. For a much larger catalogue, an approximate index such as HNSW would be worth testing.
+
+## Run it on your computer
+
+From this folder in Windows PowerShell:
+
 ```bash
 uv venv --python 3.12 .venv
 uv pip install --python .venv/Scripts/python.exe -r requirements.txt
 .venv/Scripts/python.exe -m streamlit run app.py
 ```
-Open the local URL shown by Streamlit. Select **Try a sample** and press **Generate photo & analyse**. The sample starts from a public catalogue image and adds synthetic defects; it is not a real damaged-card photograph. You can also upload or photograph a single card on a plain, contrasting background. The application processes images in memory and does not save uploaded photos; the audit record is downloaded only when the visitor requests it.
 
-The repository includes two small prebuilt vector indexes so visitors do not have to build them on first use. If rebuilding after changing the catalogue, run:
+Open the local address that Streamlit prints. The app needs internet access for card images. On its first DINOv2 run, it also downloads the model from Hugging Face. If that fails, you can use the baseline encoder.
+
+If you change the catalogue, rebuild the indexes with:
+
 ```bash
 .venv/Scripts/python.exe scripts/build_index.py
 ```
 
-The app fetches card thumbnails and reference images from their public URLs when needed, and downloads DINOv2 ONNX weights from Hugging Face on the first deep-model run. The classical baseline is available if model download fails. Internet access is required for the sample and card thumbnails.
+To make a catalogue from other Pokémon TCG sets:
 
-## Deploy on Streamlit Community Cloud
-1. Connect this GitHub repository at https://share.streamlit.io and select `app.py` on `main`.
-2. Select Python 3.12 and choose a public app URL. Verify that the app opens in a private browser window.
-3. Run the default sample, then test an upload from a phone. Add the confirmed URL and a QR code to the presentation slide. Keep the clickable URL visible for interviewers attending on one device.
-4. Open the app shortly before the interview and keep screenshots or a short recording ready in case the live service or image host is slow.
-
-## Change the catalogue
 ```bash
 python scripts/build_catalogue.py base1 base2 base3 base4 sv3pt5 swsh7   # any PokemonTCG set ids
 ```
 
-## Code map
-| File | Purpose |
-|---|---|
-| `cardlens/detect.py` | card localisation, edge-line refinement, perspective rectification |
-| `cardlens/defects.py` | centring, corners (whitening + rounding), edges, surface/stains, overlay |
-| `cardlens/embed.py` | baseline and DINOv2-ONNX encoders |
-| `cardlens/catalogue.py` | metadata, image cache, vector index, geometric re-ranking |
-| `cardlens/synth.py` | synthetic photo generator with ground-truth defects |
-| `app.py` | Streamlit UI |
+## Put up your own copy
 
-Card metadata comes from the public [PokemonTCG data repository](https://github.com/PokemonTCG/pokemon-tcg-data). Card images are publicly accessible through PokemonTCG.io but are **not open-licensed**: artwork © Nintendo / Creatures / GAME FREAK / The Pokémon Company. They are used here for a non-commercial interview demonstration and are not committed to this repository. Public availability does not grant reuse rights; replace the catalogue images if permission is required for wider use. Uploaded images should be ones the visitor is entitled to submit.
+This demo runs on [Streamlit Community Cloud](https://share.streamlit.io). Connect your GitHub repo, choose `main` and `app.py`, and select Python 3.12. Check the new link in a private browser window, then try the sample and an upload. Open it before a presentation in case the app has gone to sleep.
+
+## Where things live
+
+| File | What it does |
+| --- | --- |
+| `app.py` | The Streamlit screen and review flow |
+| `cardlens/detect.py` | Finds and straightens the card |
+| `cardlens/embed.py` | Turns the card image into a search vector |
+| `cardlens/catalogue.py` | Loads card details and images, searches the index and checks shortlisted matches |
+| `cardlens/defects.py` | Measures centring, corners, edges and surface marks |
+| `cardlens/synth.py` | Makes sample photos with known defects |
+| `scripts/` | Rebuilds the catalogue and indexes |
+
+The card details come from the public [PokemonTCG data repository](https://github.com/PokemonTCG/pokemon-tcg-data). The card images are served from PokemonTCG.io and belong to Nintendo, Creatures, GAME FREAK and The Pokémon Company. They're used here for a non-commercial interview demo and aren't stored in this GitHub repo. Public access to an image isn't a licence to reuse it elsewhere. Please upload only photos you're allowed to share.

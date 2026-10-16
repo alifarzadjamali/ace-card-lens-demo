@@ -1,7 +1,7 @@
-"""Pre-build the vector indexes so the deployed app starts instantly.
+"""Download catalogue images and build both search indexes.
 
-    python scripts/build_index.py            # both encoders
-    git add data/index_*.npz && git commit -m "prebuilt index" && git push
+Run ``python scripts/build_index.py`` after changing the catalogue. The NPZ
+files go in ``data/`` and can be committed with the app.
 """
 import sys
 from pathlib import Path

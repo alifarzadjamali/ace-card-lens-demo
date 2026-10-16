@@ -1,7 +1,7 @@
-"""CardLens - AI-assisted defect check & catalogue similarity search for trading cards.
+"""CardLens: card lookup and photo-based condition checks.
 
-Concept demo prepared by Ali (Farzad) Jamali for the Ace Grading x University of Salford
-KTP interview. Not affiliated with, or endorsed by, Ace Grading.
+Built by Ali (Farzad) Jamali for an Ace Grading and University of Salford
+KTP interview. This demo is not affiliated with Ace Grading.
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from cardlens.detect import draw_quad, detect_card
 from cardlens.embed import BaselineEncoder, get_encoder
 from cardlens.synth import make_sample
 
-st.set_page_config(page_title="CardLens · AI card check", page_icon="🔎", layout="wide",
+st.set_page_config(page_title="CardLens | card check", page_icon="🔎", layout="wide",
                    initial_sidebar_state="collapsed")
 
 st.markdown("""
@@ -51,7 +51,7 @@ SAMPLES = {
 DEFECTS = ["Off-centre", "Corner whitening", "Rounded corner", "Stain", "Edge wear"]
 
 
-# ----------------------------------------------------------------------------- cached resources
+# Cached data and models
 @st.cache_resource(show_spinner=False)
 def catalogue():
     df = load_catalogue()
@@ -62,7 +62,7 @@ def catalogue():
 def encoder(key: str):
     try:
         return get_encoder(key), None
-    except Exception as e:  # weights unavailable -> fall back, but say so
+    except Exception as e:  # Keep the basic search available if model loading fails.
         return BaselineEncoder(), str(e)
 
 
@@ -73,8 +73,7 @@ def index_for(key: str):
         return idx
     df, _ = catalogue()
     enc, _ = encoder(key)
-    bar = st.progress(0.0, text=f"First run: downloading {len(df)} catalogue images and building the "
-                                f"{enc.name} index (one-off, ~1-2 min)...")
+    bar = st.progress(0.0, text=f"Getting {len(df)} card images and building the {enc.name} search index...")
     idx = VectorIndex.build(df, enc, progress=lambda f: bar.progress(min(1.0, f)))
     bar.empty()
     return idx
@@ -87,7 +86,7 @@ def to_rgb(bgr):
 def decode_upload(data: bytes):
     img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
     if img is None:
-        try:  # HEIC/WebP via Pillow
+        try:  # Pillow handles formats OpenCV may miss, including HEIC and WebP.
             from PIL import Image, ImageOps
             from pillow_heif import register_heif_opener
             import io
@@ -103,40 +102,40 @@ def decode_upload(data: bytes):
     return img
 
 
-# ----------------------------------------------------------------------------- sidebar
+# Search options
 df, by_id = catalogue()
 with st.sidebar:
     st.subheader("Search settings")
-    enc_key = st.radio("Image encoder", ["dinov2s", "baseline"],
-                       format_func=lambda k: {"dinov2s": "DINOv2 ViT-S/14 (deep, self-supervised)",
-                                              "baseline": "Baseline: colour + pHash (classical)"}[k],
-                       help="Switch to compare a classical baseline with a modern foundation model.")
+    enc_key = st.radio("Image search", ["dinov2s", "baseline"],
+                       format_func=lambda k: {"dinov2s": "DINOv2 image model",
+                                              "baseline": "Colour + pHash (basic)"}[k],
+                       help="Try the image model or the simpler colour and pattern search.")
     use_rerank = st.toggle("Geometric re-ranking (ORB + RANSAC)", value=True,
-                           help="Stage-2 check that the same printed layout is present, not just similar colours.")
+                           help="Checks whether the printed layout lines up with each close match.")
     k = st.slider("Results to show", 3, 12, 6)
-    st.markdown("**Metadata filters** (hybrid search)")
+    st.markdown("Filter the catalogue")
     f_sets = st.multiselect("Set", sorted(df.set_name.unique()))
     f_rarity = st.multiselect("Rarity", sorted(r for r in df.rarity.unique() if r))
     f_name = st.text_input("Name contains", "")
     st.divider()
-    st.caption(f"Catalogue: {len(df)} cards from {df.set_name.nunique()} sets · metadata from the open "
-               "PokemonTCG.io dataset. Card images © Nintendo / Creatures / GAME FREAK / The Pokémon Company. "
-               "Concept demo only — not affiliated with Ace Grading.")
+    st.caption(f"{len(df)} cards from {df.set_name.nunique()} sets. Card details come from PokemonTCG.io. "
+               "Images © Nintendo / Creatures / GAME FREAK / The Pokémon Company. "
+               "Interview demo by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
-# ----------------------------------------------------------------------------- header
+# Page header
 st.markdown("""<div class="cl-hero"><h1>CardLens</h1>
-<p>AI-assisted defect check &amp; catalogue similarity search for trading cards — concept demo by
-<a href="https://github.com/alifarzadjamali" target="_blank">Ali (Farzad) Jamali</a> for the
-Ace Grading × University of Salford KTP.</p></div>""", unsafe_allow_html=True)
+<p>Find a card and see what might need a closer look. Built by
+<a href="https://github.com/alifarzadjamali" target="_blank">Ali (Farzad) Jamali</a>
+for an Ace Grading and University of Salford KTP interview.</p></div>""", unsafe_allow_html=True)
 st.write("")
 
-# ----------------------------------------------------------------------------- input
+# Photo or sample
 tab_sample, tab_upload, tab_cam = st.tabs(["Try a sample", "Upload a photo", "Use camera"])
 with tab_sample:
     c1, c2 = st.columns([1.1, 1])
     with c1:
         pick = st.selectbox("Card", list(SAMPLES.keys()))
-        chosen = st.multiselect("Add defects (ground truth)", DEFECTS, default=["Off-centre", "Corner whitening", "Stain"])
+        chosen = st.multiselect("Add sample defects", DEFECTS, default=["Off-centre", "Corner whitening", "Stain"])
     with c2:
         bg = st.radio("Background", ["mat", "wood"], horizontal=True,
                       format_func=lambda b: {"mat": "Grading mat", "wood": "Desk"}[b])
@@ -148,7 +147,7 @@ with tab_sample:
         src = fetch_image(cid, row.image_large, size="large", keep_alpha=True)
         if src is None:
             st.session_state.query = None
-            st.error("Couldn't download the card image right now — try another card or upload a photo.")
+            st.error("Couldn't get that card image. Try another sample or upload a photo.")
         else:
             rng = np.random.default_rng(seed)
             kw = dict(background=bg, seed=int(seed))
@@ -165,7 +164,7 @@ with tab_sample:
             photo, truth = make_sample(src, **kw)
             st.session_state.update(query=photo, truth=truth, source=f"synthetic · {pick}", true_id=cid)
 with tab_upload:
-    up = st.file_uploader("Photo of a single card (front). Best: flat, on a dark or plain background, no sleeve glare.",
+    up = st.file_uploader("Upload the front of one card. A flat card on a plain background works best. Avoid sleeve glare.",
                           type=["jpg", "jpeg", "png", "webp", "heic"])
     if up is not None and st.session_state.get("upload_name") != up.name + str(up.size):
         img = decode_upload(up.getvalue())
@@ -182,10 +181,10 @@ with tab_cam:
                                 cam_id=hashlib.md5(shot.getvalue()).hexdigest())
 
 if "query" not in st.session_state or st.session_state.query is None:
-    st.info("Pick a sample card and press **Generate photo & analyse**, or upload / snap a photo of a card.")
+    st.info("Pick a sample and press **Generate photo & analyse**, or upload a card photo.")
     st.stop()
 
-# ----------------------------------------------------------------------------- pipeline
+# Analyse the card
 query = st.session_state.query
 timings = {}
 t0 = time.perf_counter()
@@ -194,7 +193,7 @@ timings["detect + rectify"] = time.perf_counter() - t0
 
 enc, enc_err = encoder(enc_key)
 if enc_err:
-    st.warning(f"Deep model unavailable ({enc_err[:120]}…) — using the classical baseline instead.")
+    st.warning(f"DINOv2 couldn't load, so we're using the basic image search. Details: {enc_err[:120]}")
 index = index_for(enc.key)
 
 t0 = time.perf_counter()
@@ -230,19 +229,19 @@ holo = bool(top) and "Holo" in by_id.loc[top[0]].rarity
 rep = analyse(det.card, det.mask, det.edge_visible, ref_bgr=ref, holo_hint=holo)
 timings["defect checks"] = time.perf_counter() - t0
 
-# ----------------------------------------------------------------------------- summary row
+# Results
 steps = ["① Detect & rectify", "② Embed", "③ Vector search", "④ Re-rank" if use_rerank else "④ (re-rank off)",
          "⑤ Defect checks", "⑥ Grader review"]
 st.markdown("".join(f'<span class="cl-step done">{s}</span>' for s in steps), unsafe_allow_html=True)
-st.caption(f"Input: {st.session_state.source} · card found by: {det.method} · encoder: {enc.name} · "
+st.caption(f"Photo: {st.session_state.source} · outline: {det.method} · search: {enc.name} · "
            + " · ".join(f"{k_} {v * 1000:.0f} ms" for k_, v in timings.items()))
 if not det.edge_visible:
-    st.warning("A separate card outline was not found. The whole image was treated as a cropped card; use a single card on a plain, contrasting background for reliable corner checks.")
+    st.warning("I couldn't find the card outline, so I treated the whole image as the card. For corner checks, try one card on a plain background.")
 
 flags = [f for f in rep.findings if f.severity in ("minor", "major")]
 cen = rep.centering
 m1, m2, m3, m4 = st.columns(4)
-m1.metric("Closest catalogue match", by_id.loc[top[0]]["name"] if top else "—",
+m1.metric("Closest catalogue match", by_id.loc[top[0]]["name"] if top else "n/a",
           f"{top[1]:.2f} cosine" if top else None, delta_color="off")
 lr = "n/a" if np.isnan(cen["lr"]) else f"{cen['lr']:.0f}/{100 - cen['lr']:.0f}"
 tb = "n/a" if np.isnan(cen["tb"]) else f"{cen['tb']:.0f}/{100 - cen['tb']:.0f}"
@@ -255,13 +254,13 @@ c1, c2, c3 = st.columns(3)
 with c1:
     st.image(to_rgb(draw_quad(query, det.quad)), caption="Input photo + detected card outline", width="stretch")
 with c2:
-    st.image(to_rgb(rep.overlay), caption="Rectified 63×88 mm @10 px/mm · centring lines · flagged regions",
+    st.image(to_rgb(rep.overlay), caption="Straightened card with border lines and marked areas",
              width="stretch")
 with c3:
-    st.image(to_rgb(rep.surface_heatmap), caption=f"Surface difference map — {rep.surface_mode}",
+    st.image(to_rgb(rep.surface_heatmap), caption=f"Surface difference map ({rep.surface_mode})",
              width="stretch")
 
-# ----------------------------------------------------------------------------- detail tabs
+# More detail
 t_sim, t_def, t_rev, t_how = st.tabs(["Similar cards", "Defect report", "Grader review", "How it works"])
 
 with t_sim:
@@ -271,14 +270,13 @@ with t_sim:
         s1, s2 = ranked[0][1], (ranked[1][1] if len(ranked) > 1 else 0)
         conf = "High" if s1 >= 0.80 and s1 - s2 >= 0.03 else ("Medium" if s1 >= 0.65 else "Low")
         same_name = len(ranked) > 1 and by_id.loc[ranked[0][0]]["name"] == by_id.loc[ranked[1][0]]["name"]
-        st.markdown(f"**Retrieval signal: {conf}** · top-1 {s1:.3f}, margin to #2 {s1 - s2:+.3f}")
-        st.caption("This is a shortlist indicator based on similarity and rank margin, not a calibrated probability. Confirm the printed set and card number before using the match for a surface comparison.")
+        st.markdown(f"Search signal: **{conf}** · top match {s1:.3f}, gap to next {s1 - s2:+.3f}")
+        st.caption("This compares catalogue images; it isn't a probability. Check the set and card number before trusting a surface comparison.")
         if same_name and s1 - s2 < 0.05:
-            st.warning("Several printings of the same card look almost identical (e.g. Base Set vs Base Set 2). "
-                       "Use the zoomed bottom strip (set symbol, number, copyright line) below — or route to a grader.")
+            st.warning("These printings look very similar. Check the set symbol and card number in the strips below.")
         if st.session_state.get("true_id"):
             hit = [i for i, r_ in enumerate(ranked) if r_[0] == st.session_state.true_id]
-            st.caption(f"Ground truth for this synthetic sample: {st.session_state.true_id} → "
+            st.caption(f"Sample card: {st.session_state.true_id} → "
                        + (f"found at rank {hit[0] + 1}" if hit else "not in shown results"))
         cols = st.columns(min(k, 6))
         for i, (cid, sim, geo, score) in enumerate(ranked[:k]):
@@ -290,10 +288,10 @@ with t_sim:
                 st.progress(float(np.clip(sim, 0, 1)))
                 geo_txt = f" · {geo} geo-inliers" if geo is not None else ""
                 st.markdown(f"""<div class="cl-card-meta">cos {sim:.3f}{geo_txt}<br>
-                {r.set_name} · #{r.number}/{r.set_total}<br>{r.rarity or '—'} · {r.release_date[:4]}<br>
-                <span class="cl-small">{r.series} series · art: {r.artist or '—'} · id {cid}</span></div>""",
+                {r.set_name} · #{r.number}/{r.set_total}<br>{r.rarity or 'n/a'} · {r.release_date[:4]}<br>
+                <span class="cl-small">{r.series} series · art: {r.artist or 'n/a'} · id {cid}</span></div>""",
                             unsafe_allow_html=True)
-        st.markdown("##### Detail check — bottom strip (set symbol / number / copyright)")
+        st.markdown("##### Check the small print: set symbol, number and copyright line")
         strip_cols = st.columns(4)
         strip = lambda img: to_rgb(cv2.resize(img, (630, 880))[770:880])
         strip_cols[0].image(strip(det.card), caption="Query", width="stretch")
@@ -303,10 +301,9 @@ with t_sim:
                 strip_cols[j + 1].image(strip(im), caption=f"#{j + 1} {by_id.loc[cid].set_name}", width="stretch")
 
 with t_def:
-    st.markdown("Indicative **points of interest** for a grader — measured, explainable, with physical units. "
-                "Not a grade.")
+    st.markdown("Things worth checking on the card. These measurements come from the photo and aren't a grade.")
     if top is None or ref is None:
-        st.warning("No sufficiently similar catalogue reference was available. Surface marks use a local colour-anomaly check, which can also flag printed artwork or lighting.")
+        st.warning("No close reference image was available. The surface check is looking for unusual colours and may pick up artwork or lighting.")
     rows = [{"Check": f.check, "Location": f.location, "Measured": f.value, "Severity": f.severity, "Detail": f.detail}
             for f in rep.findings]
     tbl = pd.DataFrame(rows)
@@ -315,22 +312,21 @@ with t_def:
                                subset=["Severity"]), width="stretch", hide_index=True)
     truth = st.session_state.get("truth")
     if truth:
-        st.caption("Ground truth injected into this synthetic photo: " + json.dumps(
+        st.caption("Added to this sample photo: " + json.dumps(
             {k_: v for k_, v in truth.items() if v not in (None, [], (0.0, 0.0))}, default=str))
     st.caption("Centering bands follow Ace's published front-centering limits (10 ≤ 60/40, 9 ≤ 65/35, 8 ≤ 70/30, "
                "7 ≤ 75/25). Corner rounding is the equivalent radius of material missing vs. a sharp corner; "
                "a new card's die-cut radius is ≈3 mm.")
 
 with t_rev:
-    st.markdown("Human-in-the-loop: the grader confirms or rejects each flag. Every decision is logged with the "
-                "model version, so disagreements become new training labels.")
+    st.markdown("Confirm or reject each flag, then download your review as JSON. Those decisions could be used as training labels later.")
     decisions = {}
     for i, f in enumerate(flags):
         decisions[i] = st.radio(f"{f.check} · {f.location} · {f.value}", ["Confirm", "Reject (false alarm)", "Unsure"],
                                 horizontal=True, key=f"dec{i}")
     if not flags:
-        st.success("No points of interest flagged — grader still performs the full visual check.")
-    match_ok = st.radio("Catalogue match correct?", ["Yes", "No — corrected manually", "Unsure"], horizontal=True)
+        st.success("Nothing was flagged. Still check the whole card before making a decision.")
+    match_ok = st.radio("Catalogue match correct?", ["Yes", "No, I corrected it", "Unsure"], horizontal=True)
     note = st.text_input("Grader note", "")
     record = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -352,21 +348,17 @@ digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,f
  fontcolor="white", color="#e8b931", fontname="Helvetica", fontsize=11]; edge [color="#999"];
  photo [label="Photo / scan"]; det [label="Detect + rectify\\n63×88 mm, 10 px/mm"];
  emb [label="Embedding\\nDINOv2 (or baseline)"]; ann [label="Vector index\\n(exact cosine search)"];
- meta [label="Metadata DB\\nset · number · rarity", shape=cylinder]; rr [label="Re-rank\\ngeometric check"];
+ meta [label="Card details\\nset · number · rarity", shape=cylinder]; rr [label="Re-rank\\ngeometric check"];
  ref [label="Reference image\\nof matched card"]; dfx [label="Defect checks\\ncentring · corners · edges · surface"];
- ui [label="Grader UI\\nconfirm / reject"]; log [label="Audit log →\\nnew labels", shape=cylinder];
+ ui [label="Review\\nconfirm / reject"]; log [label="Download\\nreview JSON", shape=cylinder];
  photo->det->emb->ann->rr; meta->ann [style=dashed, label=" filters"]; rr->ref->dfx; det->dfx; rr->ui; dfx->ui->log;
 }""")
     st.markdown("""
-- **Detect & rectify** — contour + fitted edge lines → homography to a canonical 63×88 mm card, so every
-  measurement is in millimetres.
-- **Embed** — DINOv2 self-supervised ViT features (CLS + mean patch), exported to ONNX and run on CPU.
-  The classical baseline (colour histogram + layout + perceptual hash) shows why learned features matter.
-- **Search** — cosine similarity over L2-normalised vectors, with metadata pre-filters (hybrid search).
-  At Ace's scale: pgvector or FAISS HNSW, IDs shared with the metadata database.
-- **Re-rank** — ORB keypoints + RANSAC homography inliers confirm the *same printed layout*.
-- **Defect checks** — centring from border widths; whitening = colourless pixels on a coloured border;
-  rounding = equivalent corner radius from the silhouette; stains = difference vs. the matched catalogue
-  reference after sub-pixel ECC alignment.
-- **Human in the loop** — the system proposes points of interest; graders decide; decisions become training data.
+OpenCV finds the card outline and flattens the photo to 630 × 880 pixels. That gives the measurements a scale of 10 pixels per millimetre.
+
+DINOv2 turns the image into a search vector on the CPU. You can switch to a basic search that uses colour, layout and a perceptual hash. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up.
+
+The condition checks measure border widths, look for pale marks near corners and edges, estimate corner shape and compare the card surface with a reference image. ECC alignment helps line up that reference before comparison. These are photo-based clues for a grader to review. The review tab lets you download the decisions as JSON.
+
+This small catalogue uses exact cosine search. A larger collection could use pgvector or FAISS with HNSW, with card IDs shared across the search index and card details.
 """)

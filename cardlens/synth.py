@@ -1,10 +1,8 @@
-"""Synthetic 'phone photo' generator with controllable defects.
+"""Make a sample card photo for anyone who doesn't have a card handy.
 
-Lets interviewers test the pipeline without a physical card: take a clean
-catalogue image, damage it in known ways (ground truth!), then put it on a desk
-under uneven light with perspective, blur and JPEG noise.
-The same idea scales into a data-augmentation / synthetic-defect pipeline for
-training detectors when real labelled defects are scarce.
+Start with a catalogue image, add chosen defects, then place it on a desk
+background with tilt, uneven light, blur and JPEG noise. The function also
+returns the defects it added so we can compare them with the app's findings.
 """
 from __future__ import annotations
 
@@ -72,7 +70,7 @@ def _stain(card, rng, size_mm=7.0):
     wobble = 1 + 0.18 * np.sin(3 * ang + rng.uniform(0, 6)) + 0.1 * np.sin(5 * ang + rng.uniform(0, 6))
     d = np.hypot((xx - cx) / 1.25, yy - cy) / (r * wobble)
     alpha = np.clip(1.15 - d, 0, 1) ** 0.6 * 0.75
-    ring = np.exp(-((d - 0.95) ** 2) / 0.004) * 0.35          # coffee-ring darker rim
+    ring = np.exp(-((d - 0.95) ** 2) / 0.004) * 0.35          # Darker edge around the stain.
     alpha = np.clip(alpha + ring, 0, 0.9)[..., None]
     tint = np.array([60, 120, 165], np.float32)               # brown (BGR)
     out = card.astype(np.float32) * (1 - alpha) + (card.astype(np.float32) * tint / 255.0) * alpha
@@ -93,7 +91,7 @@ def _background(h, w, rng, style):
         yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
         grain = np.sin(yy / 9.0 + 3 * np.sin(xx / 140.0) + rng.normal(0, 0.15, (h, w))) * 14
         img = base + grain[..., None] * np.array([0.6, 0.8, 1.0]) + rng.normal(0, 5, (h, w, 1))
-    else:  # dark grading mat
+    else:  # Dark mat.
         img = np.full((h, w, 3), (38, 34, 32), np.float32) + rng.normal(0, 4, (h, w, 1))
     return np.clip(img, 0, 255).astype(np.uint8)
 
@@ -104,7 +102,7 @@ def make_sample(card_bgra: np.ndarray, *, offcentre=(0.0, 0.0), whiten=(), round
     card_bgra = cv2.resize(card_bgra, (CARD_W, CARD_H), interpolation=cv2.INTER_AREA)
     card = card_bgra[..., :3].copy()
     if card_bgra.ndim == 3 and card_bgra.shape[2] == 4:
-        # catalogue PNGs have transparent rounded corners: fill them with the border colour
+        # Fill transparent catalogue corners with nearby card colour.
         hole = (card_bgra[..., 3] < 200).astype(np.uint8) * 255
         if hole.any():
             card = cv2.inpaint(card, cv2.dilate(hole, np.ones((3, 3), np.uint8)), 5, cv2.INPAINT_TELEA)

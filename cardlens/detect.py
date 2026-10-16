@@ -1,7 +1,7 @@
-"""Stage 1 - find the card in a photo and rectify it to a canonical, flat view.
+"""Find the card in a photo and straighten it.
 
-A standard trading card is 63 x 88 mm. We warp to 10 px/mm (630 x 880) so every
-later measurement (border widths, corner radii, stain areas) can be reported in mm.
+The output is 630 x 880 pixels, based on a 63 x 88 mm card at 10 pixels per mm.
+That scale lets the later checks report widths and areas in physical units.
 """
 from __future__ import annotations
 
@@ -41,11 +41,10 @@ def _line_intersection(l1, l2):
 
 
 def _refine_quad(contour: np.ndarray, quad: np.ndarray) -> np.ndarray:
-    """Fit a straight line to each side (ignoring the rounded ends) and intersect.
+    """Fit lines to the straight edges and find where they meet.
 
-    approxPolyDP puts the corners *on* the rounded arc, which would hide corner
-    rounding. Intersecting the fitted edges recovers the 'virtual sharp corner',
-    so the gap between that point and the real silhouette measures the rounding.
+    A polygon corner can fall on the card's rounded edge. The fitted lines give
+    us a sharp reference corner for measuring the actual curve.
     """
     c = contour.reshape(-1, 2).astype(np.float32)
     lines = []
@@ -69,17 +68,17 @@ def _refine_quad(contour: np.ndarray, quad: np.ndarray) -> np.ndarray:
             return quad
         out.append(pt)
     out = np.array(out, np.float32)
-    # sanity: refined corners must stay close to the rough ones
+    # Reject fitted corners that move too far from the first outline.
     if np.max(np.linalg.norm(out - quad, axis=1)) > 0.1 * np.linalg.norm(quad[0] - quad[2]):
         return quad
     return out
 
 
 def _candidate_masks(img: np.ndarray):
-    """Yield binary masks that may separate card from background."""
+    """Try two ways to separate the card from its background."""
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
-    # 1) edges -> closed shapes
+    # Find closed shapes from image edges.
     edges = cv2.Canny(blur, 40, 120)
     edges = cv2.dilate(edges, np.ones((5, 5), np.uint8), iterations=2)
     filled = np.zeros_like(gray)
@@ -87,7 +86,7 @@ def _candidate_masks(img: np.ndarray):
     cv2.drawContours(filled, cnts, -1, 255, thickness=cv2.FILLED)
     filled = cv2.erode(filled, np.ones((5, 5), np.uint8), iterations=2)
     yield "edges", filled
-    # 2) colour distance from the image border (background model)
+    # Compare the image with the colour around its border.
     lab = cv2.cvtColor(cv2.GaussianBlur(img, (7, 7), 0), cv2.COLOR_BGR2LAB).astype(np.float32)
     b = 8
     ring = np.concatenate([lab[:b].reshape(-1, 3), lab[-b:].reshape(-1, 3),
