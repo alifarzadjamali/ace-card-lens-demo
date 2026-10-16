@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/img_cache/
+.venv/
+.DS_Store
+*.pptx
+*.ppt

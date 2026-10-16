@@ -1,0 +1,566 @@
+card_id,name,set_id,set_name,series,release_date,number,set_total,rarity,supertype,subtypes,types,hp,artist,image_small,image_large
+base1-1,Alakazam,base1,Base,Base,1999/01/09,1,102,Rare Holo,Pokémon,Stage 2,Psychic,80,Ken Sugimori,https://images.pokemontcg.io/base1/1.png,https://images.pokemontcg.io/base1/1_hires.png
+base1-2,Blastoise,base1,Base,Base,1999/01/09,2,102,Rare Holo,Pokémon,Stage 2,Water,100,Ken Sugimori,https://images.pokemontcg.io/base1/2.png,https://images.pokemontcg.io/base1/2_hires.png
+base1-3,Chansey,base1,Base,Base,1999/01/09,3,102,Rare Holo,Pokémon,Basic,Colorless,120,Ken Sugimori,https://images.pokemontcg.io/base1/3.png,https://images.pokemontcg.io/base1/3_hires.png
+base1-4,Charizard,base1,Base,Base,1999/01/09,4,102,Rare Holo,Pokémon,Stage 2,Fire,120,Mitsuhiro Arita,https://images.pokemontcg.io/base1/4.png,https://images.pokemontcg.io/base1/4_hires.png
+base1-5,Clefairy,base1,Base,Base,1999/01/09,5,102,Rare Holo,Pokémon,Basic,Colorless,40,Ken Sugimori,https://images.pokemontcg.io/base1/5.png,https://images.pokemontcg.io/base1/5_hires.png
+base1-6,Gyarados,base1,Base,Base,1999/01/09,6,102,Rare Holo,Pokémon,Stage 1,Water,100,Mitsuhiro Arita,https://images.pokemontcg.io/base1/6.png,https://images.pokemontcg.io/base1/6_hires.png
+base1-7,Hitmonchan,base1,Base,Base,1999/01/09,7,102,Rare Holo,Pokémon,Basic,Fighting,70,Ken Sugimori,https://images.pokemontcg.io/base1/7.png,https://images.pokemontcg.io/base1/7_hires.png
+base1-8,Machamp,base1,Base,Base,1999/01/09,8,102,Rare Holo,Pokémon,Stage 2,Fighting,100,Ken Sugimori,https://images.pokemontcg.io/base1/8.png,https://images.pokemontcg.io/base1/8_hires.png
+base1-9,Magneton,base1,Base,Base,1999/01/09,9,102,Rare Holo,Pokémon,Stage 1,Lightning,60,Keiji Kinebuchi,https://images.pokemontcg.io/base1/9.png,https://images.pokemontcg.io/base1/9_hires.png
+base1-10,Mewtwo,base1,Base,Base,1999/01/09,10,102,Rare Holo,Pokémon,Basic,Psychic,60,Ken Sugimori,https://images.pokemontcg.io/base1/10.png,https://images.pokemontcg.io/base1/10_hires.png
+base1-11,Nidoking,base1,Base,Base,1999/01/09,11,102,Rare Holo,Pokémon,Stage 2,Grass,90,Ken Sugimori,https://images.pokemontcg.io/base1/11.png,https://images.pokemontcg.io/base1/11_hires.png
+base1-12,Ninetales,base1,Base,Base,1999/01/09,12,102,Rare Holo,Pokémon,Stage 1,Fire,80,Ken Sugimori,https://images.pokemontcg.io/base1/12.png,https://images.pokemontcg.io/base1/12_hires.png
+base1-13,Poliwrath,base1,Base,Base,1999/01/09,13,102,Rare Holo,Pokémon,Stage 2,Water,90,Ken Sugimori,https://images.pokemontcg.io/base1/13.png,https://images.pokemontcg.io/base1/13_hires.png
+base1-14,Raichu,base1,Base,Base,1999/01/09,14,102,Rare Holo,Pokémon,Stage 1,Lightning,80,Ken Sugimori,https://images.pokemontcg.io/base1/14.png,https://images.pokemontcg.io/base1/14_hires.png
+base1-15,Venusaur,base1,Base,Base,1999/01/09,15,102,Rare Holo,Pokémon,Stage 2,Grass,100,Mitsuhiro Arita,https://images.pokemontcg.io/base1/15.png,https://images.pokemontcg.io/base1/15_hires.png
+base1-16,Zapdos,base1,Base,Base,1999/01/09,16,102,Rare Holo,Pokémon,Basic,Lightning,90,Ken Sugimori,https://images.pokemontcg.io/base1/16.png,https://images.pokemontcg.io/base1/16_hires.png
+base1-17,Beedrill,base1,Base,Base,1999/01/09,17,102,Rare,Pokémon,Stage 2,Grass,80,Ken Sugimori,https://images.pokemontcg.io/base1/17.png,https://images.pokemontcg.io/base1/17_hires.png
+base1-18,Dragonair,base1,Base,Base,1999/01/09,18,102,Rare,Pokémon,Stage 1,Colorless,80,Mitsuhiro Arita,https://images.pokemontcg.io/base1/18.png,https://images.pokemontcg.io/base1/18_hires.png
+base1-19,Dugtrio,base1,Base,Base,1999/01/09,19,102,Rare,Pokémon,Stage 1,Fighting,70,Keiji Kinebuchi,https://images.pokemontcg.io/base1/19.png,https://images.pokemontcg.io/base1/19_hires.png
+base1-20,Electabuzz,base1,Base,Base,1999/01/09,20,102,Rare,Pokémon,Basic,Lightning,70,Ken Sugimori,https://images.pokemontcg.io/base1/20.png,https://images.pokemontcg.io/base1/20_hires.png
+base1-21,Electrode,base1,Base,Base,1999/01/09,21,102,Rare,Pokémon,Stage 1,Lightning,80,Keiji Kinebuchi,https://images.pokemontcg.io/base1/21.png,https://images.pokemontcg.io/base1/21_hires.png
+base1-22,Pidgeotto,base1,Base,Base,1999/01/09,22,102,Rare,Pokémon,Stage 1,Colorless,60,Ken Sugimori,https://images.pokemontcg.io/base1/22.png,https://images.pokemontcg.io/base1/22_hires.png
+base1-23,Arcanine,base1,Base,Base,1999/01/09,23,102,Uncommon,Pokémon,Stage 1,Fire,100,Ken Sugimori,https://images.pokemontcg.io/base1/23.png,https://images.pokemontcg.io/base1/23_hires.png
+base1-24,Charmeleon,base1,Base,Base,1999/01/09,24,102,Uncommon,Pokémon,Stage 1,Fire,80,Mitsuhiro Arita,https://images.pokemontcg.io/base1/24.png,https://images.pokemontcg.io/base1/24_hires.png
+base1-25,Dewgong,base1,Base,Base,1999/01/09,25,102,Uncommon,Pokémon,Stage 1,Water,80,Mitsuhiro Arita,https://images.pokemontcg.io/base1/25.png,https://images.pokemontcg.io/base1/25_hires.png
+base1-26,Dratini,base1,Base,Base,1999/01/09,26,102,Uncommon,Pokémon,Basic,Colorless,40,Ken Sugimori,https://images.pokemontcg.io/base1/26.png,https://images.pokemontcg.io/base1/26_hires.png
+base1-27,Farfetch'd,base1,Base,Base,1999/01/09,27,102,Uncommon,Pokémon,Basic,Colorless,50,Ken Sugimori,https://images.pokemontcg.io/base1/27.png,https://images.pokemontcg.io/base1/27_hires.png
+base1-28,Growlithe,base1,Base,Base,1999/01/09,28,102,Uncommon,Pokémon,Basic,Fire,60,Ken Sugimori,https://images.pokemontcg.io/base1/28.png,https://images.pokemontcg.io/base1/28_hires.png
+base1-29,Haunter,base1,Base,Base,1999/01/09,29,102,Uncommon,Pokémon,Stage 1,Psychic,60,Keiji Kinebuchi,https://images.pokemontcg.io/base1/29.png,https://images.pokemontcg.io/base1/29_hires.png
+base1-30,Ivysaur,base1,Base,Base,1999/01/09,30,102,Uncommon,Pokémon,Stage 1,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base1/30.png,https://images.pokemontcg.io/base1/30_hires.png
+base1-31,Jynx,base1,Base,Base,1999/01/09,31,102,Uncommon,Pokémon,Basic,Psychic,70,Ken Sugimori,https://images.pokemontcg.io/base1/31.png,https://images.pokemontcg.io/base1/31_hires.png
+base1-32,Kadabra,base1,Base,Base,1999/01/09,32,102,Uncommon,Pokémon,Stage 1,Psychic,60,Ken Sugimori,https://images.pokemontcg.io/base1/32.png,https://images.pokemontcg.io/base1/32_hires.png
+base1-33,Kakuna,base1,Base,Base,1999/01/09,33,102,Uncommon,Pokémon,Stage 1,Grass,80,Keiji Kinebuchi,https://images.pokemontcg.io/base1/33.png,https://images.pokemontcg.io/base1/33_hires.png
+base1-34,Machoke,base1,Base,Base,1999/01/09,34,102,Uncommon,Pokémon,Stage 1,Fighting,80,Ken Sugimori,https://images.pokemontcg.io/base1/34.png,https://images.pokemontcg.io/base1/34_hires.png
+base1-35,Magikarp,base1,Base,Base,1999/01/09,35,102,Uncommon,Pokémon,Basic,Water,30,Mitsuhiro Arita,https://images.pokemontcg.io/base1/35.png,https://images.pokemontcg.io/base1/35_hires.png
+base1-36,Magmar,base1,Base,Base,1999/01/09,36,102,Uncommon,Pokémon,Basic,Fire,50,Ken Sugimori,https://images.pokemontcg.io/base1/36.png,https://images.pokemontcg.io/base1/36_hires.png
+base1-37,Nidorino,base1,Base,Base,1999/01/09,37,102,Uncommon,Pokémon,Stage 1,Grass,60,Mitsuhiro Arita,https://images.pokemontcg.io/base1/37.png,https://images.pokemontcg.io/base1/37_hires.png
+base1-38,Poliwhirl,base1,Base,Base,1999/01/09,38,102,Uncommon,Pokémon,Stage 1,Water,60,Ken Sugimori,https://images.pokemontcg.io/base1/38.png,https://images.pokemontcg.io/base1/38_hires.png
+base1-39,Porygon,base1,Base,Base,1999/01/09,39,102,Uncommon,Pokémon,Basic,Colorless,30,Tomoaki Imakuni,https://images.pokemontcg.io/base1/39.png,https://images.pokemontcg.io/base1/39_hires.png
+base1-40,Raticate,base1,Base,Base,1999/01/09,40,102,Uncommon,Pokémon,Stage 1,Colorless,60,Ken Sugimori,https://images.pokemontcg.io/base1/40.png,https://images.pokemontcg.io/base1/40_hires.png
+base1-41,Seel,base1,Base,Base,1999/01/09,41,102,Uncommon,Pokémon,Basic,Water,60,Ken Sugimori,https://images.pokemontcg.io/base1/41.png,https://images.pokemontcg.io/base1/41_hires.png
+base1-42,Wartortle,base1,Base,Base,1999/01/09,42,102,Uncommon,Pokémon,Stage 1,Water,70,Ken Sugimori,https://images.pokemontcg.io/base1/42.png,https://images.pokemontcg.io/base1/42_hires.png
+base1-43,Abra,base1,Base,Base,1999/01/09,43,102,Common,Pokémon,Basic,Psychic,30,Mitsuhiro Arita,https://images.pokemontcg.io/base1/43.png,https://images.pokemontcg.io/base1/43_hires.png
+base1-44,Bulbasaur,base1,Base,Base,1999/01/09,44,102,Common,Pokémon,Basic,Grass,40,Mitsuhiro Arita,https://images.pokemontcg.io/base1/44.png,https://images.pokemontcg.io/base1/44_hires.png
+base1-45,Caterpie,base1,Base,Base,1999/01/09,45,102,Common,Pokémon,Basic,Grass,40,Ken Sugimori,https://images.pokemontcg.io/base1/45.png,https://images.pokemontcg.io/base1/45_hires.png
+base1-46,Charmander,base1,Base,Base,1999/01/09,46,102,Common,Pokémon,Basic,Fire,50,Mitsuhiro Arita,https://images.pokemontcg.io/base1/46.png,https://images.pokemontcg.io/base1/46_hires.png
+base1-47,Diglett,base1,Base,Base,1999/01/09,47,102,Common,Pokémon,Basic,Fighting,30,Keiji Kinebuchi,https://images.pokemontcg.io/base1/47.png,https://images.pokemontcg.io/base1/47_hires.png
+base1-48,Doduo,base1,Base,Base,1999/01/09,48,102,Common,Pokémon,Basic,Colorless,50,Mitsuhiro Arita,https://images.pokemontcg.io/base1/48.png,https://images.pokemontcg.io/base1/48_hires.png
+base1-49,Drowzee,base1,Base,Base,1999/01/09,49,102,Common,Pokémon,Basic,Psychic,50,Ken Sugimori,https://images.pokemontcg.io/base1/49.png,https://images.pokemontcg.io/base1/49_hires.png
+base1-50,Gastly,base1,Base,Base,1999/01/09,50,102,Common,Pokémon,Basic,Psychic,30,Keiji Kinebuchi,https://images.pokemontcg.io/base1/50.png,https://images.pokemontcg.io/base1/50_hires.png
+base1-51,Koffing,base1,Base,Base,1999/01/09,51,102,Common,Pokémon,Basic,Grass,50,Mitsuhiro Arita,https://images.pokemontcg.io/base1/51.png,https://images.pokemontcg.io/base1/51_hires.png
+base1-52,Machop,base1,Base,Base,1999/01/09,52,102,Common,Pokémon,Basic,Fighting,50,Mitsuhiro Arita,https://images.pokemontcg.io/base1/52.png,https://images.pokemontcg.io/base1/52_hires.png
+base1-53,Magnemite,base1,Base,Base,1999/01/09,53,102,Common,Pokémon,Basic,Lightning,40,Keiji Kinebuchi,https://images.pokemontcg.io/base1/53.png,https://images.pokemontcg.io/base1/53_hires.png
+base1-54,Metapod,base1,Base,Base,1999/01/09,54,102,Common,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base1/54.png,https://images.pokemontcg.io/base1/54_hires.png
+base1-55,Nidoran ♂,base1,Base,Base,1999/01/09,55,102,Common,Pokémon,Basic,Grass,40,Ken Sugimori,https://images.pokemontcg.io/base1/55.png,https://images.pokemontcg.io/base1/55_hires.png
+base1-56,Onix,base1,Base,Base,1999/01/09,56,102,Common,Pokémon,Basic,Fighting,90,Ken Sugimori,https://images.pokemontcg.io/base1/56.png,https://images.pokemontcg.io/base1/56_hires.png
+base1-57,Pidgey,base1,Base,Base,1999/01/09,57,102,Common,Pokémon,Basic,Colorless,40,Ken Sugimori,https://images.pokemontcg.io/base1/57.png,https://images.pokemontcg.io/base1/57_hires.png
+base1-58,Pikachu,base1,Base,Base,1999/01/09,58,102,Common,Pokémon,Basic,Lightning,40,Mitsuhiro Arita,https://images.pokemontcg.io/base1/58.png,https://images.pokemontcg.io/base1/58_hires.png
+base1-59,Poliwag,base1,Base,Base,1999/01/09,59,102,Common,Pokémon,Basic,Water,40,Ken Sugimori,https://images.pokemontcg.io/base1/59.png,https://images.pokemontcg.io/base1/59_hires.png
+base1-60,Ponyta,base1,Base,Base,1999/01/09,60,102,Common,Pokémon,Basic,Fire,40,Ken Sugimori,https://images.pokemontcg.io/base1/60.png,https://images.pokemontcg.io/base1/60_hires.png
+base1-61,Rattata,base1,Base,Base,1999/01/09,61,102,Common,Pokémon,Basic,Colorless,30,Mitsuhiro Arita,https://images.pokemontcg.io/base1/61.png,https://images.pokemontcg.io/base1/61_hires.png
+base1-62,Sandshrew,base1,Base,Base,1999/01/09,62,102,Common,Pokémon,Basic,Fighting,40,Ken Sugimori,https://images.pokemontcg.io/base1/62.png,https://images.pokemontcg.io/base1/62_hires.png
+base1-63,Squirtle,base1,Base,Base,1999/01/09,63,102,Common,Pokémon,Basic,Water,40,Mitsuhiro Arita,https://images.pokemontcg.io/base1/63.png,https://images.pokemontcg.io/base1/63_hires.png
+base1-64,Starmie,base1,Base,Base,1999/01/09,64,102,Common,Pokémon,Stage 1,Water,60,Keiji Kinebuchi,https://images.pokemontcg.io/base1/64.png,https://images.pokemontcg.io/base1/64_hires.png
+base1-65,Staryu,base1,Base,Base,1999/01/09,65,102,Common,Pokémon,Basic,Water,40,Keiji Kinebuchi,https://images.pokemontcg.io/base1/65.png,https://images.pokemontcg.io/base1/65_hires.png
+base1-66,Tangela,base1,Base,Base,1999/01/09,66,102,Common,Pokémon,Basic,Grass,50,Mitsuhiro Arita,https://images.pokemontcg.io/base1/66.png,https://images.pokemontcg.io/base1/66_hires.png
+base1-67,Voltorb,base1,Base,Base,1999/01/09,67,102,Common,Pokémon,Basic,Lightning,40,Keiji Kinebuchi,https://images.pokemontcg.io/base1/67.png,https://images.pokemontcg.io/base1/67_hires.png
+base1-68,Vulpix,base1,Base,Base,1999/01/09,68,102,Common,Pokémon,Basic,Fire,50,Ken Sugimori,https://images.pokemontcg.io/base1/68.png,https://images.pokemontcg.io/base1/68_hires.png
+base1-69,Weedle,base1,Base,Base,1999/01/09,69,102,Common,Pokémon,Basic,Grass,40,Mitsuhiro Arita,https://images.pokemontcg.io/base1/69.png,https://images.pokemontcg.io/base1/69_hires.png
+base1-70,Clefairy Doll,base1,Base,Base,1999/01/09,70,102,Rare,Trainer,,,10,Keiji Kinebuchi,https://images.pokemontcg.io/base1/70.png,https://images.pokemontcg.io/base1/70_hires.png
+base1-71,Computer Search,base1,Base,Base,1999/01/09,71,102,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/71.png,https://images.pokemontcg.io/base1/71_hires.png
+base1-72,Devolution Spray,base1,Base,Base,1999/01/09,72,102,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/72.png,https://images.pokemontcg.io/base1/72_hires.png
+base1-73,Impostor Professor Oak,base1,Base,Base,1999/01/09,73,102,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base1/73.png,https://images.pokemontcg.io/base1/73_hires.png
+base1-74,Item Finder,base1,Base,Base,1999/01/09,74,102,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/74.png,https://images.pokemontcg.io/base1/74_hires.png
+base1-75,Lass,base1,Base,Base,1999/01/09,75,102,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base1/75.png,https://images.pokemontcg.io/base1/75_hires.png
+base1-76,Pokémon Breeder,base1,Base,Base,1999/01/09,76,102,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base1/76.png,https://images.pokemontcg.io/base1/76_hires.png
+base1-77,Pokémon Trader,base1,Base,Base,1999/01/09,77,102,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base1/77.png,https://images.pokemontcg.io/base1/77_hires.png
+base1-78,Scoop Up,base1,Base,Base,1999/01/09,78,102,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/78.png,https://images.pokemontcg.io/base1/78_hires.png
+base1-79,Super Energy Removal,base1,Base,Base,1999/01/09,79,102,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/79.png,https://images.pokemontcg.io/base1/79_hires.png
+base1-80,Defender,base1,Base,Base,1999/01/09,80,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/80.png,https://images.pokemontcg.io/base1/80_hires.png
+base1-81,Energy Retrieval,base1,Base,Base,1999/01/09,81,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/81.png,https://images.pokemontcg.io/base1/81_hires.png
+base1-82,Full Heal,base1,Base,Base,1999/01/09,82,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/82.png,https://images.pokemontcg.io/base1/82_hires.png
+base1-83,Maintenance,base1,Base,Base,1999/01/09,83,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/83.png,https://images.pokemontcg.io/base1/83_hires.png
+base1-84,PlusPower,base1,Base,Base,1999/01/09,84,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/84.png,https://images.pokemontcg.io/base1/84_hires.png
+base1-85,Pokémon Center,base1,Base,Base,1999/01/09,85,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/85.png,https://images.pokemontcg.io/base1/85_hires.png
+base1-86,Pokémon Flute,base1,Base,Base,1999/01/09,86,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/86.png,https://images.pokemontcg.io/base1/86_hires.png
+base1-87,Pokédex,base1,Base,Base,1999/01/09,87,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/87.png,https://images.pokemontcg.io/base1/87_hires.png
+base1-88,Professor Oak,base1,Base,Base,1999/01/09,88,102,Uncommon,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base1/88.png,https://images.pokemontcg.io/base1/88_hires.png
+base1-89,Revive,base1,Base,Base,1999/01/09,89,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/89.png,https://images.pokemontcg.io/base1/89_hires.png
+base1-90,Super Potion,base1,Base,Base,1999/01/09,90,102,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/90.png,https://images.pokemontcg.io/base1/90_hires.png
+base1-91,Bill,base1,Base,Base,1999/01/09,91,102,Common,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base1/91.png,https://images.pokemontcg.io/base1/91_hires.png
+base1-92,Energy Removal,base1,Base,Base,1999/01/09,92,102,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/92.png,https://images.pokemontcg.io/base1/92_hires.png
+base1-93,Gust of Wind,base1,Base,Base,1999/01/09,93,102,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/93.png,https://images.pokemontcg.io/base1/93_hires.png
+base1-94,Potion,base1,Base,Base,1999/01/09,94,102,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/94.png,https://images.pokemontcg.io/base1/94_hires.png
+base1-95,Switch,base1,Base,Base,1999/01/09,95,102,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/95.png,https://images.pokemontcg.io/base1/95_hires.png
+base1-96,Double Colorless Energy,base1,Base,Base,1999/01/09,96,102,Uncommon,Energy,Special,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/96.png,https://images.pokemontcg.io/base1/96_hires.png
+base1-97,Fighting Energy,base1,Base,Base,1999/01/09,97,102,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/97.png,https://images.pokemontcg.io/base1/97_hires.png
+base1-98,Fire Energy,base1,Base,Base,1999/01/09,98,102,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/98.png,https://images.pokemontcg.io/base1/98_hires.png
+base1-99,Grass Energy,base1,Base,Base,1999/01/09,99,102,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/99.png,https://images.pokemontcg.io/base1/99_hires.png
+base1-100,Lightning Energy,base1,Base,Base,1999/01/09,100,102,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/100.png,https://images.pokemontcg.io/base1/100_hires.png
+base1-101,Psychic Energy,base1,Base,Base,1999/01/09,101,102,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/101.png,https://images.pokemontcg.io/base1/101_hires.png
+base1-102,Water Energy,base1,Base,Base,1999/01/09,102,102,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base1/102.png,https://images.pokemontcg.io/base1/102_hires.png
+base2-1,Clefable,base2,Jungle,Base,1999/06/16,1,64,Rare Holo,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base2/1.png,https://images.pokemontcg.io/base2/1_hires.png
+base2-2,Electrode,base2,Jungle,Base,1999/06/16,2,64,Rare Holo,Pokémon,Stage 1,Lightning,90,Mitsuhiro Arita,https://images.pokemontcg.io/base2/2.png,https://images.pokemontcg.io/base2/2_hires.png
+base2-3,Flareon,base2,Jungle,Base,1999/06/16,3,64,Rare Holo,Pokémon,Stage 1,Fire,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/3.png,https://images.pokemontcg.io/base2/3_hires.png
+base2-4,Jolteon,base2,Jungle,Base,1999/06/16,4,64,Rare Holo,Pokémon,Stage 1,Lightning,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/4.png,https://images.pokemontcg.io/base2/4_hires.png
+base2-5,Kangaskhan,base2,Jungle,Base,1999/06/16,5,64,Rare Holo,Pokémon,Basic,Colorless,90,Mitsuhiro Arita,https://images.pokemontcg.io/base2/5.png,https://images.pokemontcg.io/base2/5_hires.png
+base2-6,Mr. Mime,base2,Jungle,Base,1999/06/16,6,64,Rare Holo,Pokémon,Basic,Psychic,40,Ken Sugimori,https://images.pokemontcg.io/base2/6.png,https://images.pokemontcg.io/base2/6_hires.png
+base2-7,Nidoqueen,base2,Jungle,Base,1999/06/16,7,64,Rare Holo,Pokémon,Stage 2,Grass,90,Ken Sugimori,https://images.pokemontcg.io/base2/7.png,https://images.pokemontcg.io/base2/7_hires.png
+base2-8,Pidgeot,base2,Jungle,Base,1999/06/16,8,64,Rare Holo,Pokémon,Stage 2,Colorless,80,Kagemaru Himeno,https://images.pokemontcg.io/base2/8.png,https://images.pokemontcg.io/base2/8_hires.png
+base2-9,Pinsir,base2,Jungle,Base,1999/06/16,9,64,Rare Holo,Pokémon,Basic,Grass,60,Kagemaru Himeno,https://images.pokemontcg.io/base2/9.png,https://images.pokemontcg.io/base2/9_hires.png
+base2-10,Scyther,base2,Jungle,Base,1999/06/16,10,64,Rare Holo,Pokémon,Basic,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base2/10.png,https://images.pokemontcg.io/base2/10_hires.png
+base2-11,Snorlax,base2,Jungle,Base,1999/06/16,11,64,Rare Holo,Pokémon,Basic,Colorless,90,Ken Sugimori,https://images.pokemontcg.io/base2/11.png,https://images.pokemontcg.io/base2/11_hires.png
+base2-12,Vaporeon,base2,Jungle,Base,1999/06/16,12,64,Rare Holo,Pokémon,Stage 1,Water,80,Kagemaru Himeno,https://images.pokemontcg.io/base2/12.png,https://images.pokemontcg.io/base2/12_hires.png
+base2-13,Venomoth,base2,Jungle,Base,1999/06/16,13,64,Rare Holo,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base2/13.png,https://images.pokemontcg.io/base2/13_hires.png
+base2-14,Victreebel,base2,Jungle,Base,1999/06/16,14,64,Rare Holo,Pokémon,Stage 2,Grass,80,Ken Sugimori,https://images.pokemontcg.io/base2/14.png,https://images.pokemontcg.io/base2/14_hires.png
+base2-15,Vileplume,base2,Jungle,Base,1999/06/16,15,64,Rare Holo,Pokémon,Stage 2,Grass,80,Keiji Kinebuchi,https://images.pokemontcg.io/base2/15.png,https://images.pokemontcg.io/base2/15_hires.png
+base2-16,Wigglytuff,base2,Jungle,Base,1999/06/16,16,64,Rare Holo,Pokémon,Stage 1,Colorless,80,Mitsuhiro Arita,https://images.pokemontcg.io/base2/16.png,https://images.pokemontcg.io/base2/16_hires.png
+base2-17,Clefable,base2,Jungle,Base,1999/06/16,17,64,Rare,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base2/17.png,https://images.pokemontcg.io/base2/17_hires.png
+base2-18,Electrode,base2,Jungle,Base,1999/06/16,18,64,Rare,Pokémon,Stage 1,Lightning,90,Mitsuhiro Arita,https://images.pokemontcg.io/base2/18.png,https://images.pokemontcg.io/base2/18_hires.png
+base2-19,Flareon,base2,Jungle,Base,1999/06/16,19,64,Rare,Pokémon,Stage 1,Fire,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/19.png,https://images.pokemontcg.io/base2/19_hires.png
+base2-20,Jolteon,base2,Jungle,Base,1999/06/16,20,64,Rare,Pokémon,Stage 1,Lightning,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/20.png,https://images.pokemontcg.io/base2/20_hires.png
+base2-21,Kangaskhan,base2,Jungle,Base,1999/06/16,21,64,Rare,Pokémon,Basic,Colorless,90,Mitsuhiro Arita,https://images.pokemontcg.io/base2/21.png,https://images.pokemontcg.io/base2/21_hires.png
+base2-22,Mr. Mime,base2,Jungle,Base,1999/06/16,22,64,Rare,Pokémon,Basic,Psychic,40,Ken Sugimori,https://images.pokemontcg.io/base2/22.png,https://images.pokemontcg.io/base2/22_hires.png
+base2-23,Nidoqueen,base2,Jungle,Base,1999/06/16,23,64,Rare,Pokémon,Stage 2,Grass,90,Ken Sugimori,https://images.pokemontcg.io/base2/23.png,https://images.pokemontcg.io/base2/23_hires.png
+base2-24,Pidgeot,base2,Jungle,Base,1999/06/16,24,64,Rare,Pokémon,Stage 2,Colorless,80,Kagemaru Himeno,https://images.pokemontcg.io/base2/24.png,https://images.pokemontcg.io/base2/24_hires.png
+base2-25,Pinsir,base2,Jungle,Base,1999/06/16,25,64,Rare,Pokémon,Basic,Grass,60,Kagemaru Himeno,https://images.pokemontcg.io/base2/25.png,https://images.pokemontcg.io/base2/25_hires.png
+base2-26,Scyther,base2,Jungle,Base,1999/06/16,26,64,Rare,Pokémon,Basic,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base2/26.png,https://images.pokemontcg.io/base2/26_hires.png
+base2-27,Snorlax,base2,Jungle,Base,1999/06/16,27,64,Rare,Pokémon,Basic,Colorless,90,Ken Sugimori,https://images.pokemontcg.io/base2/27.png,https://images.pokemontcg.io/base2/27_hires.png
+base2-28,Vaporeon,base2,Jungle,Base,1999/06/16,28,64,Rare,Pokémon,Stage 1,Water,80,Kagemaru Himeno,https://images.pokemontcg.io/base2/28.png,https://images.pokemontcg.io/base2/28_hires.png
+base2-29,Venomoth,base2,Jungle,Base,1999/06/16,29,64,Rare,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base2/29.png,https://images.pokemontcg.io/base2/29_hires.png
+base2-30,Victreebel,base2,Jungle,Base,1999/06/16,30,64,Rare,Pokémon,Stage 2,Grass,80,Ken Sugimori,https://images.pokemontcg.io/base2/30.png,https://images.pokemontcg.io/base2/30_hires.png
+base2-31,Vileplume,base2,Jungle,Base,1999/06/16,31,64,Rare,Pokémon,Stage 2,Grass,80,Keiji Kinebuchi,https://images.pokemontcg.io/base2/31.png,https://images.pokemontcg.io/base2/31_hires.png
+base2-32,Wigglytuff,base2,Jungle,Base,1999/06/16,32,64,Rare,Pokémon,Stage 1,Colorless,80,Mitsuhiro Arita,https://images.pokemontcg.io/base2/32.png,https://images.pokemontcg.io/base2/32_hires.png
+base2-33,Butterfree,base2,Jungle,Base,1999/06/16,33,64,Uncommon,Pokémon,Stage 2,Grass,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/33.png,https://images.pokemontcg.io/base2/33_hires.png
+base2-34,Dodrio,base2,Jungle,Base,1999/06/16,34,64,Uncommon,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base2/34.png,https://images.pokemontcg.io/base2/34_hires.png
+base2-35,Exeggutor,base2,Jungle,Base,1999/06/16,35,64,Uncommon,Pokémon,Stage 1,Grass,80,Kagemaru Himeno,https://images.pokemontcg.io/base2/35.png,https://images.pokemontcg.io/base2/35_hires.png
+base2-36,Fearow,base2,Jungle,Base,1999/06/16,36,64,Uncommon,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base2/36.png,https://images.pokemontcg.io/base2/36_hires.png
+base2-37,Gloom,base2,Jungle,Base,1999/06/16,37,64,Uncommon,Pokémon,Stage 1,Grass,60,Keiji Kinebuchi,https://images.pokemontcg.io/base2/37.png,https://images.pokemontcg.io/base2/37_hires.png
+base2-38,Lickitung,base2,Jungle,Base,1999/06/16,38,64,Uncommon,Pokémon,Basic,Colorless,90,Mitsuhiro Arita,https://images.pokemontcg.io/base2/38.png,https://images.pokemontcg.io/base2/38_hires.png
+base2-39,Marowak,base2,Jungle,Base,1999/06/16,39,64,Uncommon,Pokémon,Stage 1,Fighting,60,Mitsuhiro Arita,https://images.pokemontcg.io/base2/39.png,https://images.pokemontcg.io/base2/39_hires.png
+base2-40,Nidorina,base2,Jungle,Base,1999/06/16,40,64,Uncommon,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base2/40.png,https://images.pokemontcg.io/base2/40_hires.png
+base2-41,Parasect,base2,Jungle,Base,1999/06/16,41,64,Uncommon,Pokémon,Stage 1,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base2/41.png,https://images.pokemontcg.io/base2/41_hires.png
+base2-42,Persian,base2,Jungle,Base,1999/06/16,42,64,Uncommon,Pokémon,Stage 1,Colorless,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/42.png,https://images.pokemontcg.io/base2/42_hires.png
+base2-43,Primeape,base2,Jungle,Base,1999/06/16,43,64,Uncommon,Pokémon,Stage 1,Fighting,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/43.png,https://images.pokemontcg.io/base2/43_hires.png
+base2-44,Rapidash,base2,Jungle,Base,1999/06/16,44,64,Uncommon,Pokémon,Stage 1,Fire,70,Mitsuhiro Arita,https://images.pokemontcg.io/base2/44.png,https://images.pokemontcg.io/base2/44_hires.png
+base2-45,Rhydon,base2,Jungle,Base,1999/06/16,45,64,Uncommon,Pokémon,Stage 1,Fighting,100,Kagemaru Himeno,https://images.pokemontcg.io/base2/45.png,https://images.pokemontcg.io/base2/45_hires.png
+base2-46,Seaking,base2,Jungle,Base,1999/06/16,46,64,Uncommon,Pokémon,Stage 1,Water,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/46.png,https://images.pokemontcg.io/base2/46_hires.png
+base2-47,Tauros,base2,Jungle,Base,1999/06/16,47,64,Uncommon,Pokémon,Basic,Colorless,60,Kagemaru Himeno,https://images.pokemontcg.io/base2/47.png,https://images.pokemontcg.io/base2/47_hires.png
+base2-48,Weepinbell,base2,Jungle,Base,1999/06/16,48,64,Uncommon,Pokémon,Stage 1,Grass,70,Kagemaru Himeno,https://images.pokemontcg.io/base2/48.png,https://images.pokemontcg.io/base2/48_hires.png
+base2-49,Bellsprout,base2,Jungle,Base,1999/06/16,49,64,Common,Pokémon,Basic,Grass,40,Kagemaru Himeno,https://images.pokemontcg.io/base2/49.png,https://images.pokemontcg.io/base2/49_hires.png
+base2-50,Cubone,base2,Jungle,Base,1999/06/16,50,64,Common,Pokémon,Basic,Fighting,40,Mitsuhiro Arita,https://images.pokemontcg.io/base2/50.png,https://images.pokemontcg.io/base2/50_hires.png
+base2-51,Eevee,base2,Jungle,Base,1999/06/16,51,64,Common,Pokémon,Basic,Colorless,50,Kagemaru Himeno,https://images.pokemontcg.io/base2/51.png,https://images.pokemontcg.io/base2/51_hires.png
+base2-52,Exeggcute,base2,Jungle,Base,1999/06/16,52,64,Common,Pokémon,Basic,Grass,50,Mitsuhiro Arita,https://images.pokemontcg.io/base2/52.png,https://images.pokemontcg.io/base2/52_hires.png
+base2-53,Goldeen,base2,Jungle,Base,1999/06/16,53,64,Common,Pokémon,Basic,Water,40,Kagemaru Himeno,https://images.pokemontcg.io/base2/53.png,https://images.pokemontcg.io/base2/53_hires.png
+base2-54,Jigglypuff,base2,Jungle,Base,1999/06/16,54,64,Common,Pokémon,Basic,Colorless,60,Kagemaru Himeno,https://images.pokemontcg.io/base2/54.png,https://images.pokemontcg.io/base2/54_hires.png
+base2-55,Mankey,base2,Jungle,Base,1999/06/16,55,64,Common,Pokémon,Basic,Fighting,30,Kagemaru Himeno,https://images.pokemontcg.io/base2/55.png,https://images.pokemontcg.io/base2/55_hires.png
+base2-56,Meowth,base2,Jungle,Base,1999/06/16,56,64,Common,Pokémon,Basic,Colorless,50,Mitsuhiro Arita,https://images.pokemontcg.io/base2/56.png,https://images.pokemontcg.io/base2/56_hires.png
+base2-57,Nidoran ♀,base2,Jungle,Base,1999/06/16,57,64,Common,Pokémon,Basic,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base2/57.png,https://images.pokemontcg.io/base2/57_hires.png
+base2-58,Oddish,base2,Jungle,Base,1999/06/16,58,64,Common,Pokémon,Basic,Grass,50,Keiji Kinebuchi,https://images.pokemontcg.io/base2/58.png,https://images.pokemontcg.io/base2/58_hires.png
+base2-59,Paras,base2,Jungle,Base,1999/06/16,59,64,Common,Pokémon,Basic,Grass,40,Ken Sugimori,https://images.pokemontcg.io/base2/59.png,https://images.pokemontcg.io/base2/59_hires.png
+base2-60,Pikachu,base2,Jungle,Base,1999/06/16,60,64,Common,Pokémon,Basic,Lightning,50,Ken Sugimori,https://images.pokemontcg.io/base2/60.png,https://images.pokemontcg.io/base2/60_hires.png
+base2-61,Rhyhorn,base2,Jungle,Base,1999/06/16,61,64,Common,Pokémon,Basic,Fighting,70,Mitsuhiro Arita,https://images.pokemontcg.io/base2/61.png,https://images.pokemontcg.io/base2/61_hires.png
+base2-62,Spearow,base2,Jungle,Base,1999/06/16,62,64,Common,Pokémon,Basic,Colorless,50,Mitsuhiro Arita,https://images.pokemontcg.io/base2/62.png,https://images.pokemontcg.io/base2/62_hires.png
+base2-63,Venonat,base2,Jungle,Base,1999/06/16,63,64,Common,Pokémon,Basic,Grass,40,Mitsuhiro Arita,https://images.pokemontcg.io/base2/63.png,https://images.pokemontcg.io/base2/63_hires.png
+base2-64,Poké Ball,base2,Jungle,Base,1999/06/16,64,64,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base2/64.png,https://images.pokemontcg.io/base2/64_hires.png
+base3-1,Aerodactyl,base3,Fossil,Base,1999/10/10,1,62,Rare Holo,Pokémon,Stage 1,Fighting,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/1.png,https://images.pokemontcg.io/base3/1_hires.png
+base3-2,Articuno,base3,Fossil,Base,1999/10/10,2,62,Rare Holo,Pokémon,Basic,Water,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/2.png,https://images.pokemontcg.io/base3/2_hires.png
+base3-3,Ditto,base3,Fossil,Base,1999/10/10,3,62,Rare Holo,Pokémon,Basic,Colorless,50,Keiji Kinebuchi,https://images.pokemontcg.io/base3/3.png,https://images.pokemontcg.io/base3/3_hires.png
+base3-4,Dragonite,base3,Fossil,Base,1999/10/10,4,62,Rare Holo,Pokémon,Stage 2,Colorless,100,Kagemaru Himeno,https://images.pokemontcg.io/base3/4.png,https://images.pokemontcg.io/base3/4_hires.png
+base3-5,Gengar,base3,Fossil,Base,1999/10/10,5,62,Rare Holo,Pokémon,Stage 2,Psychic,80,Keiji Kinebuchi,https://images.pokemontcg.io/base3/5.png,https://images.pokemontcg.io/base3/5_hires.png
+base3-6,Haunter,base3,Fossil,Base,1999/10/10,6,62,Rare Holo,Pokémon,Stage 1,Psychic,50,Ken Sugimori,https://images.pokemontcg.io/base3/6.png,https://images.pokemontcg.io/base3/6_hires.png
+base3-7,Hitmonlee,base3,Fossil,Base,1999/10/10,7,62,Rare Holo,Pokémon,Basic,Fighting,60,Ken Sugimori,https://images.pokemontcg.io/base3/7.png,https://images.pokemontcg.io/base3/7_hires.png
+base3-8,Hypno,base3,Fossil,Base,1999/10/10,8,62,Rare Holo,Pokémon,Stage 1,Psychic,90,Ken Sugimori,https://images.pokemontcg.io/base3/8.png,https://images.pokemontcg.io/base3/8_hires.png
+base3-9,Kabutops,base3,Fossil,Base,1999/10/10,9,62,Rare Holo,Pokémon,Stage 2,Fighting,60,Ken Sugimori,https://images.pokemontcg.io/base3/9.png,https://images.pokemontcg.io/base3/9_hires.png
+base3-10,Lapras,base3,Fossil,Base,1999/10/10,10,62,Rare Holo,Pokémon,Basic,Water,80,Ken Sugimori,https://images.pokemontcg.io/base3/10.png,https://images.pokemontcg.io/base3/10_hires.png
+base3-11,Magneton,base3,Fossil,Base,1999/10/10,11,62,Rare Holo,Pokémon,Stage 1,Lightning,80,Ken Sugimori,https://images.pokemontcg.io/base3/11.png,https://images.pokemontcg.io/base3/11_hires.png
+base3-12,Moltres,base3,Fossil,Base,1999/10/10,12,62,Rare Holo,Pokémon,Basic,Fire,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/12.png,https://images.pokemontcg.io/base3/12_hires.png
+base3-13,Muk,base3,Fossil,Base,1999/10/10,13,62,Rare Holo,Pokémon,Stage 1,Grass,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/13.png,https://images.pokemontcg.io/base3/13_hires.png
+base3-14,Raichu,base3,Fossil,Base,1999/10/10,14,62,Rare Holo,Pokémon,Stage 1,Lightning,90,Mitsuhiro Arita,https://images.pokemontcg.io/base3/14.png,https://images.pokemontcg.io/base3/14_hires.png
+base3-15,Zapdos,base3,Fossil,Base,1999/10/10,15,62,Rare Holo,Pokémon,Basic,Lightning,80,Mitsuhiro Arita,https://images.pokemontcg.io/base3/15.png,https://images.pokemontcg.io/base3/15_hires.png
+base3-16,Aerodactyl,base3,Fossil,Base,1999/10/10,16,62,Rare,Pokémon,Stage 1,Fighting,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/16.png,https://images.pokemontcg.io/base3/16_hires.png
+base3-17,Articuno,base3,Fossil,Base,1999/10/10,17,62,Rare,Pokémon,Basic,Water,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/17.png,https://images.pokemontcg.io/base3/17_hires.png
+base3-18,Ditto,base3,Fossil,Base,1999/10/10,18,62,Rare,Pokémon,Basic,Colorless,50,Keiji Kinebuchi,https://images.pokemontcg.io/base3/18.png,https://images.pokemontcg.io/base3/18_hires.png
+base3-19,Dragonite,base3,Fossil,Base,1999/10/10,19,62,Rare,Pokémon,Stage 2,Colorless,100,Kagemaru Himeno,https://images.pokemontcg.io/base3/19.png,https://images.pokemontcg.io/base3/19_hires.png
+base3-20,Gengar,base3,Fossil,Base,1999/10/10,20,62,Rare,Pokémon,Stage 2,Psychic,80,Keiji Kinebuchi,https://images.pokemontcg.io/base3/20.png,https://images.pokemontcg.io/base3/20_hires.png
+base3-21,Haunter,base3,Fossil,Base,1999/10/10,21,62,Rare,Pokémon,Stage 1,Psychic,50,Ken Sugimori,https://images.pokemontcg.io/base3/21.png,https://images.pokemontcg.io/base3/21_hires.png
+base3-22,Hitmonlee,base3,Fossil,Base,1999/10/10,22,62,Rare,Pokémon,Basic,Fighting,60,Ken Sugimori,https://images.pokemontcg.io/base3/22.png,https://images.pokemontcg.io/base3/22_hires.png
+base3-23,Hypno,base3,Fossil,Base,1999/10/10,23,62,Rare,Pokémon,Stage 1,Psychic,90,Ken Sugimori,https://images.pokemontcg.io/base3/23.png,https://images.pokemontcg.io/base3/23_hires.png
+base3-24,Kabutops,base3,Fossil,Base,1999/10/10,24,62,Rare,Pokémon,Stage 2,Fighting,60,Ken Sugimori,https://images.pokemontcg.io/base3/24.png,https://images.pokemontcg.io/base3/24_hires.png
+base3-25,Lapras,base3,Fossil,Base,1999/10/10,25,62,Rare,Pokémon,Basic,Water,80,Ken Sugimori,https://images.pokemontcg.io/base3/25.png,https://images.pokemontcg.io/base3/25_hires.png
+base3-26,Magneton,base3,Fossil,Base,1999/10/10,26,62,Rare,Pokémon,Stage 1,Lightning,80,Ken Sugimori,https://images.pokemontcg.io/base3/26.png,https://images.pokemontcg.io/base3/26_hires.png
+base3-27,Moltres,base3,Fossil,Base,1999/10/10,27,62,Rare,Pokémon,Basic,Fire,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/27.png,https://images.pokemontcg.io/base3/27_hires.png
+base3-28,Muk,base3,Fossil,Base,1999/10/10,28,62,Rare,Pokémon,Stage 1,Grass,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/28.png,https://images.pokemontcg.io/base3/28_hires.png
+base3-29,Raichu,base3,Fossil,Base,1999/10/10,29,62,Rare,Pokémon,Stage 1,Lightning,90,Mitsuhiro Arita,https://images.pokemontcg.io/base3/29.png,https://images.pokemontcg.io/base3/29_hires.png
+base3-30,Zapdos,base3,Fossil,Base,1999/10/10,30,62,Rare,Pokémon,Basic,Lightning,80,Mitsuhiro Arita,https://images.pokemontcg.io/base3/30.png,https://images.pokemontcg.io/base3/30_hires.png
+base3-31,Arbok,base3,Fossil,Base,1999/10/10,31,62,Uncommon,Pokémon,Stage 1,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base3/31.png,https://images.pokemontcg.io/base3/31_hires.png
+base3-32,Cloyster,base3,Fossil,Base,1999/10/10,32,62,Uncommon,Pokémon,Stage 1,Water,50,Kagemaru Himeno,https://images.pokemontcg.io/base3/32.png,https://images.pokemontcg.io/base3/32_hires.png
+base3-33,Gastly,base3,Fossil,Base,1999/10/10,33,62,Uncommon,Pokémon,Basic,Psychic,50,Mitsuhiro Arita,https://images.pokemontcg.io/base3/33.png,https://images.pokemontcg.io/base3/33_hires.png
+base3-34,Golbat,base3,Fossil,Base,1999/10/10,34,62,Uncommon,Pokémon,Stage 1,Grass,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/34.png,https://images.pokemontcg.io/base3/34_hires.png
+base3-35,Golduck,base3,Fossil,Base,1999/10/10,35,62,Uncommon,Pokémon,Stage 1,Water,70,Kagemaru Himeno,https://images.pokemontcg.io/base3/35.png,https://images.pokemontcg.io/base3/35_hires.png
+base3-36,Golem,base3,Fossil,Base,1999/10/10,36,62,Uncommon,Pokémon,Stage 2,Fighting,80,Kagemaru Himeno,https://images.pokemontcg.io/base3/36.png,https://images.pokemontcg.io/base3/36_hires.png
+base3-37,Graveler,base3,Fossil,Base,1999/10/10,37,62,Uncommon,Pokémon,Stage 1,Fighting,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/37.png,https://images.pokemontcg.io/base3/37_hires.png
+base3-38,Kingler,base3,Fossil,Base,1999/10/10,38,62,Uncommon,Pokémon,Stage 1,Water,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/38.png,https://images.pokemontcg.io/base3/38_hires.png
+base3-39,Magmar,base3,Fossil,Base,1999/10/10,39,62,Uncommon,Pokémon,Basic,Fire,70,Mitsuhiro Arita,https://images.pokemontcg.io/base3/39.png,https://images.pokemontcg.io/base3/39_hires.png
+base3-40,Omastar,base3,Fossil,Base,1999/10/10,40,62,Uncommon,Pokémon,Stage 2,Water,70,Ken Sugimori,https://images.pokemontcg.io/base3/40.png,https://images.pokemontcg.io/base3/40_hires.png
+base3-41,Sandslash,base3,Fossil,Base,1999/10/10,41,62,Uncommon,Pokémon,Stage 1,Fighting,70,Ken Sugimori,https://images.pokemontcg.io/base3/41.png,https://images.pokemontcg.io/base3/41_hires.png
+base3-42,Seadra,base3,Fossil,Base,1999/10/10,42,62,Uncommon,Pokémon,Stage 1,Water,60,Ken Sugimori,https://images.pokemontcg.io/base3/42.png,https://images.pokemontcg.io/base3/42_hires.png
+base3-43,Slowbro,base3,Fossil,Base,1999/10/10,43,62,Uncommon,Pokémon,Stage 1,Psychic,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/43.png,https://images.pokemontcg.io/base3/43_hires.png
+base3-44,Tentacruel,base3,Fossil,Base,1999/10/10,44,62,Uncommon,Pokémon,Stage 1,Water,60,Kagemaru Himeno,https://images.pokemontcg.io/base3/44.png,https://images.pokemontcg.io/base3/44_hires.png
+base3-45,Weezing,base3,Fossil,Base,1999/10/10,45,62,Uncommon,Pokémon,Stage 1,Grass,60,Mitsuhiro Arita,https://images.pokemontcg.io/base3/45.png,https://images.pokemontcg.io/base3/45_hires.png
+base3-46,Ekans,base3,Fossil,Base,1999/10/10,46,62,Common,Pokémon,Basic,Grass,40,Kagemaru Himeno,https://images.pokemontcg.io/base3/46.png,https://images.pokemontcg.io/base3/46_hires.png
+base3-47,Geodude,base3,Fossil,Base,1999/10/10,47,62,Common,Pokémon,Basic,Fighting,50,Kagemaru Himeno,https://images.pokemontcg.io/base3/47.png,https://images.pokemontcg.io/base3/47_hires.png
+base3-48,Grimer,base3,Fossil,Base,1999/10/10,48,62,Common,Pokémon,Basic,Grass,50,Mitsuhiro Arita,https://images.pokemontcg.io/base3/48.png,https://images.pokemontcg.io/base3/48_hires.png
+base3-49,Horsea,base3,Fossil,Base,1999/10/10,49,62,Common,Pokémon,Basic,Water,40,Mitsuhiro Arita,https://images.pokemontcg.io/base3/49.png,https://images.pokemontcg.io/base3/49_hires.png
+base3-50,Kabuto,base3,Fossil,Base,1999/10/10,50,62,Common,Pokémon,Stage 1,Fighting,30,Ken Sugimori,https://images.pokemontcg.io/base3/50.png,https://images.pokemontcg.io/base3/50_hires.png
+base3-51,Krabby,base3,Fossil,Base,1999/10/10,51,62,Common,Pokémon,Basic,Water,50,Mitsuhiro Arita,https://images.pokemontcg.io/base3/51.png,https://images.pokemontcg.io/base3/51_hires.png
+base3-52,Omanyte,base3,Fossil,Base,1999/10/10,52,62,Common,Pokémon,Stage 1,Water,40,Kagemaru Himeno,https://images.pokemontcg.io/base3/52.png,https://images.pokemontcg.io/base3/52_hires.png
+base3-53,Psyduck,base3,Fossil,Base,1999/10/10,53,62,Common,Pokémon,Basic,Water,50,Kagemaru Himeno,https://images.pokemontcg.io/base3/53.png,https://images.pokemontcg.io/base3/53_hires.png
+base3-54,Shellder,base3,Fossil,Base,1999/10/10,54,62,Common,Pokémon,Basic,Water,30,Mitsuhiro Arita,https://images.pokemontcg.io/base3/54.png,https://images.pokemontcg.io/base3/54_hires.png
+base3-55,Slowpoke,base3,Fossil,Base,1999/10/10,55,62,Common,Pokémon,Basic,Psychic,50,Miki Tanaka,https://images.pokemontcg.io/base3/55.png,https://images.pokemontcg.io/base3/55_hires.png
+base3-56,Tentacool,base3,Fossil,Base,1999/10/10,56,62,Common,Pokémon,Basic,Water,30,Kagemaru Himeno,https://images.pokemontcg.io/base3/56.png,https://images.pokemontcg.io/base3/56_hires.png
+base3-57,Zubat,base3,Fossil,Base,1999/10/10,57,62,Common,Pokémon,Basic,Grass,40,Kagemaru Himeno,https://images.pokemontcg.io/base3/57.png,https://images.pokemontcg.io/base3/57_hires.png
+base3-58,Mr. Fuji,base3,Fossil,Base,1999/10/10,58,62,Uncommon,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base3/58.png,https://images.pokemontcg.io/base3/58_hires.png
+base3-59,Energy Search,base3,Fossil,Base,1999/10/10,59,62,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base3/59.png,https://images.pokemontcg.io/base3/59_hires.png
+base3-60,Gambler,base3,Fossil,Base,1999/10/10,60,62,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base3/60.png,https://images.pokemontcg.io/base3/60_hires.png
+base3-61,Recycle,base3,Fossil,Base,1999/10/10,61,62,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base3/61.png,https://images.pokemontcg.io/base3/61_hires.png
+base3-62,Mysterious Fossil,base3,Fossil,Base,1999/10/10,62,62,Common,Trainer,,,10,Keiji Kinebuchi,https://images.pokemontcg.io/base3/62.png,https://images.pokemontcg.io/base3/62_hires.png
+base4-1,Alakazam,base4,Base Set 2,Base,2000/02/24,1,130,Rare Holo,Pokémon,Stage 2,Psychic,80,Ken Sugimori,https://images.pokemontcg.io/base4/1.png,https://images.pokemontcg.io/base4/1_hires.png
+base4-2,Blastoise,base4,Base Set 2,Base,2000/02/24,2,130,Rare Holo,Pokémon,Stage 2,Water,100,Ken Sugimori,https://images.pokemontcg.io/base4/2.png,https://images.pokemontcg.io/base4/2_hires.png
+base4-3,Chansey,base4,Base Set 2,Base,2000/02/24,3,130,Rare Holo,Pokémon,Basic,Colorless,120,Ken Sugimori,https://images.pokemontcg.io/base4/3.png,https://images.pokemontcg.io/base4/3_hires.png
+base4-4,Charizard,base4,Base Set 2,Base,2000/02/24,4,130,Rare Holo,Pokémon,Stage 2,Fire,120,Mitsuhiro Arita,https://images.pokemontcg.io/base4/4.png,https://images.pokemontcg.io/base4/4_hires.png
+base4-5,Clefable,base4,Base Set 2,Base,2000/02/24,5,130,Rare Holo,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base4/5.png,https://images.pokemontcg.io/base4/5_hires.png
+base4-6,Clefairy,base4,Base Set 2,Base,2000/02/24,6,130,Rare Holo,Pokémon,Basic,Colorless,40,Ken Sugimori,https://images.pokemontcg.io/base4/6.png,https://images.pokemontcg.io/base4/6_hires.png
+base4-7,Gyarados,base4,Base Set 2,Base,2000/02/24,7,130,Rare Holo,Pokémon,Stage 1,Water,100,Mitsuhiro Arita,https://images.pokemontcg.io/base4/7.png,https://images.pokemontcg.io/base4/7_hires.png
+base4-8,Hitmonchan,base4,Base Set 2,Base,2000/02/24,8,130,Rare Holo,Pokémon,Basic,Fighting,70,Ken Sugimori,https://images.pokemontcg.io/base4/8.png,https://images.pokemontcg.io/base4/8_hires.png
+base4-9,Magneton,base4,Base Set 2,Base,2000/02/24,9,130,Rare Holo,Pokémon,Stage 1,Lightning,60,Keiji Kinebuchi,https://images.pokemontcg.io/base4/9.png,https://images.pokemontcg.io/base4/9_hires.png
+base4-10,Mewtwo,base4,Base Set 2,Base,2000/02/24,10,130,Rare Holo,Pokémon,Basic,Psychic,60,Ken Sugimori,https://images.pokemontcg.io/base4/10.png,https://images.pokemontcg.io/base4/10_hires.png
+base4-11,Nidoking,base4,Base Set 2,Base,2000/02/24,11,130,Rare Holo,Pokémon,Stage 2,Grass,90,Ken Sugimori,https://images.pokemontcg.io/base4/11.png,https://images.pokemontcg.io/base4/11_hires.png
+base4-12,Nidoqueen,base4,Base Set 2,Base,2000/02/24,12,130,Rare Holo,Pokémon,Stage 2,Grass,90,Ken Sugimori,https://images.pokemontcg.io/base4/12.png,https://images.pokemontcg.io/base4/12_hires.png
+base4-13,Ninetales,base4,Base Set 2,Base,2000/02/24,13,130,Rare Holo,Pokémon,Stage 1,Fire,80,Ken Sugimori,https://images.pokemontcg.io/base4/13.png,https://images.pokemontcg.io/base4/13_hires.png
+base4-14,Pidgeot,base4,Base Set 2,Base,2000/02/24,14,130,Rare Holo,Pokémon,Stage 2,Colorless,80,Kagemaru Himeno,https://images.pokemontcg.io/base4/14.png,https://images.pokemontcg.io/base4/14_hires.png
+base4-15,Poliwrath,base4,Base Set 2,Base,2000/02/24,15,130,Rare Holo,Pokémon,Stage 2,Water,90,Ken Sugimori,https://images.pokemontcg.io/base4/15.png,https://images.pokemontcg.io/base4/15_hires.png
+base4-16,Raichu,base4,Base Set 2,Base,2000/02/24,16,130,Rare Holo,Pokémon,Stage 1,Lightning,80,Ken Sugimori,https://images.pokemontcg.io/base4/16.png,https://images.pokemontcg.io/base4/16_hires.png
+base4-17,Scyther,base4,Base Set 2,Base,2000/02/24,17,130,Rare Holo,Pokémon,Basic,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base4/17.png,https://images.pokemontcg.io/base4/17_hires.png
+base4-18,Venusaur,base4,Base Set 2,Base,2000/02/24,18,130,Rare Holo,Pokémon,Stage 2,Grass,100,Mitsuhiro Arita,https://images.pokemontcg.io/base4/18.png,https://images.pokemontcg.io/base4/18_hires.png
+base4-19,Wigglytuff,base4,Base Set 2,Base,2000/02/24,19,130,Rare Holo,Pokémon,Stage 1,Colorless,80,Mitsuhiro Arita,https://images.pokemontcg.io/base4/19.png,https://images.pokemontcg.io/base4/19_hires.png
+base4-20,Zapdos,base4,Base Set 2,Base,2000/02/24,20,130,Rare Holo,Pokémon,Basic,Lightning,90,Ken Sugimori,https://images.pokemontcg.io/base4/20.png,https://images.pokemontcg.io/base4/20_hires.png
+base4-21,Beedrill,base4,Base Set 2,Base,2000/02/24,21,130,Rare,Pokémon,Stage 2,Grass,80,Ken Sugimori,https://images.pokemontcg.io/base4/21.png,https://images.pokemontcg.io/base4/21_hires.png
+base4-22,Dragonair,base4,Base Set 2,Base,2000/02/24,22,130,Rare,Pokémon,Stage 1,Colorless,80,Mitsuhiro Arita,https://images.pokemontcg.io/base4/22.png,https://images.pokemontcg.io/base4/22_hires.png
+base4-23,Dugtrio,base4,Base Set 2,Base,2000/02/24,23,130,Rare,Pokémon,Stage 1,Fighting,70,Keiji Kinebuchi,https://images.pokemontcg.io/base4/23.png,https://images.pokemontcg.io/base4/23_hires.png
+base4-24,Electabuzz,base4,Base Set 2,Base,2000/02/24,24,130,Rare,Pokémon,Basic,Lightning,70,Ken Sugimori,https://images.pokemontcg.io/base4/24.png,https://images.pokemontcg.io/base4/24_hires.png
+base4-25,Electrode,base4,Base Set 2,Base,2000/02/24,25,130,Rare,Pokémon,Stage 1,Lightning,80,Keiji Kinebuchi,https://images.pokemontcg.io/base4/25.png,https://images.pokemontcg.io/base4/25_hires.png
+base4-26,Kangaskhan,base4,Base Set 2,Base,2000/02/24,26,130,Rare,Pokémon,Basic,Colorless,90,Mitsuhiro Arita,https://images.pokemontcg.io/base4/26.png,https://images.pokemontcg.io/base4/26_hires.png
+base4-27,Mr. Mime,base4,Base Set 2,Base,2000/02/24,27,130,Rare,Pokémon,Basic,Psychic,40,Ken Sugimori,https://images.pokemontcg.io/base4/27.png,https://images.pokemontcg.io/base4/27_hires.png
+base4-28,Pidgeotto,base4,Base Set 2,Base,2000/02/24,28,130,Rare,Pokémon,Stage 1,Colorless,60,Ken Sugimori,https://images.pokemontcg.io/base4/28.png,https://images.pokemontcg.io/base4/28_hires.png
+base4-29,Pinsir,base4,Base Set 2,Base,2000/02/24,29,130,Rare,Pokémon,Basic,Grass,60,Kagemaru Himeno,https://images.pokemontcg.io/base4/29.png,https://images.pokemontcg.io/base4/29_hires.png
+base4-30,Snorlax,base4,Base Set 2,Base,2000/02/24,30,130,Rare,Pokémon,Basic,Colorless,90,Ken Sugimori,https://images.pokemontcg.io/base4/30.png,https://images.pokemontcg.io/base4/30_hires.png
+base4-31,Venomoth,base4,Base Set 2,Base,2000/02/24,31,130,Rare,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base4/31.png,https://images.pokemontcg.io/base4/31_hires.png
+base4-32,Victreebel,base4,Base Set 2,Base,2000/02/24,32,130,Rare,Pokémon,Stage 2,Grass,80,Ken Sugimori,https://images.pokemontcg.io/base4/32.png,https://images.pokemontcg.io/base4/32_hires.png
+base4-33,Arcanine,base4,Base Set 2,Base,2000/02/24,33,130,Uncommon,Pokémon,Stage 1,Fire,100,Ken Sugimori,https://images.pokemontcg.io/base4/33.png,https://images.pokemontcg.io/base4/33_hires.png
+base4-34,Butterfree,base4,Base Set 2,Base,2000/02/24,34,130,Uncommon,Pokémon,Stage 2,Grass,70,Kagemaru Himeno,https://images.pokemontcg.io/base4/34.png,https://images.pokemontcg.io/base4/34_hires.png
+base4-35,Charmeleon,base4,Base Set 2,Base,2000/02/24,35,130,Uncommon,Pokémon,Stage 1,Fire,80,Mitsuhiro Arita,https://images.pokemontcg.io/base4/35.png,https://images.pokemontcg.io/base4/35_hires.png
+base4-36,Dewgong,base4,Base Set 2,Base,2000/02/24,36,130,Uncommon,Pokémon,Stage 1,Water,80,Mitsuhiro Arita,https://images.pokemontcg.io/base4/36.png,https://images.pokemontcg.io/base4/36_hires.png
+base4-37,Dodrio,base4,Base Set 2,Base,2000/02/24,37,130,Uncommon,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base4/37.png,https://images.pokemontcg.io/base4/37_hires.png
+base4-38,Dratini,base4,Base Set 2,Base,2000/02/24,38,130,Uncommon,Pokémon,Basic,Colorless,40,Ken Sugimori,https://images.pokemontcg.io/base4/38.png,https://images.pokemontcg.io/base4/38_hires.png
+base4-39,Exeggutor,base4,Base Set 2,Base,2000/02/24,39,130,Uncommon,Pokémon,Stage 1,Grass,80,Kagemaru Himeno,https://images.pokemontcg.io/base4/39.png,https://images.pokemontcg.io/base4/39_hires.png
+base4-40,Farfetch'd,base4,Base Set 2,Base,2000/02/24,40,130,Uncommon,Pokémon,Basic,Colorless,50,Ken Sugimori,https://images.pokemontcg.io/base4/40.png,https://images.pokemontcg.io/base4/40_hires.png
+base4-41,Fearow,base4,Base Set 2,Base,2000/02/24,41,130,Uncommon,Pokémon,Stage 1,Colorless,70,Mitsuhiro Arita,https://images.pokemontcg.io/base4/41.png,https://images.pokemontcg.io/base4/41_hires.png
+base4-42,Growlithe,base4,Base Set 2,Base,2000/02/24,42,130,Uncommon,Pokémon,Basic,Fire,60,Ken Sugimori,https://images.pokemontcg.io/base4/42.png,https://images.pokemontcg.io/base4/42_hires.png
+base4-43,Haunter,base4,Base Set 2,Base,2000/02/24,43,130,Uncommon,Pokémon,Stage 1,Psychic,60,Keiji Kinebuchi,https://images.pokemontcg.io/base4/43.png,https://images.pokemontcg.io/base4/43_hires.png
+base4-44,Ivysaur,base4,Base Set 2,Base,2000/02/24,44,130,Uncommon,Pokémon,Stage 1,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base4/44.png,https://images.pokemontcg.io/base4/44_hires.png
+base4-45,Jynx,base4,Base Set 2,Base,2000/02/24,45,130,Uncommon,Pokémon,Basic,Psychic,70,Ken Sugimori,https://images.pokemontcg.io/base4/45.png,https://images.pokemontcg.io/base4/45_hires.png
+base4-46,Kadabra,base4,Base Set 2,Base,2000/02/24,46,130,Uncommon,Pokémon,Stage 1,Psychic,60,Ken Sugimori,https://images.pokemontcg.io/base4/46.png,https://images.pokemontcg.io/base4/46_hires.png
+base4-47,Kakuna,base4,Base Set 2,Base,2000/02/24,47,130,Uncommon,Pokémon,Stage 1,Grass,80,Keiji Kinebuchi,https://images.pokemontcg.io/base4/47.png,https://images.pokemontcg.io/base4/47_hires.png
+base4-48,Lickitung,base4,Base Set 2,Base,2000/02/24,48,130,Uncommon,Pokémon,Basic,Colorless,90,Mitsuhiro Arita,https://images.pokemontcg.io/base4/48.png,https://images.pokemontcg.io/base4/48_hires.png
+base4-49,Machoke,base4,Base Set 2,Base,2000/02/24,49,130,Uncommon,Pokémon,Stage 1,Fighting,80,Ken Sugimori,https://images.pokemontcg.io/base4/49.png,https://images.pokemontcg.io/base4/49_hires.png
+base4-50,Magikarp,base4,Base Set 2,Base,2000/02/24,50,130,Uncommon,Pokémon,Basic,Water,30,Mitsuhiro Arita,https://images.pokemontcg.io/base4/50.png,https://images.pokemontcg.io/base4/50_hires.png
+base4-51,Magmar,base4,Base Set 2,Base,2000/02/24,51,130,Uncommon,Pokémon,Basic,Fire,50,Ken Sugimori,https://images.pokemontcg.io/base4/51.png,https://images.pokemontcg.io/base4/51_hires.png
+base4-52,Marowak,base4,Base Set 2,Base,2000/02/24,52,130,Uncommon,Pokémon,Stage 1,Fighting,60,Mitsuhiro Arita,https://images.pokemontcg.io/base4/52.png,https://images.pokemontcg.io/base4/52_hires.png
+base4-53,Nidorina,base4,Base Set 2,Base,2000/02/24,53,130,Uncommon,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base4/53.png,https://images.pokemontcg.io/base4/53_hires.png
+base4-54,Nidorino,base4,Base Set 2,Base,2000/02/24,54,130,Uncommon,Pokémon,Stage 1,Grass,60,Mitsuhiro Arita,https://images.pokemontcg.io/base4/54.png,https://images.pokemontcg.io/base4/54_hires.png
+base4-55,Parasect,base4,Base Set 2,Base,2000/02/24,55,130,Uncommon,Pokémon,Stage 1,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base4/55.png,https://images.pokemontcg.io/base4/55_hires.png
+base4-56,Persian,base4,Base Set 2,Base,2000/02/24,56,130,Uncommon,Pokémon,Stage 1,Colorless,70,Kagemaru Himeno,https://images.pokemontcg.io/base4/56.png,https://images.pokemontcg.io/base4/56_hires.png
+base4-57,Poliwhirl,base4,Base Set 2,Base,2000/02/24,57,130,Uncommon,Pokémon,Stage 1,Water,60,Ken Sugimori,https://images.pokemontcg.io/base4/57.png,https://images.pokemontcg.io/base4/57_hires.png
+base4-58,Raticate,base4,Base Set 2,Base,2000/02/24,58,130,Uncommon,Pokémon,Stage 1,Colorless,60,Ken Sugimori,https://images.pokemontcg.io/base4/58.png,https://images.pokemontcg.io/base4/58_hires.png
+base4-59,Rhydon,base4,Base Set 2,Base,2000/02/24,59,130,Uncommon,Pokémon,Stage 1,Fighting,100,Kagemaru Himeno,https://images.pokemontcg.io/base4/59.png,https://images.pokemontcg.io/base4/59_hires.png
+base4-60,Seaking,base4,Base Set 2,Base,2000/02/24,60,130,Uncommon,Pokémon,Stage 1,Water,70,Kagemaru Himeno,https://images.pokemontcg.io/base4/60.png,https://images.pokemontcg.io/base4/60_hires.png
+base4-61,Seel,base4,Base Set 2,Base,2000/02/24,61,130,Uncommon,Pokémon,Basic,Water,60,Ken Sugimori,https://images.pokemontcg.io/base4/61.png,https://images.pokemontcg.io/base4/61_hires.png
+base4-62,Tauros,base4,Base Set 2,Base,2000/02/24,62,130,Uncommon,Pokémon,Basic,Colorless,60,Kagemaru Himeno,https://images.pokemontcg.io/base4/62.png,https://images.pokemontcg.io/base4/62_hires.png
+base4-63,Wartortle,base4,Base Set 2,Base,2000/02/24,63,130,Uncommon,Pokémon,Stage 1,Water,70,Ken Sugimori,https://images.pokemontcg.io/base4/63.png,https://images.pokemontcg.io/base4/63_hires.png
+base4-64,Weepinbell,base4,Base Set 2,Base,2000/02/24,64,130,Uncommon,Pokémon,Stage 1,Grass,70,Kagemaru Himeno,https://images.pokemontcg.io/base4/64.png,https://images.pokemontcg.io/base4/64_hires.png
+base4-65,Abra,base4,Base Set 2,Base,2000/02/24,65,130,Common,Pokémon,Basic,Psychic,30,Mitsuhiro Arita,https://images.pokemontcg.io/base4/65.png,https://images.pokemontcg.io/base4/65_hires.png
+base4-66,Bellsprout,base4,Base Set 2,Base,2000/02/24,66,130,Common,Pokémon,Basic,Grass,40,Kagemaru Himeno,https://images.pokemontcg.io/base4/66.png,https://images.pokemontcg.io/base4/66_hires.png
+base4-67,Bulbasaur,base4,Base Set 2,Base,2000/02/24,67,130,Common,Pokémon,Basic,Grass,40,Mitsuhiro Arita,https://images.pokemontcg.io/base4/67.png,https://images.pokemontcg.io/base4/67_hires.png
+base4-68,Caterpie,base4,Base Set 2,Base,2000/02/24,68,130,Common,Pokémon,Basic,Grass,40,Ken Sugimori,https://images.pokemontcg.io/base4/68.png,https://images.pokemontcg.io/base4/68_hires.png
+base4-69,Charmander,base4,Base Set 2,Base,2000/02/24,69,130,Common,Pokémon,Basic,Fire,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/69.png,https://images.pokemontcg.io/base4/69_hires.png
+base4-70,Cubone,base4,Base Set 2,Base,2000/02/24,70,130,Common,Pokémon,Basic,Fighting,40,Mitsuhiro Arita,https://images.pokemontcg.io/base4/70.png,https://images.pokemontcg.io/base4/70_hires.png
+base4-71,Diglett,base4,Base Set 2,Base,2000/02/24,71,130,Common,Pokémon,Basic,Fighting,30,Keiji Kinebuchi,https://images.pokemontcg.io/base4/71.png,https://images.pokemontcg.io/base4/71_hires.png
+base4-72,Doduo,base4,Base Set 2,Base,2000/02/24,72,130,Common,Pokémon,Basic,Colorless,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/72.png,https://images.pokemontcg.io/base4/72_hires.png
+base4-73,Drowzee,base4,Base Set 2,Base,2000/02/24,73,130,Common,Pokémon,Basic,Psychic,50,Ken Sugimori,https://images.pokemontcg.io/base4/73.png,https://images.pokemontcg.io/base4/73_hires.png
+base4-74,Exeggcute,base4,Base Set 2,Base,2000/02/24,74,130,Common,Pokémon,Basic,Grass,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/74.png,https://images.pokemontcg.io/base4/74_hires.png
+base4-75,Gastly,base4,Base Set 2,Base,2000/02/24,75,130,Common,Pokémon,Basic,Psychic,30,Keiji Kinebuchi,https://images.pokemontcg.io/base4/75.png,https://images.pokemontcg.io/base4/75_hires.png
+base4-76,Goldeen,base4,Base Set 2,Base,2000/02/24,76,130,Common,Pokémon,Basic,Water,40,Kagemaru Himeno,https://images.pokemontcg.io/base4/76.png,https://images.pokemontcg.io/base4/76_hires.png
+base4-77,Jigglypuff,base4,Base Set 2,Base,2000/02/24,77,130,Common,Pokémon,Basic,Colorless,60,Kagemaru Himeno,https://images.pokemontcg.io/base4/77.png,https://images.pokemontcg.io/base4/77_hires.png
+base4-78,Machop,base4,Base Set 2,Base,2000/02/24,78,130,Common,Pokémon,Basic,Fighting,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/78.png,https://images.pokemontcg.io/base4/78_hires.png
+base4-79,Magnemite,base4,Base Set 2,Base,2000/02/24,79,130,Common,Pokémon,Basic,Lightning,40,Keiji Kinebuchi,https://images.pokemontcg.io/base4/79.png,https://images.pokemontcg.io/base4/79_hires.png
+base4-80,Meowth,base4,Base Set 2,Base,2000/02/24,80,130,Common,Pokémon,Basic,Colorless,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/80.png,https://images.pokemontcg.io/base4/80_hires.png
+base4-81,Metapod,base4,Base Set 2,Base,2000/02/24,81,130,Common,Pokémon,Stage 1,Grass,70,Ken Sugimori,https://images.pokemontcg.io/base4/81.png,https://images.pokemontcg.io/base4/81_hires.png
+base4-82,Nidoran ♀,base4,Base Set 2,Base,2000/02/24,82,130,Common,Pokémon,Basic,Grass,60,Ken Sugimori,https://images.pokemontcg.io/base4/82.png,https://images.pokemontcg.io/base4/82_hires.png
+base4-83,Nidoran ♂,base4,Base Set 2,Base,2000/02/24,83,130,Common,Pokémon,Basic,Grass,40,Ken Sugimori,https://images.pokemontcg.io/base4/83.png,https://images.pokemontcg.io/base4/83_hires.png
+base4-84,Onix,base4,Base Set 2,Base,2000/02/24,84,130,Common,Pokémon,Basic,Fighting,90,Ken Sugimori,https://images.pokemontcg.io/base4/84.png,https://images.pokemontcg.io/base4/84_hires.png
+base4-85,Paras,base4,Base Set 2,Base,2000/02/24,85,130,Common,Pokémon,Basic,Grass,40,Ken Sugimori,https://images.pokemontcg.io/base4/85.png,https://images.pokemontcg.io/base4/85_hires.png
+base4-86,Pidgey,base4,Base Set 2,Base,2000/02/24,86,130,Common,Pokémon,Basic,Colorless,40,Ken Sugimori,https://images.pokemontcg.io/base4/86.png,https://images.pokemontcg.io/base4/86_hires.png
+base4-87,Pikachu,base4,Base Set 2,Base,2000/02/24,87,130,Common,Pokémon,Basic,Lightning,40,Mitsuhiro Arita,https://images.pokemontcg.io/base4/87.png,https://images.pokemontcg.io/base4/87_hires.png
+base4-88,Poliwag,base4,Base Set 2,Base,2000/02/24,88,130,Common,Pokémon,Basic,Water,40,Ken Sugimori,https://images.pokemontcg.io/base4/88.png,https://images.pokemontcg.io/base4/88_hires.png
+base4-89,Rattata,base4,Base Set 2,Base,2000/02/24,89,130,Common,Pokémon,Basic,Colorless,30,Mitsuhiro Arita,https://images.pokemontcg.io/base4/89.png,https://images.pokemontcg.io/base4/89_hires.png
+base4-90,Rhyhorn,base4,Base Set 2,Base,2000/02/24,90,130,Common,Pokémon,Basic,Fighting,70,Mitsuhiro Arita,https://images.pokemontcg.io/base4/90.png,https://images.pokemontcg.io/base4/90_hires.png
+base4-91,Sandshrew,base4,Base Set 2,Base,2000/02/24,91,130,Common,Pokémon,Basic,Fighting,40,Ken Sugimori,https://images.pokemontcg.io/base4/91.png,https://images.pokemontcg.io/base4/91_hires.png
+base4-92,Spearow,base4,Base Set 2,Base,2000/02/24,92,130,Common,Pokémon,Basic,Colorless,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/92.png,https://images.pokemontcg.io/base4/92_hires.png
+base4-93,Squirtle,base4,Base Set 2,Base,2000/02/24,93,130,Common,Pokémon,Basic,Water,40,Mitsuhiro Arita,https://images.pokemontcg.io/base4/93.png,https://images.pokemontcg.io/base4/93_hires.png
+base4-94,Starmie,base4,Base Set 2,Base,2000/02/24,94,130,Common,Pokémon,Stage 1,Water,60,Keiji Kinebuchi,https://images.pokemontcg.io/base4/94.png,https://images.pokemontcg.io/base4/94_hires.png
+base4-95,Staryu,base4,Base Set 2,Base,2000/02/24,95,130,Common,Pokémon,Basic,Water,40,Keiji Kinebuchi,https://images.pokemontcg.io/base4/95.png,https://images.pokemontcg.io/base4/95_hires.png
+base4-96,Tangela,base4,Base Set 2,Base,2000/02/24,96,130,Common,Pokémon,Basic,Grass,50,Mitsuhiro Arita,https://images.pokemontcg.io/base4/96.png,https://images.pokemontcg.io/base4/96_hires.png
+base4-97,Venonat,base4,Base Set 2,Base,2000/02/24,97,130,Common,Pokémon,Basic,Grass,40,Mitsuhiro Arita,https://images.pokemontcg.io/base4/97.png,https://images.pokemontcg.io/base4/97_hires.png
+base4-98,Voltorb,base4,Base Set 2,Base,2000/02/24,98,130,Common,Pokémon,Basic,Lightning,40,Keiji Kinebuchi,https://images.pokemontcg.io/base4/98.png,https://images.pokemontcg.io/base4/98_hires.png
+base4-99,Vulpix,base4,Base Set 2,Base,2000/02/24,99,130,Common,Pokémon,Basic,Fire,50,Ken Sugimori,https://images.pokemontcg.io/base4/99.png,https://images.pokemontcg.io/base4/99_hires.png
+base4-100,Weedle,base4,Base Set 2,Base,2000/02/24,100,130,Common,Pokémon,Basic,Grass,40,Mitsuhiro Arita,https://images.pokemontcg.io/base4/100.png,https://images.pokemontcg.io/base4/100_hires.png
+base4-101,Computer Search,base4,Base Set 2,Base,2000/02/24,101,130,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/101.png,https://images.pokemontcg.io/base4/101_hires.png
+base4-102,Imposter Professor Oak,base4,Base Set 2,Base,2000/02/24,102,130,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base4/102.png,https://images.pokemontcg.io/base4/102_hires.png
+base4-103,Item Finder,base4,Base Set 2,Base,2000/02/24,103,130,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/103.png,https://images.pokemontcg.io/base4/103_hires.png
+base4-104,Lass,base4,Base Set 2,Base,2000/02/24,104,130,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base4/104.png,https://images.pokemontcg.io/base4/104_hires.png
+base4-105,Pokémon Breeder,base4,Base Set 2,Base,2000/02/24,105,130,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base4/105.png,https://images.pokemontcg.io/base4/105_hires.png
+base4-106,Pokémon Trader,base4,Base Set 2,Base,2000/02/24,106,130,Rare,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base4/106.png,https://images.pokemontcg.io/base4/106_hires.png
+base4-107,Scoop Up,base4,Base Set 2,Base,2000/02/24,107,130,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/107.png,https://images.pokemontcg.io/base4/107_hires.png
+base4-108,Super Energy Removal,base4,Base Set 2,Base,2000/02/24,108,130,Rare,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/108.png,https://images.pokemontcg.io/base4/108_hires.png
+base4-109,Defender,base4,Base Set 2,Base,2000/02/24,109,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/109.png,https://images.pokemontcg.io/base4/109_hires.png
+base4-110,Energy Retrieval,base4,Base Set 2,Base,2000/02/24,110,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/110.png,https://images.pokemontcg.io/base4/110_hires.png
+base4-111,Full Heal,base4,Base Set 2,Base,2000/02/24,111,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/111.png,https://images.pokemontcg.io/base4/111_hires.png
+base4-112,Maintenance,base4,Base Set 2,Base,2000/02/24,112,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/112.png,https://images.pokemontcg.io/base4/112_hires.png
+base4-113,PlusPower,base4,Base Set 2,Base,2000/02/24,113,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/113.png,https://images.pokemontcg.io/base4/113_hires.png
+base4-114,Pokémon Center,base4,Base Set 2,Base,2000/02/24,114,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/114.png,https://images.pokemontcg.io/base4/114_hires.png
+base4-115,Pokédex,base4,Base Set 2,Base,2000/02/24,115,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/115.png,https://images.pokemontcg.io/base4/115_hires.png
+base4-116,Professor Oak,base4,Base Set 2,Base,2000/02/24,116,130,Uncommon,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base4/116.png,https://images.pokemontcg.io/base4/116_hires.png
+base4-117,Super Potion,base4,Base Set 2,Base,2000/02/24,117,130,Uncommon,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/117.png,https://images.pokemontcg.io/base4/117_hires.png
+base4-118,Bill,base4,Base Set 2,Base,2000/02/24,118,130,Common,Trainer,,,,Ken Sugimori,https://images.pokemontcg.io/base4/118.png,https://images.pokemontcg.io/base4/118_hires.png
+base4-119,Energy Removal,base4,Base Set 2,Base,2000/02/24,119,130,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/119.png,https://images.pokemontcg.io/base4/119_hires.png
+base4-120,Gust of Wind,base4,Base Set 2,Base,2000/02/24,120,130,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/120.png,https://images.pokemontcg.io/base4/120_hires.png
+base4-121,Poké Ball,base4,Base Set 2,Base,2000/02/24,121,130,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/121.png,https://images.pokemontcg.io/base4/121_hires.png
+base4-122,Potion,base4,Base Set 2,Base,2000/02/24,122,130,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/122.png,https://images.pokemontcg.io/base4/122_hires.png
+base4-123,Switch,base4,Base Set 2,Base,2000/02/24,123,130,Common,Trainer,,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/123.png,https://images.pokemontcg.io/base4/123_hires.png
+base4-124,Double Colorless Energy,base4,Base Set 2,Base,2000/02/24,124,130,Uncommon,Energy,Special,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/124.png,https://images.pokemontcg.io/base4/124_hires.png
+base4-125,Fighting Energy,base4,Base Set 2,Base,2000/02/24,125,130,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/125.png,https://images.pokemontcg.io/base4/125_hires.png
+base4-126,Fire Energy,base4,Base Set 2,Base,2000/02/24,126,130,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/126.png,https://images.pokemontcg.io/base4/126_hires.png
+base4-127,Grass Energy,base4,Base Set 2,Base,2000/02/24,127,130,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/127.png,https://images.pokemontcg.io/base4/127_hires.png
+base4-128,Lightning Energy,base4,Base Set 2,Base,2000/02/24,128,130,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/128.png,https://images.pokemontcg.io/base4/128_hires.png
+base4-129,Psychic Energy,base4,Base Set 2,Base,2000/02/24,129,130,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/129.png,https://images.pokemontcg.io/base4/129_hires.png
+base4-130,Water Energy,base4,Base Set 2,Base,2000/02/24,130,130,,Energy,Basic,,,Keiji Kinebuchi,https://images.pokemontcg.io/base4/130.png,https://images.pokemontcg.io/base4/130_hires.png
+sv3pt5-1,Bulbasaur,sv3pt5,151,Scarlet & Violet,2023/09/22,1,165,Common,Pokémon,Basic,Grass,70,Yuu Nishida,https://images.pokemontcg.io/sv3pt5/1.png,https://images.pokemontcg.io/sv3pt5/1_hires.png
+sv3pt5-2,Ivysaur,sv3pt5,151,Scarlet & Violet,2023/09/22,2,165,Uncommon,Pokémon,Stage 1,Grass,100,Yuu Nishida,https://images.pokemontcg.io/sv3pt5/2.png,https://images.pokemontcg.io/sv3pt5/2_hires.png
+sv3pt5-3,Venusaur ex,sv3pt5,151,Scarlet & Violet,2023/09/22,3,165,Double Rare,Pokémon,Stage 2|ex,Grass,340,5ban Graphics,https://images.pokemontcg.io/sv3pt5/3.png,https://images.pokemontcg.io/sv3pt5/3_hires.png
+sv3pt5-4,Charmander,sv3pt5,151,Scarlet & Violet,2023/09/22,4,165,Common,Pokémon,Basic,Fire,70,GIDORA,https://images.pokemontcg.io/sv3pt5/4.png,https://images.pokemontcg.io/sv3pt5/4_hires.png
+sv3pt5-5,Charmeleon,sv3pt5,151,Scarlet & Violet,2023/09/22,5,165,Uncommon,Pokémon,Stage 1,Fire,100,GIDORA,https://images.pokemontcg.io/sv3pt5/5.png,https://images.pokemontcg.io/sv3pt5/5_hires.png
+sv3pt5-6,Charizard ex,sv3pt5,151,Scarlet & Violet,2023/09/22,6,165,Double Rare,Pokémon,Stage 2|ex,Fire,330,PLANETA Mochizuki,https://images.pokemontcg.io/sv3pt5/6.png,https://images.pokemontcg.io/sv3pt5/6_hires.png
+sv3pt5-7,Squirtle,sv3pt5,151,Scarlet & Violet,2023/09/22,7,165,Common,Pokémon,Basic,Water,60,kantaro,https://images.pokemontcg.io/sv3pt5/7.png,https://images.pokemontcg.io/sv3pt5/7_hires.png
+sv3pt5-8,Wartortle,sv3pt5,151,Scarlet & Violet,2023/09/22,8,165,Uncommon,Pokémon,Stage 1,Water,100,kantaro,https://images.pokemontcg.io/sv3pt5/8.png,https://images.pokemontcg.io/sv3pt5/8_hires.png
+sv3pt5-9,Blastoise ex,sv3pt5,151,Scarlet & Violet,2023/09/22,9,165,Double Rare,Pokémon,Stage 2|ex,Water,330,PLANETA Yamashita,https://images.pokemontcg.io/sv3pt5/9.png,https://images.pokemontcg.io/sv3pt5/9_hires.png
+sv3pt5-10,Caterpie,sv3pt5,151,Scarlet & Violet,2023/09/22,10,165,Common,Pokémon,Basic,Grass,50,Tika Matsuno,https://images.pokemontcg.io/sv3pt5/10.png,https://images.pokemontcg.io/sv3pt5/10_hires.png
+sv3pt5-11,Metapod,sv3pt5,151,Scarlet & Violet,2023/09/22,11,165,Common,Pokémon,Stage 1,Grass,90,Tika Matsuno,https://images.pokemontcg.io/sv3pt5/11.png,https://images.pokemontcg.io/sv3pt5/11_hires.png
+sv3pt5-12,Butterfree,sv3pt5,151,Scarlet & Violet,2023/09/22,12,165,Uncommon,Pokémon,Stage 2,Grass,130,Tika Matsuno,https://images.pokemontcg.io/sv3pt5/12.png,https://images.pokemontcg.io/sv3pt5/12_hires.png
+sv3pt5-13,Weedle,sv3pt5,151,Scarlet & Violet,2023/09/22,13,165,Common,Pokémon,Basic,Grass,50,nisimono,https://images.pokemontcg.io/sv3pt5/13.png,https://images.pokemontcg.io/sv3pt5/13_hires.png
+sv3pt5-14,Kakuna,sv3pt5,151,Scarlet & Violet,2023/09/22,14,165,Common,Pokémon,Stage 1,Grass,80,nisimono,https://images.pokemontcg.io/sv3pt5/14.png,https://images.pokemontcg.io/sv3pt5/14_hires.png
+sv3pt5-15,Beedrill,sv3pt5,151,Scarlet & Violet,2023/09/22,15,165,Rare,Pokémon,Stage 2,Grass,130,nisimono,https://images.pokemontcg.io/sv3pt5/15.png,https://images.pokemontcg.io/sv3pt5/15_hires.png
+sv3pt5-16,Pidgey,sv3pt5,151,Scarlet & Violet,2023/09/22,16,165,Common,Pokémon,Basic,Colorless,50,Oswaldo KATO,https://images.pokemontcg.io/sv3pt5/16.png,https://images.pokemontcg.io/sv3pt5/16_hires.png
+sv3pt5-17,Pidgeotto,sv3pt5,151,Scarlet & Violet,2023/09/22,17,165,Common,Pokémon,Stage 1,Colorless,80,Oswaldo KATO,https://images.pokemontcg.io/sv3pt5/17.png,https://images.pokemontcg.io/sv3pt5/17_hires.png
+sv3pt5-18,Pidgeot,sv3pt5,151,Scarlet & Violet,2023/09/22,18,165,Uncommon,Pokémon,Stage 2,Colorless,130,Oswaldo KATO,https://images.pokemontcg.io/sv3pt5/18.png,https://images.pokemontcg.io/sv3pt5/18_hires.png
+sv3pt5-19,Rattata,sv3pt5,151,Scarlet & Violet,2023/09/22,19,165,Common,Pokémon,Basic,Colorless,40,sowsow,https://images.pokemontcg.io/sv3pt5/19.png,https://images.pokemontcg.io/sv3pt5/19_hires.png
+sv3pt5-20,Raticate,sv3pt5,151,Scarlet & Violet,2023/09/22,20,165,Uncommon,Pokémon,Stage 1,Colorless,70,sowsow,https://images.pokemontcg.io/sv3pt5/20.png,https://images.pokemontcg.io/sv3pt5/20_hires.png
+sv3pt5-21,Spearow,sv3pt5,151,Scarlet & Violet,2023/09/22,21,165,Common,Pokémon,Basic,Colorless,50,Gemi,https://images.pokemontcg.io/sv3pt5/21.png,https://images.pokemontcg.io/sv3pt5/21_hires.png
+sv3pt5-22,Fearow,sv3pt5,151,Scarlet & Violet,2023/09/22,22,165,Uncommon,Pokémon,Stage 1,Colorless,90,Gemi,https://images.pokemontcg.io/sv3pt5/22.png,https://images.pokemontcg.io/sv3pt5/22_hires.png
+sv3pt5-23,Ekans,sv3pt5,151,Scarlet & Violet,2023/09/22,23,165,Common,Pokémon,Basic,Darkness,70,Kedamahadaitai Yawarakai,https://images.pokemontcg.io/sv3pt5/23.png,https://images.pokemontcg.io/sv3pt5/23_hires.png
+sv3pt5-24,Arbok ex,sv3pt5,151,Scarlet & Violet,2023/09/22,24,165,Double Rare,Pokémon,Stage 1|ex,Darkness,270,Eske Yoshinob,https://images.pokemontcg.io/sv3pt5/24.png,https://images.pokemontcg.io/sv3pt5/24_hires.png
+sv3pt5-25,Pikachu,sv3pt5,151,Scarlet & Violet,2023/09/22,25,165,Common,Pokémon,Basic,Lightning,60,Naoyo Kimura,https://images.pokemontcg.io/sv3pt5/25.png,https://images.pokemontcg.io/sv3pt5/25_hires.png
+sv3pt5-26,Raichu,sv3pt5,151,Scarlet & Violet,2023/09/22,26,165,Rare,Pokémon,Stage 1,Lightning,120,Naoyo Kimura,https://images.pokemontcg.io/sv3pt5/26.png,https://images.pokemontcg.io/sv3pt5/26_hires.png
+sv3pt5-27,Sandshrew,sv3pt5,151,Scarlet & Violet,2023/09/22,27,165,Common,Pokémon,Basic,Fighting,60,kodama,https://images.pokemontcg.io/sv3pt5/27.png,https://images.pokemontcg.io/sv3pt5/27_hires.png
+sv3pt5-28,Sandslash,sv3pt5,151,Scarlet & Violet,2023/09/22,28,165,Uncommon,Pokémon,Stage 1,Fighting,120,kodama,https://images.pokemontcg.io/sv3pt5/28.png,https://images.pokemontcg.io/sv3pt5/28_hires.png
+sv3pt5-29,Nidoran ♀,sv3pt5,151,Scarlet & Violet,2023/09/22,29,165,Common,Pokémon,Basic,Darkness,60,Teeziro,https://images.pokemontcg.io/sv3pt5/29.png,https://images.pokemontcg.io/sv3pt5/29_hires.png
+sv3pt5-30,Nidorina,sv3pt5,151,Scarlet & Violet,2023/09/22,30,165,Uncommon,Pokémon,Stage 1,Darkness,90,Teeziro,https://images.pokemontcg.io/sv3pt5/30.png,https://images.pokemontcg.io/sv3pt5/30_hires.png
+sv3pt5-31,Nidoqueen,sv3pt5,151,Scarlet & Violet,2023/09/22,31,165,Uncommon,Pokémon,Stage 2,Darkness,170,Teeziro,https://images.pokemontcg.io/sv3pt5/31.png,https://images.pokemontcg.io/sv3pt5/31_hires.png
+sv3pt5-32,Nidoran ♂,sv3pt5,151,Scarlet & Violet,2023/09/22,32,165,Common,Pokémon,Basic,Darkness,60,Shiburingaru,https://images.pokemontcg.io/sv3pt5/32.png,https://images.pokemontcg.io/sv3pt5/32_hires.png
+sv3pt5-33,Nidorino,sv3pt5,151,Scarlet & Violet,2023/09/22,33,165,Uncommon,Pokémon,Stage 1,Darkness,90,Shiburingaru,https://images.pokemontcg.io/sv3pt5/33.png,https://images.pokemontcg.io/sv3pt5/33_hires.png
+sv3pt5-34,Nidoking,sv3pt5,151,Scarlet & Violet,2023/09/22,34,165,Rare,Pokémon,Stage 2,Darkness,170,Shiburingaru,https://images.pokemontcg.io/sv3pt5/34.png,https://images.pokemontcg.io/sv3pt5/34_hires.png
+sv3pt5-35,Clefairy,sv3pt5,151,Scarlet & Violet,2023/09/22,35,165,Common,Pokémon,Basic,Psychic,60,ryoma uratsuka,https://images.pokemontcg.io/sv3pt5/35.png,https://images.pokemontcg.io/sv3pt5/35_hires.png
+sv3pt5-36,Clefable,sv3pt5,151,Scarlet & Violet,2023/09/22,36,165,Uncommon,Pokémon,Stage 1,Psychic,100,ryoma uratsuka,https://images.pokemontcg.io/sv3pt5/36.png,https://images.pokemontcg.io/sv3pt5/36_hires.png
+sv3pt5-37,Vulpix,sv3pt5,151,Scarlet & Violet,2023/09/22,37,165,Common,Pokémon,Basic,Fire,70,kawayoo,https://images.pokemontcg.io/sv3pt5/37.png,https://images.pokemontcg.io/sv3pt5/37_hires.png
+sv3pt5-38,Ninetales ex,sv3pt5,151,Scarlet & Violet,2023/09/22,38,165,Double Rare,Pokémon,Stage 1|ex,Fire,260,kawayoo,https://images.pokemontcg.io/sv3pt5/38.png,https://images.pokemontcg.io/sv3pt5/38_hires.png
+sv3pt5-39,Jigglypuff,sv3pt5,151,Scarlet & Violet,2023/09/22,39,165,Common,Pokémon,Basic,Colorless,70,saino misaki,https://images.pokemontcg.io/sv3pt5/39.png,https://images.pokemontcg.io/sv3pt5/39_hires.png
+sv3pt5-40,Wigglytuff ex,sv3pt5,151,Scarlet & Violet,2023/09/22,40,165,Double Rare,Pokémon,Stage 1|ex,Colorless,250,Saki Hayashiro,https://images.pokemontcg.io/sv3pt5/40.png,https://images.pokemontcg.io/sv3pt5/40_hires.png
+sv3pt5-41,Zubat,sv3pt5,151,Scarlet & Violet,2023/09/22,41,165,Common,Pokémon,Basic,Darkness,40,Scav,https://images.pokemontcg.io/sv3pt5/41.png,https://images.pokemontcg.io/sv3pt5/41_hires.png
+sv3pt5-42,Golbat,sv3pt5,151,Scarlet & Violet,2023/09/22,42,165,Uncommon,Pokémon,Stage 1,Darkness,80,Scav,https://images.pokemontcg.io/sv3pt5/42.png,https://images.pokemontcg.io/sv3pt5/42_hires.png
+sv3pt5-43,Oddish,sv3pt5,151,Scarlet & Violet,2023/09/22,43,165,Common,Pokémon,Basic,Grass,60,Sekio,https://images.pokemontcg.io/sv3pt5/43.png,https://images.pokemontcg.io/sv3pt5/43_hires.png
+sv3pt5-44,Gloom,sv3pt5,151,Scarlet & Violet,2023/09/22,44,165,Uncommon,Pokémon,Stage 1,Grass,70,Sekio,https://images.pokemontcg.io/sv3pt5/44.png,https://images.pokemontcg.io/sv3pt5/44_hires.png
+sv3pt5-45,Vileplume,sv3pt5,151,Scarlet & Violet,2023/09/22,45,165,Rare,Pokémon,Stage 2,Grass,140,Sekio,https://images.pokemontcg.io/sv3pt5/45.png,https://images.pokemontcg.io/sv3pt5/45_hires.png
+sv3pt5-46,Paras,sv3pt5,151,Scarlet & Violet,2023/09/22,46,165,Common,Pokémon,Basic,Grass,70,Yoriyuki Ikegami,https://images.pokemontcg.io/sv3pt5/46.png,https://images.pokemontcg.io/sv3pt5/46_hires.png
+sv3pt5-47,Parasect,sv3pt5,151,Scarlet & Violet,2023/09/22,47,165,Uncommon,Pokémon,Stage 1,Grass,120,Yoriyuki Ikegami,https://images.pokemontcg.io/sv3pt5/47.png,https://images.pokemontcg.io/sv3pt5/47_hires.png
+sv3pt5-48,Venonat,sv3pt5,151,Scarlet & Violet,2023/09/22,48,165,Common,Pokémon,Basic,Grass,70,Kagemaru Himeno,https://images.pokemontcg.io/sv3pt5/48.png,https://images.pokemontcg.io/sv3pt5/48_hires.png
+sv3pt5-49,Venomoth,sv3pt5,151,Scarlet & Violet,2023/09/22,49,165,Uncommon,Pokémon,Stage 1,Grass,90,Kagemaru Himeno,https://images.pokemontcg.io/sv3pt5/49.png,https://images.pokemontcg.io/sv3pt5/49_hires.png
+sv3pt5-50,Diglett,sv3pt5,151,Scarlet & Violet,2023/09/22,50,165,Common,Pokémon,Basic,Fighting,50,Miki Tanaka,https://images.pokemontcg.io/sv3pt5/50.png,https://images.pokemontcg.io/sv3pt5/50_hires.png
+sv3pt5-51,Dugtrio,sv3pt5,151,Scarlet & Violet,2023/09/22,51,165,Uncommon,Pokémon,Stage 1,Fighting,90,Miki Tanaka,https://images.pokemontcg.io/sv3pt5/51.png,https://images.pokemontcg.io/sv3pt5/51_hires.png
+sv3pt5-52,Meowth,sv3pt5,151,Scarlet & Violet,2023/09/22,52,165,Common,Pokémon,Basic,Colorless,70,Naoki Saito,https://images.pokemontcg.io/sv3pt5/52.png,https://images.pokemontcg.io/sv3pt5/52_hires.png
+sv3pt5-53,Persian,sv3pt5,151,Scarlet & Violet,2023/09/22,53,165,Uncommon,Pokémon,Stage 1,Colorless,110,Naoki Saito,https://images.pokemontcg.io/sv3pt5/53.png,https://images.pokemontcg.io/sv3pt5/53_hires.png
+sv3pt5-54,Psyduck,sv3pt5,151,Scarlet & Violet,2023/09/22,54,165,Common,Pokémon,Basic,Water,70,Taira Akitsu,https://images.pokemontcg.io/sv3pt5/54.png,https://images.pokemontcg.io/sv3pt5/54_hires.png
+sv3pt5-55,Golduck,sv3pt5,151,Scarlet & Violet,2023/09/22,55,165,Uncommon,Pokémon,Stage 1,Water,110,Taira Akitsu,https://images.pokemontcg.io/sv3pt5/55.png,https://images.pokemontcg.io/sv3pt5/55_hires.png
+sv3pt5-56,Mankey,sv3pt5,151,Scarlet & Violet,2023/09/22,56,165,Common,Pokémon,Basic,Fighting,60,Mina Nakai,https://images.pokemontcg.io/sv3pt5/56.png,https://images.pokemontcg.io/sv3pt5/56_hires.png
+sv3pt5-57,Primeape,sv3pt5,151,Scarlet & Violet,2023/09/22,57,165,Uncommon,Pokémon,Stage 1,Fighting,120,Mina Nakai,https://images.pokemontcg.io/sv3pt5/57.png,https://images.pokemontcg.io/sv3pt5/57_hires.png
+sv3pt5-58,Growlithe,sv3pt5,151,Scarlet & Violet,2023/09/22,58,165,Common,Pokémon,Basic,Fire,80,Atsushi Furusawa,https://images.pokemontcg.io/sv3pt5/58.png,https://images.pokemontcg.io/sv3pt5/58_hires.png
+sv3pt5-59,Arcanine,sv3pt5,151,Scarlet & Violet,2023/09/22,59,165,Uncommon,Pokémon,Stage 1,Fire,150,Atsushi Furusawa,https://images.pokemontcg.io/sv3pt5/59.png,https://images.pokemontcg.io/sv3pt5/59_hires.png
+sv3pt5-60,Poliwag,sv3pt5,151,Scarlet & Violet,2023/09/22,60,165,Common,Pokémon,Basic,Water,60,Kurata So,https://images.pokemontcg.io/sv3pt5/60.png,https://images.pokemontcg.io/sv3pt5/60_hires.png
+sv3pt5-61,Poliwhirl,sv3pt5,151,Scarlet & Violet,2023/09/22,61,165,Common,Pokémon,Stage 1,Water,90,Kurata So,https://images.pokemontcg.io/sv3pt5/61.png,https://images.pokemontcg.io/sv3pt5/61_hires.png
+sv3pt5-62,Poliwrath,sv3pt5,151,Scarlet & Violet,2023/09/22,62,165,Uncommon,Pokémon,Stage 2,Water,160,Kurata So,https://images.pokemontcg.io/sv3pt5/62.png,https://images.pokemontcg.io/sv3pt5/62_hires.png
+sv3pt5-63,Abra,sv3pt5,151,Scarlet & Violet,2023/09/22,63,165,Common,Pokémon,Basic,Psychic,50,Mitsuhiro Arita,https://images.pokemontcg.io/sv3pt5/63.png,https://images.pokemontcg.io/sv3pt5/63_hires.png
+sv3pt5-64,Kadabra,sv3pt5,151,Scarlet & Violet,2023/09/22,64,165,Uncommon,Pokémon,Stage 1,Psychic,80,Mitsuhiro Arita,https://images.pokemontcg.io/sv3pt5/64.png,https://images.pokemontcg.io/sv3pt5/64_hires.png
+sv3pt5-65,Alakazam ex,sv3pt5,151,Scarlet & Violet,2023/09/22,65,165,Double Rare,Pokémon,Stage 2|ex,Psychic,310,Mitsuhiro Arita,https://images.pokemontcg.io/sv3pt5/65.png,https://images.pokemontcg.io/sv3pt5/65_hires.png
+sv3pt5-66,Machop,sv3pt5,151,Scarlet & Violet,2023/09/22,66,165,Common,Pokémon,Basic,Fighting,70,Ryuta Fuse,https://images.pokemontcg.io/sv3pt5/66.png,https://images.pokemontcg.io/sv3pt5/66_hires.png
+sv3pt5-67,Machoke,sv3pt5,151,Scarlet & Violet,2023/09/22,67,165,Uncommon,Pokémon,Stage 1,Fighting,100,Ryuta Fuse,https://images.pokemontcg.io/sv3pt5/67.png,https://images.pokemontcg.io/sv3pt5/67_hires.png
+sv3pt5-68,Machamp,sv3pt5,151,Scarlet & Violet,2023/09/22,68,165,Rare,Pokémon,Stage 2,Fighting,180,Ryuta Fuse,https://images.pokemontcg.io/sv3pt5/68.png,https://images.pokemontcg.io/sv3pt5/68_hires.png
+sv3pt5-69,Bellsprout,sv3pt5,151,Scarlet & Violet,2023/09/22,69,165,Common,Pokémon,Basic,Grass,60,Jerky,https://images.pokemontcg.io/sv3pt5/69.png,https://images.pokemontcg.io/sv3pt5/69_hires.png
+sv3pt5-70,Weepinbell,sv3pt5,151,Scarlet & Violet,2023/09/22,70,165,Common,Pokémon,Stage 1,Grass,90,Jerky,https://images.pokemontcg.io/sv3pt5/70.png,https://images.pokemontcg.io/sv3pt5/70_hires.png
+sv3pt5-71,Victreebel,sv3pt5,151,Scarlet & Violet,2023/09/22,71,165,Uncommon,Pokémon,Stage 2,Grass,150,Jerky,https://images.pokemontcg.io/sv3pt5/71.png,https://images.pokemontcg.io/sv3pt5/71_hires.png
+sv3pt5-72,Tentacool,sv3pt5,151,Scarlet & Violet,2023/09/22,72,165,Common,Pokémon,Basic,Water,60,miki kudo,https://images.pokemontcg.io/sv3pt5/72.png,https://images.pokemontcg.io/sv3pt5/72_hires.png
+sv3pt5-73,Tentacruel,sv3pt5,151,Scarlet & Violet,2023/09/22,73,165,Uncommon,Pokémon,Stage 1,Water,120,miki kudo,https://images.pokemontcg.io/sv3pt5/73.png,https://images.pokemontcg.io/sv3pt5/73_hires.png
+sv3pt5-74,Geodude,sv3pt5,151,Scarlet & Violet,2023/09/22,74,165,Common,Pokémon,Basic,Fighting,80,Uta,https://images.pokemontcg.io/sv3pt5/74.png,https://images.pokemontcg.io/sv3pt5/74_hires.png
+sv3pt5-75,Graveler,sv3pt5,151,Scarlet & Violet,2023/09/22,75,165,Uncommon,Pokémon,Stage 1,Fighting,110,Uta,https://images.pokemontcg.io/sv3pt5/75.png,https://images.pokemontcg.io/sv3pt5/75_hires.png
+sv3pt5-76,Golem ex,sv3pt5,151,Scarlet & Violet,2023/09/22,76,165,Double Rare,Pokémon,Stage 2|ex,Fighting,330,Uta,https://images.pokemontcg.io/sv3pt5/76.png,https://images.pokemontcg.io/sv3pt5/76_hires.png
+sv3pt5-77,Ponyta,sv3pt5,151,Scarlet & Violet,2023/09/22,77,165,Common,Pokémon,Basic,Fire,70,Nurikabe,https://images.pokemontcg.io/sv3pt5/77.png,https://images.pokemontcg.io/sv3pt5/77_hires.png
+sv3pt5-78,Rapidash,sv3pt5,151,Scarlet & Violet,2023/09/22,78,165,Uncommon,Pokémon,Stage 1,Fire,100,Nurikabe,https://images.pokemontcg.io/sv3pt5/78.png,https://images.pokemontcg.io/sv3pt5/78_hires.png
+sv3pt5-79,Slowpoke,sv3pt5,151,Scarlet & Violet,2023/09/22,79,165,Common,Pokémon,Basic,Psychic,80,OKACHEKE,https://images.pokemontcg.io/sv3pt5/79.png,https://images.pokemontcg.io/sv3pt5/79_hires.png
+sv3pt5-80,Slowbro,sv3pt5,151,Scarlet & Violet,2023/09/22,80,165,Uncommon,Pokémon,Stage 1,Psychic,130,OKACHEKE,https://images.pokemontcg.io/sv3pt5/80.png,https://images.pokemontcg.io/sv3pt5/80_hires.png
+sv3pt5-81,Magnemite,sv3pt5,151,Scarlet & Violet,2023/09/22,81,165,Common,Pokémon,Basic,Lightning,60,Yuka Morii,https://images.pokemontcg.io/sv3pt5/81.png,https://images.pokemontcg.io/sv3pt5/81_hires.png
+sv3pt5-82,Magneton,sv3pt5,151,Scarlet & Violet,2023/09/22,82,165,Uncommon,Pokémon,Stage 1,Lightning,90,Yuka Morii,https://images.pokemontcg.io/sv3pt5/82.png,https://images.pokemontcg.io/sv3pt5/82_hires.png
+sv3pt5-83,Farfetch'd,sv3pt5,151,Scarlet & Violet,2023/09/22,83,165,Common,Pokémon,Basic,Colorless,90,KG-2000,https://images.pokemontcg.io/sv3pt5/83.png,https://images.pokemontcg.io/sv3pt5/83_hires.png
+sv3pt5-84,Doduo,sv3pt5,151,Scarlet & Violet,2023/09/22,84,165,Common,Pokémon,Basic,Colorless,70,Anesaki Dynamic,https://images.pokemontcg.io/sv3pt5/84.png,https://images.pokemontcg.io/sv3pt5/84_hires.png
+sv3pt5-85,Dodrio,sv3pt5,151,Scarlet & Violet,2023/09/22,85,165,Rare,Pokémon,Stage 1,Colorless,100,Anesaki Dynamic,https://images.pokemontcg.io/sv3pt5/85.png,https://images.pokemontcg.io/sv3pt5/85_hires.png
+sv3pt5-86,Seel,sv3pt5,151,Scarlet & Violet,2023/09/22,86,165,Common,Pokémon,Basic,Water,80,aoki,https://images.pokemontcg.io/sv3pt5/86.png,https://images.pokemontcg.io/sv3pt5/86_hires.png
+sv3pt5-87,Dewgong,sv3pt5,151,Scarlet & Violet,2023/09/22,87,165,Uncommon,Pokémon,Stage 1,Water,130,aoki,https://images.pokemontcg.io/sv3pt5/87.png,https://images.pokemontcg.io/sv3pt5/87_hires.png
+sv3pt5-88,Grimer,sv3pt5,151,Scarlet & Violet,2023/09/22,88,165,Common,Pokémon,Basic,Darkness,80,Nisota Niso,https://images.pokemontcg.io/sv3pt5/88.png,https://images.pokemontcg.io/sv3pt5/88_hires.png
+sv3pt5-89,Muk,sv3pt5,151,Scarlet & Violet,2023/09/22,89,165,Uncommon,Pokémon,Stage 1,Darkness,150,Nisota Niso,https://images.pokemontcg.io/sv3pt5/89.png,https://images.pokemontcg.io/sv3pt5/89_hires.png
+sv3pt5-90,Shellder,sv3pt5,151,Scarlet & Violet,2023/09/22,90,165,Common,Pokémon,Basic,Water,70,Nelnal,https://images.pokemontcg.io/sv3pt5/90.png,https://images.pokemontcg.io/sv3pt5/90_hires.png
+sv3pt5-91,Cloyster,sv3pt5,151,Scarlet & Violet,2023/09/22,91,165,Uncommon,Pokémon,Stage 1,Water,130,Nelnal,https://images.pokemontcg.io/sv3pt5/91.png,https://images.pokemontcg.io/sv3pt5/91_hires.png
+sv3pt5-92,Gastly,sv3pt5,151,Scarlet & Violet,2023/09/22,92,165,Common,Pokémon,Basic,Psychic,50,Tomokazu Komiya,https://images.pokemontcg.io/sv3pt5/92.png,https://images.pokemontcg.io/sv3pt5/92_hires.png
+sv3pt5-93,Haunter,sv3pt5,151,Scarlet & Violet,2023/09/22,93,165,Uncommon,Pokémon,Stage 1,Psychic,80,Tomokazu Komiya,https://images.pokemontcg.io/sv3pt5/93.png,https://images.pokemontcg.io/sv3pt5/93_hires.png
+sv3pt5-94,Gengar,sv3pt5,151,Scarlet & Violet,2023/09/22,94,165,Rare,Pokémon,Stage 2,Psychic,130,Tomokazu Komiya,https://images.pokemontcg.io/sv3pt5/94.png,https://images.pokemontcg.io/sv3pt5/94_hires.png
+sv3pt5-95,Onix,sv3pt5,151,Scarlet & Violet,2023/09/22,95,165,Uncommon,Pokémon,Basic,Fighting,120,Shin Nagasawa,https://images.pokemontcg.io/sv3pt5/95.png,https://images.pokemontcg.io/sv3pt5/95_hires.png
+sv3pt5-96,Drowzee,sv3pt5,151,Scarlet & Violet,2023/09/22,96,165,Common,Pokémon,Basic,Psychic,80,Mousho,https://images.pokemontcg.io/sv3pt5/96.png,https://images.pokemontcg.io/sv3pt5/96_hires.png
+sv3pt5-97,Hypno,sv3pt5,151,Scarlet & Violet,2023/09/22,97,165,Uncommon,Pokémon,Stage 1,Psychic,110,Mousho,https://images.pokemontcg.io/sv3pt5/97.png,https://images.pokemontcg.io/sv3pt5/97_hires.png
+sv3pt5-98,Krabby,sv3pt5,151,Scarlet & Violet,2023/09/22,98,165,Common,Pokémon,Basic,Water,70,Yukiko Baba,https://images.pokemontcg.io/sv3pt5/98.png,https://images.pokemontcg.io/sv3pt5/98_hires.png
+sv3pt5-99,Kingler,sv3pt5,151,Scarlet & Violet,2023/09/22,99,165,Uncommon,Pokémon,Stage 1,Water,140,Yukiko Baba,https://images.pokemontcg.io/sv3pt5/99.png,https://images.pokemontcg.io/sv3pt5/99_hires.png
+sv3pt5-100,Voltorb,sv3pt5,151,Scarlet & Violet,2023/09/22,100,165,Common,Pokémon,Basic,Lightning,60,nagimiso,https://images.pokemontcg.io/sv3pt5/100.png,https://images.pokemontcg.io/sv3pt5/100_hires.png
+sv3pt5-101,Electrode,sv3pt5,151,Scarlet & Violet,2023/09/22,101,165,Rare,Pokémon,Stage 1,Lightning,90,nagimiso,https://images.pokemontcg.io/sv3pt5/101.png,https://images.pokemontcg.io/sv3pt5/101_hires.png
+sv3pt5-102,Exeggcute,sv3pt5,151,Scarlet & Violet,2023/09/22,102,165,Common,Pokémon,Basic,Grass,60,Shigenori Negishi,https://images.pokemontcg.io/sv3pt5/102.png,https://images.pokemontcg.io/sv3pt5/102_hires.png
+sv3pt5-103,Exeggutor,sv3pt5,151,Scarlet & Violet,2023/09/22,103,165,Uncommon,Pokémon,Stage 1,Grass,140,Shigenori Negishi,https://images.pokemontcg.io/sv3pt5/103.png,https://images.pokemontcg.io/sv3pt5/103_hires.png
+sv3pt5-104,Cubone,sv3pt5,151,Scarlet & Violet,2023/09/22,104,165,Common,Pokémon,Basic,Fighting,70,Shinya Komatsu,https://images.pokemontcg.io/sv3pt5/104.png,https://images.pokemontcg.io/sv3pt5/104_hires.png
+sv3pt5-105,Marowak,sv3pt5,151,Scarlet & Violet,2023/09/22,105,165,Rare,Pokémon,Stage 1,Fighting,120,Shinya Komatsu,https://images.pokemontcg.io/sv3pt5/105.png,https://images.pokemontcg.io/sv3pt5/105_hires.png
+sv3pt5-106,Hitmonlee,sv3pt5,151,Scarlet & Violet,2023/09/22,106,165,Uncommon,Pokémon,Basic,Fighting,120,Hitoshi Ariga,https://images.pokemontcg.io/sv3pt5/106.png,https://images.pokemontcg.io/sv3pt5/106_hires.png
+sv3pt5-107,Hitmonchan,sv3pt5,151,Scarlet & Violet,2023/09/22,107,165,Uncommon,Pokémon,Basic,Fighting,120,DOM,https://images.pokemontcg.io/sv3pt5/107.png,https://images.pokemontcg.io/sv3pt5/107_hires.png
+sv3pt5-108,Lickitung,sv3pt5,151,Scarlet & Violet,2023/09/22,108,165,Common,Pokémon,Basic,Colorless,100,Saya Tsuruta,https://images.pokemontcg.io/sv3pt5/108.png,https://images.pokemontcg.io/sv3pt5/108_hires.png
+sv3pt5-109,Koffing,sv3pt5,151,Scarlet & Violet,2023/09/22,109,165,Common,Pokémon,Basic,Darkness,60,Shibuzoh.,https://images.pokemontcg.io/sv3pt5/109.png,https://images.pokemontcg.io/sv3pt5/109_hires.png
+sv3pt5-110,Weezing,sv3pt5,151,Scarlet & Violet,2023/09/22,110,165,Rare,Pokémon,Stage 1,Darkness,110,Shibuzoh.,https://images.pokemontcg.io/sv3pt5/110.png,https://images.pokemontcg.io/sv3pt5/110_hires.png
+sv3pt5-111,Rhyhorn,sv3pt5,151,Scarlet & Violet,2023/09/22,111,165,Common,Pokémon,Basic,Fighting,100,GOSSAN,https://images.pokemontcg.io/sv3pt5/111.png,https://images.pokemontcg.io/sv3pt5/111_hires.png
+sv3pt5-112,Rhydon,sv3pt5,151,Scarlet & Violet,2023/09/22,112,165,Uncommon,Pokémon,Stage 1,Fighting,120,GOSSAN,https://images.pokemontcg.io/sv3pt5/112.png,https://images.pokemontcg.io/sv3pt5/112_hires.png
+sv3pt5-113,Chansey,sv3pt5,151,Scarlet & Violet,2023/09/22,113,165,Rare,Pokémon,Basic,Colorless,110,Taiga Kayama,https://images.pokemontcg.io/sv3pt5/113.png,https://images.pokemontcg.io/sv3pt5/113_hires.png
+sv3pt5-114,Tangela,sv3pt5,151,Scarlet & Violet,2023/09/22,114,165,Common,Pokémon,Basic,Grass,80,Aya Kusube,https://images.pokemontcg.io/sv3pt5/114.png,https://images.pokemontcg.io/sv3pt5/114_hires.png
+sv3pt5-115,Kangaskhan ex,sv3pt5,151,Scarlet & Violet,2023/09/22,115,165,Double Rare,Pokémon,Basic|ex,Colorless,230,N-DESIGN Inc.,https://images.pokemontcg.io/sv3pt5/115.png,https://images.pokemontcg.io/sv3pt5/115_hires.png
+sv3pt5-116,Horsea,sv3pt5,151,Scarlet & Violet,2023/09/22,116,165,Common,Pokémon,Basic,Water,60,aspara,https://images.pokemontcg.io/sv3pt5/116.png,https://images.pokemontcg.io/sv3pt5/116_hires.png
+sv3pt5-117,Seadra,sv3pt5,151,Scarlet & Violet,2023/09/22,117,165,Uncommon,Pokémon,Stage 1,Water,80,aspara,https://images.pokemontcg.io/sv3pt5/117.png,https://images.pokemontcg.io/sv3pt5/117_hires.png
+sv3pt5-118,Goldeen,sv3pt5,151,Scarlet & Violet,2023/09/22,118,165,Common,Pokémon,Basic,Water,70,SIE NANAHARA,https://images.pokemontcg.io/sv3pt5/118.png,https://images.pokemontcg.io/sv3pt5/118_hires.png
+sv3pt5-119,Seaking,sv3pt5,151,Scarlet & Violet,2023/09/22,119,165,Uncommon,Pokémon,Stage 1,Water,110,SIE NANAHARA,https://images.pokemontcg.io/sv3pt5/119.png,https://images.pokemontcg.io/sv3pt5/119_hires.png
+sv3pt5-120,Staryu,sv3pt5,151,Scarlet & Violet,2023/09/22,120,165,Common,Pokémon,Basic,Water,60,Arai Kiriko,https://images.pokemontcg.io/sv3pt5/120.png,https://images.pokemontcg.io/sv3pt5/120_hires.png
+sv3pt5-121,Starmie,sv3pt5,151,Scarlet & Violet,2023/09/22,121,165,Rare,Pokémon,Stage 1,Water,90,Arai Kiriko,https://images.pokemontcg.io/sv3pt5/121.png,https://images.pokemontcg.io/sv3pt5/121_hires.png
+sv3pt5-122,Mr. Mime,sv3pt5,151,Scarlet & Violet,2023/09/22,122,165,Rare,Pokémon,Basic,Psychic,90,OOYAMA,https://images.pokemontcg.io/sv3pt5/122.png,https://images.pokemontcg.io/sv3pt5/122_hires.png
+sv3pt5-123,Scyther,sv3pt5,151,Scarlet & Violet,2023/09/22,123,165,Uncommon,Pokémon,Basic,Grass,70,Hideki Ishikawa,https://images.pokemontcg.io/sv3pt5/123.png,https://images.pokemontcg.io/sv3pt5/123_hires.png
+sv3pt5-124,Jynx ex,sv3pt5,151,Scarlet & Violet,2023/09/22,124,165,Double Rare,Pokémon,Basic|ex,Water,200,Ayaka Yoshida,https://images.pokemontcg.io/sv3pt5/124.png,https://images.pokemontcg.io/sv3pt5/124_hires.png
+sv3pt5-125,Electabuzz,sv3pt5,151,Scarlet & Violet,2023/09/22,125,165,Common,Pokémon,Basic,Lightning,90,NC Empire,https://images.pokemontcg.io/sv3pt5/125.png,https://images.pokemontcg.io/sv3pt5/125_hires.png
+sv3pt5-126,Magmar,sv3pt5,151,Scarlet & Violet,2023/09/22,126,165,Common,Pokémon,Basic,Fire,90,Toshinao Aoki,https://images.pokemontcg.io/sv3pt5/126.png,https://images.pokemontcg.io/sv3pt5/126_hires.png
+sv3pt5-127,Pinsir,sv3pt5,151,Scarlet & Violet,2023/09/22,127,165,Uncommon,Pokémon,Basic,Grass,120,Yuya Oka,https://images.pokemontcg.io/sv3pt5/127.png,https://images.pokemontcg.io/sv3pt5/127_hires.png
+sv3pt5-128,Tauros,sv3pt5,151,Scarlet & Violet,2023/09/22,128,165,Uncommon,Pokémon,Basic,Colorless,120,Takeshi Nakamura,https://images.pokemontcg.io/sv3pt5/128.png,https://images.pokemontcg.io/sv3pt5/128_hires.png
+sv3pt5-129,Magikarp,sv3pt5,151,Scarlet & Violet,2023/09/22,129,165,Common,Pokémon,Basic,Water,30,Kouki Saitou,https://images.pokemontcg.io/sv3pt5/129.png,https://images.pokemontcg.io/sv3pt5/129_hires.png
+sv3pt5-130,Gyarados,sv3pt5,151,Scarlet & Violet,2023/09/22,130,165,Rare,Pokémon,Stage 1,Water,190,Kouki Saitou,https://images.pokemontcg.io/sv3pt5/130.png,https://images.pokemontcg.io/sv3pt5/130_hires.png
+sv3pt5-131,Lapras,sv3pt5,151,Scarlet & Violet,2023/09/22,131,165,Uncommon,Pokémon,Basic,Water,110,LINNE,https://images.pokemontcg.io/sv3pt5/131.png,https://images.pokemontcg.io/sv3pt5/131_hires.png
+sv3pt5-132,Ditto,sv3pt5,151,Scarlet & Violet,2023/09/22,132,165,Rare,Pokémon,Basic,Colorless,60,KIYOTAKA OSHIYAMA,https://images.pokemontcg.io/sv3pt5/132.png,https://images.pokemontcg.io/sv3pt5/132_hires.png
+sv3pt5-133,Eevee,sv3pt5,151,Scarlet & Violet,2023/09/22,133,165,Common,Pokémon,Basic,Colorless,70,Narumi Sato,https://images.pokemontcg.io/sv3pt5/133.png,https://images.pokemontcg.io/sv3pt5/133_hires.png
+sv3pt5-134,Vaporeon,sv3pt5,151,Scarlet & Violet,2023/09/22,134,165,Rare,Pokémon,Stage 1,Water,130,kirisAki,https://images.pokemontcg.io/sv3pt5/134.png,https://images.pokemontcg.io/sv3pt5/134_hires.png
+sv3pt5-135,Jolteon,sv3pt5,151,Scarlet & Violet,2023/09/22,135,165,Rare,Pokémon,Stage 1,Lightning,110,sui,https://images.pokemontcg.io/sv3pt5/135.png,https://images.pokemontcg.io/sv3pt5/135_hires.png
+sv3pt5-136,Flareon,sv3pt5,151,Scarlet & Violet,2023/09/22,136,165,Rare,Pokémon,Stage 1,Fire,130,Ryota Murayama,https://images.pokemontcg.io/sv3pt5/136.png,https://images.pokemontcg.io/sv3pt5/136_hires.png
+sv3pt5-137,Porygon,sv3pt5,151,Scarlet & Violet,2023/09/22,137,165,Common,Pokémon,Basic,Colorless,60,5ban Graphics,https://images.pokemontcg.io/sv3pt5/137.png,https://images.pokemontcg.io/sv3pt5/137_hires.png
+sv3pt5-138,Omanyte,sv3pt5,151,Scarlet & Violet,2023/09/22,138,165,Uncommon,Pokémon,Stage 1,Water,100,Akira Komayama,https://images.pokemontcg.io/sv3pt5/138.png,https://images.pokemontcg.io/sv3pt5/138_hires.png
+sv3pt5-139,Omastar,sv3pt5,151,Scarlet & Violet,2023/09/22,139,165,Rare,Pokémon,Stage 2,Water,150,Akira Komayama,https://images.pokemontcg.io/sv3pt5/139.png,https://images.pokemontcg.io/sv3pt5/139_hires.png
+sv3pt5-140,Kabuto,sv3pt5,151,Scarlet & Violet,2023/09/22,140,165,Uncommon,Pokémon,Stage 1,Fighting,90,Souichirou Gunjima,https://images.pokemontcg.io/sv3pt5/140.png,https://images.pokemontcg.io/sv3pt5/140_hires.png
+sv3pt5-141,Kabutops,sv3pt5,151,Scarlet & Violet,2023/09/22,141,165,Rare,Pokémon,Stage 2,Fighting,160,Souichirou Gunjima,https://images.pokemontcg.io/sv3pt5/141.png,https://images.pokemontcg.io/sv3pt5/141_hires.png
+sv3pt5-142,Aerodactyl,sv3pt5,151,Scarlet & Violet,2023/09/22,142,165,Rare,Pokémon,Stage 1,Colorless,130,Shinji Kanda,https://images.pokemontcg.io/sv3pt5/142.png,https://images.pokemontcg.io/sv3pt5/142_hires.png
+sv3pt5-143,Snorlax,sv3pt5,151,Scarlet & Violet,2023/09/22,143,165,Uncommon,Pokémon,Basic,Colorless,150,HYOGONOSUKE,https://images.pokemontcg.io/sv3pt5/143.png,https://images.pokemontcg.io/sv3pt5/143_hires.png
+sv3pt5-144,Articuno,sv3pt5,151,Scarlet & Violet,2023/09/22,144,165,Rare,Pokémon,Basic,Water,120,chibi,https://images.pokemontcg.io/sv3pt5/144.png,https://images.pokemontcg.io/sv3pt5/144_hires.png
+sv3pt5-145,Zapdos ex,sv3pt5,151,Scarlet & Violet,2023/09/22,145,165,Double Rare,Pokémon,Basic|ex,Lightning,200,takuyoa,https://images.pokemontcg.io/sv3pt5/145.png,https://images.pokemontcg.io/sv3pt5/145_hires.png
+sv3pt5-146,Moltres,sv3pt5,151,Scarlet & Violet,2023/09/22,146,165,Rare,Pokémon,Basic,Fire,120,KEIICHIRO ITO,https://images.pokemontcg.io/sv3pt5/146.png,https://images.pokemontcg.io/sv3pt5/146_hires.png
+sv3pt5-147,Dratini,sv3pt5,151,Scarlet & Violet,2023/09/22,147,165,Common,Pokémon,Basic,Dragon,60,Sanosuke Sakuma,https://images.pokemontcg.io/sv3pt5/147.png,https://images.pokemontcg.io/sv3pt5/147_hires.png
+sv3pt5-148,Dragonair,sv3pt5,151,Scarlet & Violet,2023/09/22,148,165,Uncommon,Pokémon,Stage 1,Dragon,100,Sanosuke Sakuma,https://images.pokemontcg.io/sv3pt5/148.png,https://images.pokemontcg.io/sv3pt5/148_hires.png
+sv3pt5-149,Dragonite,sv3pt5,151,Scarlet & Violet,2023/09/22,149,165,Rare,Pokémon,Stage 2,Dragon,180,Sanosuke Sakuma,https://images.pokemontcg.io/sv3pt5/149.png,https://images.pokemontcg.io/sv3pt5/149_hires.png
+sv3pt5-150,Mewtwo,sv3pt5,151,Scarlet & Violet,2023/09/22,150,165,Rare,Pokémon,Basic,Psychic,130,AKIRA EGAWA,https://images.pokemontcg.io/sv3pt5/150.png,https://images.pokemontcg.io/sv3pt5/150_hires.png
+sv3pt5-151,Mew ex,sv3pt5,151,Scarlet & Violet,2023/09/22,151,165,Double Rare,Pokémon,Basic|ex,Psychic,180,aky CG Works,https://images.pokemontcg.io/sv3pt5/151.png,https://images.pokemontcg.io/sv3pt5/151_hires.png
+sv3pt5-152,Antique Dome Fossil,sv3pt5,151,Scarlet & Violet,2023/09/22,152,165,Common,Trainer,Item,,60,AYUMI ODASHIMA,https://images.pokemontcg.io/sv3pt5/152.png,https://images.pokemontcg.io/sv3pt5/152_hires.png
+sv3pt5-153,Antique Helix Fossil,sv3pt5,151,Scarlet & Violet,2023/09/22,153,165,Common,Trainer,Item,,60,AYUMI ODASHIMA,https://images.pokemontcg.io/sv3pt5/153.png,https://images.pokemontcg.io/sv3pt5/153_hires.png
+sv3pt5-154,Antique Old Amber,sv3pt5,151,Scarlet & Violet,2023/09/22,154,165,Common,Trainer,Item,,60,AYUMI ODASHIMA,https://images.pokemontcg.io/sv3pt5/154.png,https://images.pokemontcg.io/sv3pt5/154_hires.png
+sv3pt5-155,Big Air Balloon,sv3pt5,151,Scarlet & Violet,2023/09/22,155,165,Uncommon,Trainer,Pokémon Tool,,,Toyste Beach,https://images.pokemontcg.io/sv3pt5/155.png,https://images.pokemontcg.io/sv3pt5/155_hires.png
+sv3pt5-156,Bill's Transfer,sv3pt5,151,Scarlet & Violet,2023/09/22,156,165,Uncommon,Trainer,Supporter,,,GIDORA,https://images.pokemontcg.io/sv3pt5/156.png,https://images.pokemontcg.io/sv3pt5/156_hires.png
+sv3pt5-157,Cycling Road,sv3pt5,151,Scarlet & Violet,2023/09/22,157,165,Uncommon,Trainer,Stadium,,,Oswaldo KATO,https://images.pokemontcg.io/sv3pt5/157.png,https://images.pokemontcg.io/sv3pt5/157_hires.png
+sv3pt5-158,Daisy's Help,sv3pt5,151,Scarlet & Violet,2023/09/22,158,165,Uncommon,Trainer,Supporter,,,Tomomi Kaneko,https://images.pokemontcg.io/sv3pt5/158.png,https://images.pokemontcg.io/sv3pt5/158_hires.png
+sv3pt5-159,Energy Sticker,sv3pt5,151,Scarlet & Violet,2023/09/22,159,165,Uncommon,Trainer,Item,,,Ayaka Yoshida,https://images.pokemontcg.io/sv3pt5/159.png,https://images.pokemontcg.io/sv3pt5/159_hires.png
+sv3pt5-160,Erika's Invitation,sv3pt5,151,Scarlet & Violet,2023/09/22,160,165,Uncommon,Trainer,Supporter,,,saino misaki,https://images.pokemontcg.io/sv3pt5/160.png,https://images.pokemontcg.io/sv3pt5/160_hires.png
+sv3pt5-161,Giovanni's Charisma,sv3pt5,151,Scarlet & Violet,2023/09/22,161,165,Uncommon,Trainer,Supporter,,,hncl,https://images.pokemontcg.io/sv3pt5/161.png,https://images.pokemontcg.io/sv3pt5/161_hires.png
+sv3pt5-162,Grabber,sv3pt5,151,Scarlet & Violet,2023/09/22,162,165,Uncommon,Trainer,Item,,,inose yukie,https://images.pokemontcg.io/sv3pt5/162.png,https://images.pokemontcg.io/sv3pt5/162_hires.png
+sv3pt5-163,Leftovers,sv3pt5,151,Scarlet & Violet,2023/09/22,163,165,Uncommon,Trainer,Pokémon Tool,,,Studio Bora Inc.,https://images.pokemontcg.io/sv3pt5/163.png,https://images.pokemontcg.io/sv3pt5/163_hires.png
+sv3pt5-164,Protective Goggles,sv3pt5,151,Scarlet & Violet,2023/09/22,164,165,Uncommon,Trainer,Pokémon Tool,,,Toyste Beach,https://images.pokemontcg.io/sv3pt5/164.png,https://images.pokemontcg.io/sv3pt5/164_hires.png
+sv3pt5-165,Rigid Band,sv3pt5,151,Scarlet & Violet,2023/09/22,165,165,Uncommon,Trainer,Pokémon Tool,,,Toyste Beach,https://images.pokemontcg.io/sv3pt5/165.png,https://images.pokemontcg.io/sv3pt5/165_hires.png
+sv3pt5-166,Bulbasaur,sv3pt5,151,Scarlet & Violet,2023/09/22,166,165,Illustration Rare,Pokémon,Basic,Grass,70,Yoriyuki Ikegami,https://images.pokemontcg.io/sv3pt5/166.png,https://images.pokemontcg.io/sv3pt5/166_hires.png
+sv3pt5-167,Ivysaur,sv3pt5,151,Scarlet & Violet,2023/09/22,167,165,Illustration Rare,Pokémon,Stage 1,Grass,100,Yoriyuki Ikegami,https://images.pokemontcg.io/sv3pt5/167.png,https://images.pokemontcg.io/sv3pt5/167_hires.png
+sv3pt5-168,Charmander,sv3pt5,151,Scarlet & Violet,2023/09/22,168,165,Illustration Rare,Pokémon,Basic,Fire,70,miki kudo,https://images.pokemontcg.io/sv3pt5/168.png,https://images.pokemontcg.io/sv3pt5/168_hires.png
+sv3pt5-169,Charmeleon,sv3pt5,151,Scarlet & Violet,2023/09/22,169,165,Illustration Rare,Pokémon,Stage 1,Fire,100,miki kudo,https://images.pokemontcg.io/sv3pt5/169.png,https://images.pokemontcg.io/sv3pt5/169_hires.png
+sv3pt5-170,Squirtle,sv3pt5,151,Scarlet & Violet,2023/09/22,170,165,Illustration Rare,Pokémon,Basic,Water,60,Mitsuhiro Arita,https://images.pokemontcg.io/sv3pt5/170.png,https://images.pokemontcg.io/sv3pt5/170_hires.png
+sv3pt5-171,Wartortle,sv3pt5,151,Scarlet & Violet,2023/09/22,171,165,Illustration Rare,Pokémon,Stage 1,Water,100,Mitsuhiro Arita,https://images.pokemontcg.io/sv3pt5/171.png,https://images.pokemontcg.io/sv3pt5/171_hires.png
+sv3pt5-172,Caterpie,sv3pt5,151,Scarlet & Violet,2023/09/22,172,165,Illustration Rare,Pokémon,Basic,Grass,50,Teeziro,https://images.pokemontcg.io/sv3pt5/172.png,https://images.pokemontcg.io/sv3pt5/172_hires.png
+sv3pt5-173,Pikachu,sv3pt5,151,Scarlet & Violet,2023/09/22,173,165,Illustration Rare,Pokémon,Basic,Lightning,60,Hiroyuki Yamamoto,https://images.pokemontcg.io/sv3pt5/173.png,https://images.pokemontcg.io/sv3pt5/173_hires.png
+sv3pt5-174,Nidoking,sv3pt5,151,Scarlet & Violet,2023/09/22,174,165,Illustration Rare,Pokémon,Stage 2,Darkness,170,Misaki Hashimoto,https://images.pokemontcg.io/sv3pt5/174.png,https://images.pokemontcg.io/sv3pt5/174_hires.png
+sv3pt5-175,Psyduck,sv3pt5,151,Scarlet & Violet,2023/09/22,175,165,Illustration Rare,Pokémon,Basic,Water,70,Whisker,https://images.pokemontcg.io/sv3pt5/175.png,https://images.pokemontcg.io/sv3pt5/175_hires.png
+sv3pt5-176,Poliwhirl,sv3pt5,151,Scarlet & Violet,2023/09/22,176,165,Illustration Rare,Pokémon,Stage 1,Water,90,Gemi,https://images.pokemontcg.io/sv3pt5/176.png,https://images.pokemontcg.io/sv3pt5/176_hires.png
+sv3pt5-177,Machoke,sv3pt5,151,Scarlet & Violet,2023/09/22,177,165,Illustration Rare,Pokémon,Stage 1,Fighting,100,Tetsu Kayama,https://images.pokemontcg.io/sv3pt5/177.png,https://images.pokemontcg.io/sv3pt5/177_hires.png
+sv3pt5-178,Tangela,sv3pt5,151,Scarlet & Violet,2023/09/22,178,165,Illustration Rare,Pokémon,Basic,Grass,80,Oswaldo KATO,https://images.pokemontcg.io/sv3pt5/178.png,https://images.pokemontcg.io/sv3pt5/178_hires.png
+sv3pt5-179,Mr. Mime,sv3pt5,151,Scarlet & Violet,2023/09/22,179,165,Illustration Rare,Pokémon,Basic,Psychic,90,OKACHEKE,https://images.pokemontcg.io/sv3pt5/179.png,https://images.pokemontcg.io/sv3pt5/179_hires.png
+sv3pt5-180,Omanyte,sv3pt5,151,Scarlet & Violet,2023/09/22,180,165,Illustration Rare,Pokémon,Stage 1,Water,100,Yano Keiji,https://images.pokemontcg.io/sv3pt5/180.png,https://images.pokemontcg.io/sv3pt5/180_hires.png
+sv3pt5-181,Dragonair,sv3pt5,151,Scarlet & Violet,2023/09/22,181,165,Illustration Rare,Pokémon,Stage 1,Dragon,100,rika,https://images.pokemontcg.io/sv3pt5/181.png,https://images.pokemontcg.io/sv3pt5/181_hires.png
+sv3pt5-182,Venusaur ex,sv3pt5,151,Scarlet & Violet,2023/09/22,182,165,Ultra Rare,Pokémon,Stage 2|ex,Grass,340,PLANETA Yamashita,https://images.pokemontcg.io/sv3pt5/182.png,https://images.pokemontcg.io/sv3pt5/182_hires.png
+sv3pt5-183,Charizard ex,sv3pt5,151,Scarlet & Violet,2023/09/22,183,165,Ultra Rare,Pokémon,Stage 2|ex,Fire,330,PLANETA Mochizuki,https://images.pokemontcg.io/sv3pt5/183.png,https://images.pokemontcg.io/sv3pt5/183_hires.png
+sv3pt5-184,Blastoise ex,sv3pt5,151,Scarlet & Violet,2023/09/22,184,165,Ultra Rare,Pokémon,Stage 2|ex,Water,330,PLANETA Yamashita,https://images.pokemontcg.io/sv3pt5/184.png,https://images.pokemontcg.io/sv3pt5/184_hires.png
+sv3pt5-185,Arbok ex,sv3pt5,151,Scarlet & Violet,2023/09/22,185,165,Ultra Rare,Pokémon,Stage 1|ex,Darkness,270,Eske Yoshinob,https://images.pokemontcg.io/sv3pt5/185.png,https://images.pokemontcg.io/sv3pt5/185_hires.png
+sv3pt5-186,Ninetales ex,sv3pt5,151,Scarlet & Violet,2023/09/22,186,165,Ultra Rare,Pokémon,Stage 1|ex,Fire,260,PLANETA Tsuji,https://images.pokemontcg.io/sv3pt5/186.png,https://images.pokemontcg.io/sv3pt5/186_hires.png
+sv3pt5-187,Wigglytuff ex,sv3pt5,151,Scarlet & Violet,2023/09/22,187,165,Ultra Rare,Pokémon,Stage 1|ex,Colorless,250,Saki Hayashiro,https://images.pokemontcg.io/sv3pt5/187.png,https://images.pokemontcg.io/sv3pt5/187_hires.png
+sv3pt5-188,Alakazam ex,sv3pt5,151,Scarlet & Violet,2023/09/22,188,165,Ultra Rare,Pokémon,Stage 2|ex,Psychic,310,PLANETA Tsuji,https://images.pokemontcg.io/sv3pt5/188.png,https://images.pokemontcg.io/sv3pt5/188_hires.png
+sv3pt5-189,Golem ex,sv3pt5,151,Scarlet & Violet,2023/09/22,189,165,Ultra Rare,Pokémon,Stage 2|ex,Fighting,330,PLANETA Igarashi,https://images.pokemontcg.io/sv3pt5/189.png,https://images.pokemontcg.io/sv3pt5/189_hires.png
+sv3pt5-190,Kangaskhan ex,sv3pt5,151,Scarlet & Violet,2023/09/22,190,165,Ultra Rare,Pokémon,Basic|ex,Colorless,230,N-DESIGN Inc.,https://images.pokemontcg.io/sv3pt5/190.png,https://images.pokemontcg.io/sv3pt5/190_hires.png
+sv3pt5-191,Jynx ex,sv3pt5,151,Scarlet & Violet,2023/09/22,191,165,Ultra Rare,Pokémon,Basic|ex,Water,200,Ayaka Yoshida,https://images.pokemontcg.io/sv3pt5/191.png,https://images.pokemontcg.io/sv3pt5/191_hires.png
+sv3pt5-192,Zapdos ex,sv3pt5,151,Scarlet & Violet,2023/09/22,192,165,Ultra Rare,Pokémon,Basic|ex,Lightning,200,takuyoa,https://images.pokemontcg.io/sv3pt5/192.png,https://images.pokemontcg.io/sv3pt5/192_hires.png
+sv3pt5-193,Mew ex,sv3pt5,151,Scarlet & Violet,2023/09/22,193,165,Ultra Rare,Pokémon,Basic|ex,Psychic,180,aky CG Works,https://images.pokemontcg.io/sv3pt5/193.png,https://images.pokemontcg.io/sv3pt5/193_hires.png
+sv3pt5-194,Bill's Transfer,sv3pt5,151,Scarlet & Violet,2023/09/22,194,165,Ultra Rare,Trainer,Supporter,,,GIDORA,https://images.pokemontcg.io/sv3pt5/194.png,https://images.pokemontcg.io/sv3pt5/194_hires.png
+sv3pt5-195,Daisy's Help,sv3pt5,151,Scarlet & Violet,2023/09/22,195,165,Ultra Rare,Trainer,Supporter,,,Fumie Kittaka,https://images.pokemontcg.io/sv3pt5/195.png,https://images.pokemontcg.io/sv3pt5/195_hires.png
+sv3pt5-196,Erika's Invitation,sv3pt5,151,Scarlet & Violet,2023/09/22,196,165,Ultra Rare,Trainer,Supporter,,,saino misaki,https://images.pokemontcg.io/sv3pt5/196.png,https://images.pokemontcg.io/sv3pt5/196_hires.png
+sv3pt5-197,Giovanni's Charisma,sv3pt5,151,Scarlet & Violet,2023/09/22,197,165,Ultra Rare,Trainer,Supporter,,,hncl,https://images.pokemontcg.io/sv3pt5/197.png,https://images.pokemontcg.io/sv3pt5/197_hires.png
+sv3pt5-198,Venusaur ex,sv3pt5,151,Scarlet & Violet,2023/09/22,198,165,Special Illustration Rare,Pokémon,Stage 2|ex,Grass,340,Yoriyuki Ikegami,https://images.pokemontcg.io/sv3pt5/198.png,https://images.pokemontcg.io/sv3pt5/198_hires.png
+sv3pt5-199,Charizard ex,sv3pt5,151,Scarlet & Violet,2023/09/22,199,165,Special Illustration Rare,Pokémon,Stage 2|ex,Fire,330,miki kudo,https://images.pokemontcg.io/sv3pt5/199.png,https://images.pokemontcg.io/sv3pt5/199_hires.png
+sv3pt5-200,Blastoise ex,sv3pt5,151,Scarlet & Violet,2023/09/22,200,165,Special Illustration Rare,Pokémon,Stage 2|ex,Water,330,Mitsuhiro Arita,https://images.pokemontcg.io/sv3pt5/200.png,https://images.pokemontcg.io/sv3pt5/200_hires.png
+sv3pt5-201,Alakazam ex,sv3pt5,151,Scarlet & Violet,2023/09/22,201,165,Special Illustration Rare,Pokémon,Stage 2|ex,Psychic,310,Shinya Komatsu,https://images.pokemontcg.io/sv3pt5/201.png,https://images.pokemontcg.io/sv3pt5/201_hires.png
+sv3pt5-202,Zapdos ex,sv3pt5,151,Scarlet & Violet,2023/09/22,202,165,Special Illustration Rare,Pokémon,Basic|ex,Lightning,200,Shiburingaru,https://images.pokemontcg.io/sv3pt5/202.png,https://images.pokemontcg.io/sv3pt5/202_hires.png
+sv3pt5-203,Erika's Invitation,sv3pt5,151,Scarlet & Violet,2023/09/22,203,165,Special Illustration Rare,Trainer,Supporter,,,Cona Nitanda,https://images.pokemontcg.io/sv3pt5/203.png,https://images.pokemontcg.io/sv3pt5/203_hires.png
+sv3pt5-204,Giovanni's Charisma,sv3pt5,151,Scarlet & Violet,2023/09/22,204,165,Special Illustration Rare,Trainer,Supporter,,,Hideki Ishikawa,https://images.pokemontcg.io/sv3pt5/204.png,https://images.pokemontcg.io/sv3pt5/204_hires.png
+sv3pt5-205,Mew ex,sv3pt5,151,Scarlet & Violet,2023/09/22,205,165,Hyper Rare,Pokémon,Basic|ex,Psychic,180,aky CG Works,https://images.pokemontcg.io/sv3pt5/205.png,https://images.pokemontcg.io/sv3pt5/205_hires.png
+sv3pt5-206,Switch,sv3pt5,151,Scarlet & Violet,2023/09/22,206,165,Hyper Rare,Trainer,Item,,,Studio Bora Inc.,https://images.pokemontcg.io/sv3pt5/206.png,https://images.pokemontcg.io/sv3pt5/206_hires.png
+sv3pt5-207,Basic Psychic Energy,sv3pt5,151,Scarlet & Violet,2023/09/22,207,165,Hyper Rare,Energy,Basic,Psychic,,,https://images.pokemontcg.io/sv3pt5/207.png,https://images.pokemontcg.io/sv3pt5/207_hires.png
