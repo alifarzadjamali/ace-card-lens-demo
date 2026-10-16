@@ -4,6 +4,8 @@ Concept demo by **Ali (Farzad) Jamali** for the Ace Grading × University of Sal
 (*Artificial Intelligence and Computer Vision Engineer*). Not affiliated with or endorsed by Ace Grading.
 It proposes points of interest for a human grader; it does **not** assign or validate a card grade.
 
+**Live demo:** https://ace-card-lens-demo.streamlit.app/ · [QR code for the presentation](assets/ace-card-lens-demo-qr.png)
+
 Upload or photograph a card, or generate a synthetic "phone photo" with known defects. The app then:
 
 1. **Detects and rectifies** the card (contours, fitted edge lines, homography) to 63 × 88 mm at 10 px/mm.
