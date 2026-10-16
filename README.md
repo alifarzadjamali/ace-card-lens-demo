@@ -18,7 +18,7 @@ The sample is an artificial photo. Real wear and damage may look different.
 
 OpenCV finds the card and straightens it to a 630 × 880 pixel image. The app then compares it with 565 cards from Base Set, Jungle, Fossil, Base Set 2 and 151. You can search with DINOv2 or switch to a simple colour and perceptual-hash baseline. Set, rarity and name filters narrow the search. ORB and RANSAC check whether the printed layout of the closest cards lines up with the photo.
 
-The condition checks use image measurements. They compare border widths for centring, look for pale pixels near corners and edges, measure visible corner shape and look for surface differences against the matched catalogue image. Each result is a place to look, not a grade. If the match or photo is poor, the surface check can flag printed artwork or lighting.
+The condition checks use image measurements. They compare border widths for centring, look for pale pixels near corners and edges, and measure visible corner shape. The surface check uses a catalogue image only when enough printed details line up. Otherwise, it looks for unusual colours in the photo. Each result is a place to look, not a grade. A poor photo can still make artwork or lighting look like damage.
 
 The search uses a small, exact cosine index. There are two prebuilt indexes in `data/`, so visitors don't have to build them. For a much larger catalogue, an approximate index such as HNSW would be worth testing.
 

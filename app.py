@@ -221,7 +221,9 @@ else:
 
 top = ranked[0] if ranked else None
 ref = None
-if top and top[1] >= 0.55:
+# Image vectors can score highly for different cards. Only compare surfaces when
+# the printed details also line up with the catalogue image.
+if top and top[1] >= 0.55 and (top[2] or 0) >= 25:
     r = by_id.loc[top[0]]
     ref = fetch_image(top[0], r.image_large, size="large")
 t0 = time.perf_counter()
@@ -303,7 +305,7 @@ with t_sim:
 with t_def:
     st.markdown("Things worth checking on the card. These measurements come from the photo and aren't a grade.")
     if top is None or ref is None:
-        st.warning("No close reference image was available. The surface check is looking for unusual colours and may pick up artwork or lighting.")
+        st.warning("The card match wasn't clear enough for a reference comparison. The surface check is looking for unusual colours and may pick up artwork or lighting.")
     rows = [{"Check": f.check, "Location": f.location, "Measured": f.value, "Severity": f.severity, "Detail": f.detail}
             for f in rep.findings]
     tbl = pd.DataFrame(rows)
@@ -358,7 +360,7 @@ OpenCV finds the card outline and flattens the photo to 630 × 880 pixels. That 
 
 DINOv2 turns the image into a search vector on the CPU. You can switch to a basic search that uses colour, layout and a perceptual hash. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up.
 
-The condition checks measure border widths, look for pale marks near corners and edges, estimate corner shape and compare the card surface with a reference image. ECC alignment helps line up that reference before comparison. These are photo-based clues for a grader to review. The review tab lets you download the decisions as JSON.
+The condition checks measure border widths, look for pale marks near corners and edges, and estimate corner shape. The app compares surfaces with a catalogue image only when the printed details line up; ECC then aligns the images. Otherwise, it checks for unusual colours in the photo. These are clues for a grader to review. The review tab lets you download the decisions as JSON.
 
 This small catalogue uses exact cosine search. A larger collection could use pgvector or FAISS with HNSW, with card IDs shared across the search index and card details.
 """)
