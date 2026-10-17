@@ -7,6 +7,8 @@ card ID so a search result can point back to the right card details.
 from __future__ import annotations
 
 import io
+import re
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Callable
@@ -27,6 +29,56 @@ def load_catalogue() -> pd.DataFrame:
     df["set_name"] = df["set_name"].replace({"Base": "Base Set"})
     df["label"] = df["name"] + " · " + df["set_name"] + " " + df["number"] + "/" + df["set_total"]
     return df
+
+
+def _plain(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower())
+
+
+def read_card_text(card_bgr: np.ndarray, engine, names: list[str]) -> dict:
+    result = {"name": None, "number": None, "total": None, "status": "Unreadable"}
+    if engine is None:
+        result["status"] = "Unavailable"
+        return result
+    try:
+        h, w = card_bgr.shape[:2]
+        top = card_bgr[:int(h * 0.18)]
+        bottom = card_bgr[int(h * 0.90):, int(w * 0.48):]
+        text_top = engine(top)
+        text_bottom = engine(cv2.resize(bottom, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC))
+        top_lines = [str(t) for t, s in zip(text_top.txts or [], text_top.scores or []) if s >= 0.65]
+        bottom_lines = [str(t) for t, s in zip(text_bottom.txts or [], text_bottom.scores or []) if s >= 0.65]
+        exact = [name for name in names if any(_plain(name) == _plain(line) for line in top_lines)]
+        matches = exact or [name for name in names if any(_plain(name) in _plain(line) for line in top_lines)]
+        if matches:
+            result["name"] = max(matches, key=len)
+        for line in reversed(bottom_lines):
+            found = re.search(r"(?<!\d)(\d{1,3})\s*[/|]\s*(\d{2,3})", line)
+            if found:
+                number, total = map(int, found.groups())
+                if 0 < number <= total:
+                    result["number"], result["total"] = str(number), str(total)
+                    break
+        if result["name"] or result["number"]:
+            result["status"] = "Read"
+    except Exception:
+        result["status"] = "Unavailable"
+    return result
+
+
+def ocr_agreement(text: dict, row) -> tuple[float, str]:
+    if text["status"] != "Read":
+        return 0.0, "Text not readable"
+    name_ok = text["name"] is not None and _plain(text["name"]) == _plain(row["name"])
+    number_ok = text["number"] is not None and text["number"] == str(row["number"]) and text["total"] == str(row["set_total"])
+    bonus = (0.05 if name_ok else 0.0) + (0.10 if number_ok else 0.0)
+    if name_ok and number_ok:
+        return bonus, "Name and number agree"
+    if name_ok:
+        return bonus, "Name agrees"
+    if number_ok:
+        return bonus, "Number agrees"
+    return 0.0, "No OCR agreement"
 
 
 def _decode(raw: bytes, bg=(128, 128, 128)) -> np.ndarray | None:

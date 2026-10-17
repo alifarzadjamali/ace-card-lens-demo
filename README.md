@@ -10,15 +10,15 @@ I built this for my Ace Grading and University of Salford KTP interview. It's a 
 
 Open the demo and click **Generate photo & analyse**. It starts with a catalogue card, adds some simulated wear and puts it on a desk background. You can choose a different card or change the defects before you run it.
 
-Got a card handy? Upload a photo or use your camera. One card on a plain background works best. You'll see the detected outline, a straightened view, a surface difference map and a shortlist of possible matches. The **Grader review** tab lets you confirm or reject the flags and download a JSON record. The app keeps uploaded photos in the current session; it doesn't save them to a database.
+Got a card handy? Upload a photo or use your camera. One card on a plain background works best. You'll see the detected outline, a straightened view, a surface difference map and a shortlist of possible matches. The **Awaiting grader review** tab lets you confirm or reject findings, correct the catalogue card and download a JSON record. The app keeps uploaded photos in the current session; it doesn't save them to a database.
 
 The five sample presets cover off-centre printing, corner whitening, corner rounding, stains and edge wear. Tests check the five card outlines and the whitening, rounding, stain and edge-wear examples. The off-centre shift is subtle and may not be flagged; a positive detection is not forced. A reference image must match closely before the app flags a surface mark. Whitening on pale borders and measurements without a clear card edge are shown as not assessable. Real wear and damage may look different.
 
 ## How it works
 
-OpenCV finds the card and straightens it to a 630 × 880 pixel image. The app then compares it with 565 cards from Base Set, Jungle, Fossil, Base Set 2 and 151. You can search with DINOv2 or switch to a simple colour and perceptual-hash baseline. Set, rarity and name filters narrow the search. ORB and RANSAC check whether the printed layout of the closest cards lines up with the photo.
+OpenCV finds the card and straightens it to a 630 × 880 pixel image. The app then compares it with 565 cards from Base Set, Jungle, Fossil, Base Set 2 and 151. DINOv2 uses learned visual features; the traditional option uses colour, layout and a perceptual hash. Set, rarity and name filters narrow the search. ORB and RANSAC check whether the printed layout of the closest cards lines up with the photo. RapidOCR reads the name and card number when legible, adding a small agreement bonus to matching catalogue entries. If text cannot be read, image search works as before.
 
-The condition checks use image measurements. They compare border widths for centring, look for pale pixels near corners and edges, and measure visible corner shape. The surface check uses a catalogue image only when enough printed details line up. Otherwise, it looks for unusual colours in the photo. Each result is a place to look, not a grade. A poor photo can still make artwork or lighting look like damage.
+The condition checks use image measurements. They compare border widths for centring, look for pale pixels near corners and edges, and measure visible corner shape. The surface check uses a catalogue image only when enough printed details line up. Without a reliable reference, surface marks are not assessable. The centering band is an estimate, not a final grade. A grader reviews each finding and can correct the catalogue choice in the JSON record.
 
 The search uses a small, exact cosine index. There are two prebuilt indexes in `data/`, so visitors don't have to build them. For a much larger catalogue, an approximate index such as HNSW would be worth testing.
 

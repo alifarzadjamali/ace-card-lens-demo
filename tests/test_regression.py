@@ -1,9 +1,10 @@
 import unittest
+from types import SimpleNamespace
 
 import cv2
 import numpy as np
 
-from cardlens.catalogue import fetch_image, load_catalogue
+from cardlens.catalogue import fetch_image, load_catalogue, ocr_agreement, read_card_text
 from cardlens.defects import analyse, measure_centering
 from cardlens.detect import CARD_H, CARD_W, detect_card
 from cardlens.synth import make_sample
@@ -70,6 +71,40 @@ class CardLensRegressionTests(unittest.TestCase):
                 report = analyse(detected.card, detected.mask, detected.edge_visible, ref_bgr=reference)
                 self.assertTrue(any(f.check == check and (location is None or f.location == location)
                                     and f.severity in ("minor", "major") for f in report.findings))
+
+    def test_ocr_adds_agreement_only_when_text_is_readable(self):
+        outputs = iter([
+            SimpleNamespace(txts=["Pikachu"], scores=[0.99]),
+            SimpleNamespace(txts=["58/102"], scores=[0.95]),
+        ])
+        text = read_card_text(np.zeros((CARD_H, CARD_W, 3), np.uint8), lambda image: next(outputs), ["Pikachu"])
+        row = load_catalogue().set_index("card_id").loc["base1-58"]
+        self.assertEqual(text["name"], "Pikachu")
+        self.assertEqual(text["number"], "58")
+        self.assertAlmostEqual(ocr_agreement(text, row)[0], 0.15)
+        self.assertEqual(ocr_agreement(read_card_text(np.zeros((CARD_H, CARD_W, 3), np.uint8), None, []), row)[0], 0.0)
+        self.assertEqual(read_card_text(np.zeros((CARD_H, CARD_W, 3), np.uint8),
+                                        lambda image: 1 / 0, ["Pikachu"])["status"], "Unavailable")
+        outputs = iter([
+            SimpleNamespace(txts=["Evolves from Charmeleon", "Charizard"], scores=[0.99, 0.99]),
+            SimpleNamespace(txts=[], scores=[]),
+        ])
+        text = read_card_text(np.zeros((CARD_H, CARD_W, 3), np.uint8), lambda image: next(outputs),
+                              ["Charmeleon", "Charizard"])
+        self.assertEqual(text["name"], "Charizard")
+
+    def test_ocr_reads_sample_pikachu(self):
+        try:
+            from rapidocr import RapidOCR
+        except ImportError:
+            self.skipTest("OCR dependency unavailable")
+        row = load_catalogue().set_index("card_id").loc["base1-58"]
+        source = fetch_image("base1-58", row.image_large, size="large", keep_alpha=True)
+        if source is None:
+            self.skipTest("Catalogue image unavailable")
+        photo, _ = make_sample(source, seed=7, round_corners=["top-right"])
+        text = read_card_text(detect_card(photo).card, RapidOCR(), ["Pikachu"])
+        self.assertEqual((text["name"], text["number"], text["total"]), ("Pikachu", "58", "102"))
 
 
 if __name__ == "__main__":

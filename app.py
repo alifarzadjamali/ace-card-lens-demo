@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from cardlens.catalogue import VectorIndex, fetch_image, load_catalogue, rerank
+from cardlens.catalogue import VectorIndex, fetch_image, load_catalogue, ocr_agreement, read_card_text, rerank
 from cardlens.defects import analyse
 from cardlens.detect import draw_quad, detect_card
 from cardlens.embed import BaselineEncoder, get_encoder
@@ -78,6 +78,15 @@ def index_for(key: str):
     idx = VectorIndex.build(df, enc, progress=lambda f: bar.progress(min(1.0, f)))
     bar.empty()
     return idx
+
+
+@st.cache_resource(show_spinner=False)
+def text_reader():
+    try:
+        from rapidocr import RapidOCR
+        return RapidOCR()
+    except Exception:
+        return None
 
 
 def to_rgb(bgr):
@@ -222,6 +231,18 @@ if use_rerank and hits:
 else:
     ranked = [(c, s, None, s) for c, s in hits]
 
+t0 = time.perf_counter()
+card_text = read_card_text(det.card, text_reader(), df.name.unique().tolist())
+ocr_evidence = {}
+if card_text["status"] == "Read":
+    checked = []
+    for cid, sim, geo, score in ranked:
+        bonus, evidence = ocr_agreement(card_text, by_id.loc[cid])
+        ocr_evidence[cid] = evidence
+        checked.append((cid, sim, geo, min(1.0, score + bonus)))
+    ranked = sorted(checked, key=lambda item: -item[3])
+timings["OCR"] = time.perf_counter() - t0
+
 top = ranked[0] if ranked else None
 ref = None
 # Image vectors can score highly for different cards. Only compare surfaces when
@@ -243,9 +264,9 @@ review_complete = (match_review in ("Yes", "No, I corrected it")
                    and all(st.session_state.get(f"{review_key}-dec{i}", "Not reviewed yet") != "Not reviewed yet"
                            for i in range(len(flags))))
 steps = ["① Detect & rectify", "② Embed", "③ Vector search", "④ Re-rank" if use_rerank else "④ (re-rank off)",
-         "⑤ Defect checks"]
+         "⑤ OCR", "⑥ Defect checks"]
 st.markdown("".join(f'<span class="cl-step done">{s}</span>' for s in steps), unsafe_allow_html=True)
-st.markdown(f'<span class="cl-step {"done" if review_complete else ""}">⑥ {"Grader review complete" if review_complete else "Awaiting grader review"}</span>', unsafe_allow_html=True)
+st.markdown(f'<span class="cl-step {"done" if review_complete else ""}">⑦ {"Grader review complete" if review_complete else "Awaiting grader review"}</span>', unsafe_allow_html=True)
 st.caption(f"Photo: {st.session_state.source} · outline: {det.method} · search: {enc.name} · "
            + " · ".join(f"{k_} {v * 1000:.0f} ms" for k_, v in timings.items()))
 if not det.edge_visible:
@@ -284,6 +305,9 @@ with t_sim:
         conf = "High" if s1 >= 0.80 and s1 - s2 >= 0.03 else ("Medium" if s1 >= 0.65 else "Low")
         same_name = len(ranked) > 1 and by_id.loc[ranked[0][0]]["name"] == by_id.loc[ranked[1][0]]["name"]
         st.markdown(f"Match signal (heuristic): **{conf}** · top match {s1:.3f}, gap to next {s1 - s2:+.3f}")
+        read_name = card_text["name"] or "Not readable"
+        read_number = (f"{card_text['number']}/{card_text['total']}" if card_text["number"] else "Not readable")
+        st.caption(f"OCR name: {read_name} · OCR card number: {read_number}. Readable text adds a small agreement bonus; unreadable text leaves the ranking unchanged.")
         st.caption("This score combines image similarity and, when enabled, geometric agreement. It isn't a probability. Check the set and card number before trusting a surface comparison.")
         if same_name and s1 - s2 < 0.05:
             st.warning("These printings look very similar. Check the set symbol and card number in the strips below.")
@@ -300,9 +324,10 @@ with t_sim:
                 st.markdown(f"**{i + 1}. {r['name']}**")
                 st.progress(float(np.clip(score, 0, 1)))
                 geo_txt = f" · {geo} geometrically consistent matches" if geo is not None else ""
+                ocr_txt = f" · OCR: {ocr_evidence[cid]}" if cid in ocr_evidence else ""
                 st.markdown(f"""<div class="cl-card-meta">Match score: {score:.3f} · cosine: {sim:.3f}{geo_txt}<br>
                 Set: {r.set_name} · Card number: {r.number}/{r.set_total}<br>Rarity: {r.rarity or 'n/a'} · {r.release_date[:4]}<br>
-                <span class="cl-small">Illustrator: {r.artist or 'n/a'} · Catalogue ID: {cid}</span></div>""",
+                <span class="cl-small">Illustrator: {r.artist or 'n/a'} · Catalogue ID: {cid}{ocr_txt}</span></div>""",
                             unsafe_allow_html=True)
         st.markdown("##### Check the small print: set symbol, number and copyright line")
         strip_cols = st.columns(4)
@@ -350,14 +375,17 @@ with t_rev:
         corrected_id = st.selectbox("Correct catalogue card", choices, index=None,
                                     format_func=lambda cid: f"{by_id.loc[cid]['name']} · {by_id.loc[cid].set_name} · #{by_id.loc[cid].number}/{by_id.loc[cid].set_total} · {cid}",
                                     placeholder="Select the correct card", key=f"{review_key}-correction")
+        if corrected_id is None:
+            st.info("Select the correct catalogue card to complete this correction.")
     note = st.text_input("Grader note", "")
     record = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "image_sha1": review_key,
-        "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "cardlens-demo-0.1"},
+        "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "cardlens-demo-0.2"},
         "match": {"card_id": top[0] if top else None, "cosine": round(top[1], 4) if top else None,
                   "match_score": round(top[3], 4) if top else None, "grader": match_ok,
-                  "corrected_card_id": corrected_id},
+                  "corrected_card_id": corrected_id, "ocr_evidence": ocr_evidence.get(top[0]) if top else None},
+        "ocr": card_text,
         "centering": {"lr": None if np.isnan(cen["lr"]) else round(cen["lr"], 1),
                       "tb": None if np.isnan(cen["tb"]) else round(cen["tb"], 1), "estimated_band": cen["band"]},
         "findings": [{"check": f.check, "location": f.location, "value": f.value, "severity": f.severity,
@@ -365,25 +393,26 @@ with t_rev:
         "note": note,
     }
     st.download_button("Download audit record (JSON)", json.dumps(record, indent=2), "cardlens_review.json",
-                       "application/json")
+                       "application/json", disabled=match_ok == "No, I corrected it" and corrected_id is None)
 
 with t_how:
     st.graphviz_chart("""
 digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,filled", fillcolor="#1d1f27",
  fontcolor="white", color="#e8b931", fontname="Helvetica", fontsize=11]; edge [color="#999"];
  photo [label="Photo / scan"]; det [label="Detect + rectify\\n63×88 mm, 10 px/mm"];
- emb [label="Embedding\\nDINOv2 (or baseline)"]; ann [label="Vector index\\n(exact cosine search)"];
+ emb [label="Embedding\\nDINOv2 or traditional features"]; ann [label="Vector index\\n(exact cosine search)"];
+ ocr [label="OCR\\nname + card number"];
  meta [label="Card details\\nset · number · rarity", shape=cylinder]; rr [label="Re-rank\\ngeometric check"];
  ref [label="Reference image\\nof matched card"]; dfx [label="Defect checks\\ncentring · corners · edges · surface"];
  ui [label="Review\\nconfirm / reject"]; log [label="Download\\nreview JSON", shape=cylinder];
- photo->det->emb->ann->rr; meta->ann [style=dashed, label=" filters"]; rr->ref->dfx; det->dfx; rr->ui; dfx->ui->log;
+ photo->det->emb->ann->rr; det->ocr->rr; meta->ann [style=dashed, label=" filters"]; rr->ref->dfx; det->dfx; rr->ui; dfx->ui->log;
 }""")
     st.markdown("""
 OpenCV finds the card outline and flattens the photo to 630 × 880 pixels. That gives the measurements a scale of 10 pixels per millimetre.
 
-DINOv2 turns the image into a search vector on the CPU. You can switch to a basic search that uses colour, layout and a perceptual hash. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up.
+DINOv2 uses learned visual features to find similar cards, including changes in photo lighting and angle. Traditional image features compare colour, layout and a perceptual hash; they are simpler but less flexible. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up. OCR reads the name and card number when legible and gives matching catalogue details a small score bonus. If OCR cannot read the text, image search continues unchanged.
 
-The condition checks measure border widths, look for pale marks near corners and edges, and estimate corner shape. The app compares surfaces with a catalogue image only when the printed details line up; ECC then aligns the images. Otherwise, it checks for unusual colours in the photo. These are clues for a grader to review. The review tab lets you download the decisions as JSON.
+The condition checks measure border widths, look for pale marks near corners and edges, and estimate corner shape. The app compares surfaces with a catalogue image only when the printed details line up; ECC then aligns the images. Without a reliable reference, surface marks are not assessable. Estimated centering bands are guides, not final grades. A grader reviews the findings and catalogue choice before exporting decisions as JSON.
 
 This small catalogue uses exact cosine search. A larger collection could use pgvector or FAISS with HNSW, with card IDs shared across the search index and card details.
 """)

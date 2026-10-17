@@ -14,8 +14,9 @@ import numpy as np
 from .detect import CARD_H, CARD_W, PX_PER_MM
 
 # Published Ace front-centering bands, using the wider side of the ratio.
-ACE_CENTERING_BANDS = [(60, "10 Gem Mint"), (65, "9 Mint"), (70, "8 NM-Mint"), (75, "7 Near Mint"),
-                       (80, "6-4"), (85, "3-1")]
+ACE_CENTERING_BANDS = [(60, "10 band (≤60/40)"), (65, "9 band (≤65/35)"),
+                       (70, "8 band (≤70/30)"), (75, "7 band (≤75/25)"),
+                       (80, "6–4 band (≤80/20)"), (85, "3–1 band (≤85/15)")]
 NOMINAL_CORNER_RADIUS_MM = 3.0   # Approximate radius of a newly cut card corner.
 
 
@@ -82,7 +83,7 @@ def measure_centering(card_bgr: np.ndarray) -> dict:
     worst = max(lr, 100 - lr, tb, 100 - tb) if not (np.isnan(lr) or np.isnan(tb)) else float("nan")
     band = "Not assessable"
     if not np.isnan(worst):
-        band = next((g for lim, g in ACE_CENTERING_BANDS if worst < lim + 1e-9), "below 1")
+        band = next((g for lim, g in ACE_CENTERING_BANDS if worst < lim + 1e-9), "Outside listed bands")
     out.update(lr=lr, tb=tb, worst=worst, band=band, confidence=conf, px=w)
     return out
 

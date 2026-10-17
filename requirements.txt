@@ -3,6 +3,7 @@ opencv-python-headless>=4.9
 numpy>=1.26
 pandas>=2.1
 onnxruntime>=1.18
+rapidocr>=3.10
 huggingface_hub>=0.23
 requests>=2.31
 pillow>=10.0
