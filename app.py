@@ -1,8 +1,4 @@
-"""CardLens: card lookup and photo-based condition checks.
-
-Built by Ali (Farzad) Jamali for an Ace Grading and University of Salford
-KTP interview. This demo is not affiliated with Ace Grading.
-"""
+"""I built CardLens to explore how a photo can help identify a card and highlight details worth checking by eye."""
 from __future__ import annotations
 
 import hashlib
@@ -22,7 +18,7 @@ from cardlens.embed import BaselineEncoder, get_encoder
 from cardlens.synth import make_sample
 
 st.set_page_config(page_title="CardLens | card check", page_icon="🔎", layout="wide",
-                   initial_sidebar_state="collapsed")
+                   initial_sidebar_state="expanded")
 
 st.markdown("""
 <style>
@@ -45,10 +41,15 @@ SAMPLES = {
     "Pikachu · Base Set (1999)": "base1-58",
     "Gengar · Fossil (1999)": "base3-5",
     "Snorlax · Jungle (1999)": "base2-11",
-    "Pikachu · 151 (2023)": "sv3pt5-25",
-    "Bulbasaur · 151 (2023)": "sv3pt5-1",
 }
 DEFECTS = ["Off-centre", "Corner whitening", "Rounded corner", "Stain", "Edge wear"]
+SAMPLE_DEFAULTS = {
+    "base1-4": ["Off-centre"],
+    "base1-2": ["Corner whitening"],
+    "base1-58": ["Rounded corner"],
+    "base3-5": ["Stain"],
+    "base2-11": ["Edge wear"],
+}
 
 
 # Cached data and models
@@ -108,7 +109,7 @@ with st.sidebar:
     st.subheader("Search settings")
     enc_key = st.radio("Image search", ["dinov2s", "baseline"],
                        format_func=lambda k: {"dinov2s": "DINOv2 image model",
-                                              "baseline": "Colour + pHash (basic)"}[k],
+                                              "baseline": "Traditional image features (Colour + pHash)"}[k],
                        help="Try the image model or the simpler colour and pattern search.")
     use_rerank = st.toggle("Geometric re-ranking (ORB + RANSAC)", value=True,
                            help="Checks whether the printed layout lines up with each close match.")
@@ -120,13 +121,13 @@ with st.sidebar:
     st.divider()
     st.caption(f"{len(df)} cards from {df.set_name.nunique()} sets. Card details come from PokemonTCG.io. "
                "Images © Nintendo / Creatures / GAME FREAK / The Pokémon Company. "
-               "Interview demo by Ali (Farzad) Jamali; no Ace Grading affiliation.")
+               "A personal project by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
 # Page header
 st.markdown("""<div class="cl-hero"><h1>CardLens</h1>
 <p>Find a card and see what might need a closer look. Built by
 <a href="https://github.com/alifarzadjamali" target="_blank">Ali (Farzad) Jamali</a>
-for an Ace Grading and University of Salford KTP interview.</p></div>""", unsafe_allow_html=True)
+as a personal project.</p></div>""", unsafe_allow_html=True)
 st.write("")
 
 # Photo or sample
@@ -135,12 +136,13 @@ with tab_sample:
     c1, c2 = st.columns([1.1, 1])
     with c1:
         pick = st.selectbox("Card", list(SAMPLES.keys()))
-        chosen = st.multiselect("Add sample defects", DEFECTS, default=["Off-centre", "Corner whitening", "Stain"])
+        chosen = st.multiselect("Add sample defects", DEFECTS, default=SAMPLE_DEFAULTS[SAMPLES[pick]],
+                                key=f"defects-{SAMPLES[pick]}")
     with c2:
         bg = st.radio("Background", ["mat", "wood"], horizontal=True,
                       format_func=lambda b: {"mat": "Grading mat", "wood": "Desk"}[b])
-        seed = st.number_input("Random seed", 0, 999, 7, help="Changes stain position, tilt and lighting.")
         go = st.button("Generate photo & analyse", type="primary", width="stretch")
+    st.caption("Samples are simulated. The off-centre shift may be too small to flag, and surface marks need a well-matched reference. Pale borders can make whitening not assessable.")
     if go:
         cid = SAMPLES[pick]
         row = by_id.loc[cid]
@@ -149,8 +151,9 @@ with tab_sample:
             st.session_state.query = None
             st.error("Couldn't get that card image. Try another sample or upload a photo.")
         else:
+            seed = 7
             rng = np.random.default_rng(seed)
-            kw = dict(background=bg, seed=int(seed))
+            kw = dict(background=bg, seed=seed)
             if "Off-centre" in chosen:
                 kw["offcentre"] = (float(rng.choice([-1, 1]) * rng.uniform(1.0, 1.6)), float(rng.uniform(-0.8, 0.8)))
             if "Corner whitening" in chosen:
@@ -232,24 +235,31 @@ rep = analyse(det.card, det.mask, det.edge_visible, ref_bgr=ref, holo_hint=holo)
 timings["defect checks"] = time.perf_counter() - t0
 
 # Results
+flags = [f for f in rep.findings if f.severity in ("minor", "major")]
+review_key = hashlib.sha1(cv2.imencode(".jpg", query)[1].tobytes()).hexdigest()
+match_review = st.session_state.get(f"{review_key}-match", "Not reviewed yet")
+review_complete = (match_review in ("Yes", "No, I corrected it")
+                   and (match_review != "No, I corrected it" or st.session_state.get(f"{review_key}-correction"))
+                   and all(st.session_state.get(f"{review_key}-dec{i}", "Not reviewed yet") != "Not reviewed yet"
+                           for i in range(len(flags))))
 steps = ["① Detect & rectify", "② Embed", "③ Vector search", "④ Re-rank" if use_rerank else "④ (re-rank off)",
-         "⑤ Defect checks", "⑥ Grader review"]
+         "⑤ Defect checks"]
 st.markdown("".join(f'<span class="cl-step done">{s}</span>' for s in steps), unsafe_allow_html=True)
+st.markdown(f'<span class="cl-step {"done" if review_complete else ""}">⑥ {"Grader review complete" if review_complete else "Awaiting grader review"}</span>', unsafe_allow_html=True)
 st.caption(f"Photo: {st.session_state.source} · outline: {det.method} · search: {enc.name} · "
            + " · ".join(f"{k_} {v * 1000:.0f} ms" for k_, v in timings.items()))
 if not det.edge_visible:
     st.warning("I couldn't find the card outline, so I treated the whole image as the card. For corner checks, try one card on a plain background.")
 
-flags = [f for f in rep.findings if f.severity in ("minor", "major")]
 cen = rep.centering
 m1, m2, m3, m4 = st.columns(4)
 m1.metric("Closest catalogue match", by_id.loc[top[0]]["name"] if top else "n/a",
-          f"{top[1]:.2f} cosine" if top else None, delta_color="off")
-lr = "n/a" if np.isnan(cen["lr"]) else f"{cen['lr']:.0f}/{100 - cen['lr']:.0f}"
-tb = "n/a" if np.isnan(cen["tb"]) else f"{cen['tb']:.0f}/{100 - cen['tb']:.0f}"
+          f"{top[3]:.2f} match score" if top else None, delta_color="off")
+lr = "Not assessable" if np.isnan(cen["lr"]) else f"{cen['lr']:.0f}/{100 - cen['lr']:.0f}"
+tb = "Not assessable" if np.isnan(cen["tb"]) else f"{cen['tb']:.0f}/{100 - cen['tb']:.0f}"
 m2.metric("Centering L/R · T/B", f"{lr} · {tb}")
-m3.metric("Centering cap (Ace front scale)", cen["band"])
-m4.metric("Points of interest", f"{len(flags)}", f"{sum(f.severity == 'major' for f in flags)} major",
+m3.metric("Estimated centering band", cen["band"])
+m4.metric("Findings to review", f"{len(flags)}", f"{sum(f.severity == 'major' for f in flags)} High-priority",
           delta_color="inverse" if flags else "off")
 
 c1, c2, c3 = st.columns(3)
@@ -263,17 +273,18 @@ with c3:
              width="stretch")
 
 # More detail
-t_sim, t_def, t_rev, t_how = st.tabs(["Similar cards", "Defect report", "Grader review", "How it works"])
+t_sim, t_def, t_rev, t_how = st.tabs(["Similar cards", "Defect report",
+                                     "Grader review complete" if review_complete else "Awaiting grader review", "How it works"])
 
 with t_sim:
     if not ranked:
         st.warning("No catalogue cards match the current filters.")
     else:
-        s1, s2 = ranked[0][1], (ranked[1][1] if len(ranked) > 1 else 0)
+        s1, s2 = ranked[0][3], (ranked[1][3] if len(ranked) > 1 else 0)
         conf = "High" if s1 >= 0.80 and s1 - s2 >= 0.03 else ("Medium" if s1 >= 0.65 else "Low")
         same_name = len(ranked) > 1 and by_id.loc[ranked[0][0]]["name"] == by_id.loc[ranked[1][0]]["name"]
-        st.markdown(f"Search signal: **{conf}** · top match {s1:.3f}, gap to next {s1 - s2:+.3f}")
-        st.caption("This compares catalogue images; it isn't a probability. Check the set and card number before trusting a surface comparison.")
+        st.markdown(f"Match signal (heuristic): **{conf}** · top match {s1:.3f}, gap to next {s1 - s2:+.3f}")
+        st.caption("This score combines image similarity and, when enabled, geometric agreement. It isn't a probability. Check the set and card number before trusting a surface comparison.")
         if same_name and s1 - s2 < 0.05:
             st.warning("These printings look very similar. Check the set symbol and card number in the strips below.")
         if st.session_state.get("true_id"):
@@ -287,11 +298,11 @@ with t_sim:
                 thumb = fetch_image(cid, r.image_small)
                 st.image(to_rgb(thumb) if thumb is not None else r.image_small, width="stretch")
                 st.markdown(f"**{i + 1}. {r['name']}**")
-                st.progress(float(np.clip(sim, 0, 1)))
-                geo_txt = f" · {geo} geo-inliers" if geo is not None else ""
-                st.markdown(f"""<div class="cl-card-meta">cos {sim:.3f}{geo_txt}<br>
-                {r.set_name} · #{r.number}/{r.set_total}<br>{r.rarity or 'n/a'} · {r.release_date[:4]}<br>
-                <span class="cl-small">{r.series} series · art: {r.artist or 'n/a'} · id {cid}</span></div>""",
+                st.progress(float(np.clip(score, 0, 1)))
+                geo_txt = f" · {geo} geometrically consistent matches" if geo is not None else ""
+                st.markdown(f"""<div class="cl-card-meta">Match score: {score:.3f} · cosine: {sim:.3f}{geo_txt}<br>
+                Set: {r.set_name} · Card number: {r.number}/{r.set_total}<br>Rarity: {r.rarity or 'n/a'} · {r.release_date[:4]}<br>
+                <span class="cl-small">Illustrator: {r.artist or 'n/a'} · Catalogue ID: {cid}</span></div>""",
                             unsafe_allow_html=True)
         st.markdown("##### Check the small print: set symbol, number and copyright line")
         strip_cols = st.columns(4)
@@ -305,38 +316,50 @@ with t_sim:
 with t_def:
     st.markdown("Things worth checking on the card. These measurements come from the photo and aren't a grade.")
     if top is None or ref is None:
-        st.warning("The card match wasn't clear enough for a reference comparison. The surface check is looking for unusual colours and may pick up artwork or lighting.")
-    rows = [{"Check": f.check, "Location": f.location, "Measured": f.value, "Severity": f.severity, "Detail": f.detail}
+        st.warning("The card match wasn't clear enough for a reference comparison. Surface marks are not assessable from local colour alone; the heatmap may include artwork or lighting.")
+    rows = [{"Check": f.check, "Location": f.location, "Measured": f.value,
+             "Severity": {"major": "High-priority", "minor": "Review", "ok": "No flag", "n/a": "Not assessable"}[f.severity],
+             "Detail": f.detail}
             for f in rep.findings]
     tbl = pd.DataFrame(rows)
-    colours = {"ok": "#1f6f43", "minor": "#b7791f", "major": "#b42318", "n/a": "#555"}
+    colours = {"No flag": "#1f6f43", "Review": "#b7791f", "High-priority": "#b42318", "Not assessable": "#555"}
     st.dataframe(tbl.style.map(lambda v: f"background-color:{colours.get(v, '')}; color:white" if v in colours else "",
                                subset=["Severity"]), width="stretch", hide_index=True)
     truth = st.session_state.get("truth")
     if truth:
         st.caption("Added to this sample photo: " + json.dumps(
             {k_: v for k_, v in truth.items() if v not in (None, [], (0.0, 0.0))}, default=str))
-    st.caption("Centering bands follow Ace's published front-centering limits (10 ≤ 60/40, 9 ≤ 65/35, 8 ≤ 70/30, "
+    st.caption("Estimated centering bands are photo-based guides, not final grades. Bands follow Ace's published front-centering limits (10 ≤ 60/40, 9 ≤ 65/35, 8 ≤ 70/30, "
                "7 ≤ 75/25). Corner rounding is the equivalent radius of material missing vs. a sharp corner; "
                "a new card's die-cut radius is ≈3 mm.")
 
 with t_rev:
-    st.markdown("Confirm or reject each flag, then download your review as JSON. Those decisions could be used as training labels later.")
+    st.markdown("Review each finding and the catalogue match, then download your decisions as JSON. A grader makes the final call.")
     decisions = {}
     for i, f in enumerate(flags):
-        decisions[i] = st.radio(f"{f.check} · {f.location} · {f.value}", ["Confirm", "Reject (false alarm)", "Unsure"],
-                                horizontal=True, key=f"dec{i}")
+        decisions[i] = st.radio(f"{f.check} · {f.location} · {f.value}",
+                                ["Not reviewed yet", "Confirm", "Reject (false alarm)", "Unsure"],
+                                horizontal=True, key=f"{review_key}-dec{i}")
     if not flags:
         st.success("Nothing was flagged. Still check the whole card before making a decision.")
-    match_ok = st.radio("Catalogue match correct?", ["Yes", "No, I corrected it", "Unsure"], horizontal=True)
+    match_ok = st.radio("Catalogue match correct?", ["Not reviewed yet", "Yes", "No, I corrected it", "Unsure"],
+                        horizontal=True, key=f"{review_key}-match")
+    corrected_id = None
+    if match_ok == "No, I corrected it":
+        choices = df.card_id.tolist()
+        corrected_id = st.selectbox("Correct catalogue card", choices, index=None,
+                                    format_func=lambda cid: f"{by_id.loc[cid]['name']} · {by_id.loc[cid].set_name} · #{by_id.loc[cid].number}/{by_id.loc[cid].set_total} · {cid}",
+                                    placeholder="Select the correct card", key=f"{review_key}-correction")
     note = st.text_input("Grader note", "")
     record = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "image_sha1": hashlib.sha1(cv2.imencode(".jpg", query)[1].tobytes()).hexdigest(),
+        "image_sha1": review_key,
         "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "cardlens-demo-0.1"},
-        "match": {"card_id": top[0] if top else None, "cosine": round(top[1], 4) if top else None, "grader": match_ok},
+        "match": {"card_id": top[0] if top else None, "cosine": round(top[1], 4) if top else None,
+                  "match_score": round(top[3], 4) if top else None, "grader": match_ok,
+                  "corrected_card_id": corrected_id},
         "centering": {"lr": None if np.isnan(cen["lr"]) else round(cen["lr"], 1),
-                      "tb": None if np.isnan(cen["tb"]) else round(cen["tb"], 1), "cap": cen["band"]},
+                      "tb": None if np.isnan(cen["tb"]) else round(cen["tb"], 1), "estimated_band": cen["band"]},
         "findings": [{"check": f.check, "location": f.location, "value": f.value, "severity": f.severity,
                       "grader": decisions.get(i)} for i, f in enumerate(flags)],
         "note": note,

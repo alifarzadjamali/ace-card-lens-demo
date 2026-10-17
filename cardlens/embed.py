@@ -18,7 +18,7 @@ def _l2(x: np.ndarray) -> np.ndarray:
 
 
 class BaselineEncoder:
-    name = "Baseline (colour + pHash)"
+    name = "Traditional image features (Colour + pHash)"
     key = "baseline"
 
     def encode(self, cards_bgr: list[np.ndarray]) -> np.ndarray:

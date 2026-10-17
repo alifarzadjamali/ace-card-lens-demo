@@ -50,7 +50,7 @@ def _border_width(card_lab: np.ndarray, side: str) -> tuple[float, float]:
         band = card_lab[:, int(0.3 * W):int(0.7 * W)]
         prof = band.mean(1) if side == "top" else band.mean(1)[::-1]
         span = H
-    prof = prof[: int(0.2 * span)]
+    prof = prof[: int(0.08 * span)]
     skip = int(0.012 * span)                      # Skip the cut edge and nearby background bleed.
     ref = np.median(prof[skip: skip + max(4, int(0.012 * span))], 0)
     d = np.linalg.norm(prof - ref, axis=1)
@@ -62,7 +62,8 @@ def _border_width(card_lab: np.ndarray, side: str) -> tuple[float, float]:
         if run >= 4:
             edge = i - 3
             strength = float(np.clip((d[edge:edge + 6].mean() - thr) / 30 + 0.5, 0, 1))
-            return float(edge), strength
+            if strength >= 0.3:
+                return float(edge), strength
     return float("nan"), 0.0
 
 
@@ -75,11 +76,11 @@ def measure_centering(card_bgr: np.ndarray) -> dict:
     def ratio(a, b):
         if np.isnan(a) or np.isnan(b) or a + b == 0:
             return float("nan")
-        return 100.0 * max(a, b) / (a + b)
+        return 100.0 * a / (a + b)
 
     lr, tb = ratio(w["left"][0], w["right"][0]), ratio(w["top"][0], w["bottom"][0])
-    worst = np.nanmax([lr, tb]) if not (np.isnan(lr) and np.isnan(tb)) else float("nan")
-    band = "n/a"
+    worst = max(lr, 100 - lr, tb, 100 - tb) if not (np.isnan(lr) or np.isnan(tb)) else float("nan")
+    band = "Not assessable"
     if not np.isnan(worst):
         band = next((g for lim, g in ACE_CENTERING_BANDS if worst < lim + 1e-9), "below 1")
     out.update(lr=lr, tb=tb, worst=worst, band=band, confidence=conf, px=w)
@@ -87,7 +88,7 @@ def measure_centering(card_bgr: np.ndarray) -> dict:
 
 
 def _fmt_ratio(r):
-    return "n/a" if np.isnan(r) else f"{r:.0f}/{100 - r:.0f}"
+    return "Not assessable" if np.isnan(r) else f"{r:.0f}/{100 - r:.0f}"
 
 
 # Corners and edges
@@ -129,12 +130,12 @@ def check_corners_edges(card_bgr: np.ndarray, mask: np.ndarray, edge_visible: bo
         patch_band = edge_band[y:y + c, x:x + c]
         patch_white = white[y:y + c, x:x + c] & patch_band
         frac = patch_white.sum() / max(1, patch_band.sum())
-        if border_is_white:
-            sev, detail = "n/a", "The pale border hides whitening. Check it under angled light."
+        if border_is_white or not edge_visible or patch_band.sum() < 0.1 * patch_band.size:
+            sev, detail = "n/a", "The border is not clear enough to assess whitening."
         else:
             sev = "ok" if frac < 0.04 else ("minor" if frac < 0.12 else "major")
             detail = f"{100 * frac:.1f}% of border pixels read white"
-        findings.append(Finding("Corner whitening", name, f"{100 * frac:.1f}%", sev, detail, (x, y, c, c)))
+        findings.append(Finding("Corner whitening", name, "Not assessable" if sev == "n/a" else f"{100 * frac:.1f}%", sev, detail, (x, y, c, c)))
 
         if edge_visible:
             missing = c * c - inside[y:y + c, x:x + c].sum()
@@ -154,11 +155,11 @@ def check_corners_edges(card_bgr: np.ndarray, mask: np.ndarray, edge_visible: bo
     for name, (x, y, w, h) in edges.items():
         b = edge_band[y:y + h, x:x + w]
         frac = (white[y:y + h, x:x + w] & b).sum() / max(1, b.sum())
-        if border_is_white:
+        if border_is_white or not edge_visible or b.sum() < 0.5 * b.size:
             sev = "n/a"
         else:
             sev = "ok" if frac < 0.02 else ("minor" if frac < 0.06 else "major")
-        findings.append(Finding("Edge wear", name, f"{100 * frac:.1f}%", sev, "white chipping along the cut edge", (x, y, w, h)))
+        findings.append(Finding("Edge wear", name, "Not assessable" if sev == "n/a" else f"{100 * frac:.1f}%", sev, "white chipping along the cut edge", (x, y, w, h)))
     return findings
 
 
@@ -242,7 +243,7 @@ def check_surface(card_bgr: np.ndarray, ref_bgr: np.ndarray | None, holo_hint: b
     min_area = int(1.0 * PX_PER_MM * PX_PER_MM)      # ignore < 1 mm^2
     blobs = sorted([stats[i] for i in range(1, n) if stats[i, cv2.CC_STAT_AREA] >= min_area],
                    key=lambda s: -s[cv2.CC_STAT_AREA])[:6]
-    for s in blobs:
+    for s in blobs if ref_bgr is not None else []:
         x, y, w, h, a = (int(v) for v in s)
         area_mm2 = a / PX_PER_MM ** 2
         sev = "minor" if area_mm2 < 8 else "major"
@@ -250,7 +251,8 @@ def check_surface(card_bgr: np.ndarray, ref_bgr: np.ndarray | None, holo_hint: b
         findings.append(Finding("Surface mark / stain", loc, f"{area_mm2:.1f} mm²", sev,
                                 "differs from reference" if ref_bgr is not None else "local colour anomaly", (x, y, w, h)))
     if not findings:
-        findings.append(Finding("Surface mark / stain", "whole card", "none found", "ok", mode))
+        findings.append(Finding("Surface mark / stain", "whole card", "Not assessable" if ref_bgr is None else "none found",
+                                "n/a" if ref_bgr is None else "ok", mode))
     if holo_hint and ref_bgr is not None:
         for f in findings:
             f.detail += ". Foil glare can look like a mark."
@@ -266,10 +268,12 @@ def analyse(card_bgr, mask, edge_visible, ref_bgr=None, holo_hint=False) -> Defe
     rep = DefectReport()
     cen = measure_centering(card_bgr)
     rep.centering = cen
-    sev = "n/a" if np.isnan(cen["worst"]) else ("ok" if cen["worst"] < 60 else ("minor" if cen["worst"] < 70 else "major"))
-    rep.findings.append(Finding("Centering", "left/right", _fmt_ratio(cen["lr"]), sev,
+    def centering_severity(value):
+        return "n/a" if np.isnan(value) else ("ok" if max(value, 100 - value) < 60 else ("minor" if max(value, 100 - value) < 70 else "major"))
+
+    rep.findings.append(Finding("Centering", "left/right", _fmt_ratio(cen["lr"]), centering_severity(cen["lr"]),
                                 f"L {cen['left_mm']:.1f} mm · R {cen['right_mm']:.1f} mm"))
-    rep.findings.append(Finding("Centering", "top/bottom", _fmt_ratio(cen["tb"]), sev,
+    rep.findings.append(Finding("Centering", "top/bottom", _fmt_ratio(cen["tb"]), centering_severity(cen["tb"]),
                                 f"T {cen['top_mm']:.1f} mm · B {cen['bottom_mm']:.1f} mm"))
     rep.findings += check_corners_edges(card_bgr, mask, edge_visible)
     surf, heat, mode = check_surface(card_bgr, ref_bgr, holo_hint, mask)

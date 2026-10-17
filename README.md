@@ -12,7 +12,7 @@ Open the demo and click **Generate photo & analyse**. It starts with a catalogue
 
 Got a card handy? Upload a photo or use your camera. One card on a plain background works best. You'll see the detected outline, a straightened view, a surface difference map and a shortlist of possible matches. The **Grader review** tab lets you confirm or reject the flags and download a JSON record. The app keeps uploaded photos in the current session; it doesn't save them to a database.
 
-The sample is an artificial photo. Real wear and damage may look different.
+The five sample presets cover off-centre printing, corner whitening, corner rounding, stains and edge wear. Tests check the five card outlines and the whitening, rounding, stain and edge-wear examples. The off-centre shift is subtle and may not be flagged; a positive detection is not forced. A reference image must match closely before the app flags a surface mark. Whitening on pale borders and measurements without a clear card edge are shown as not assessable. Real wear and damage may look different.
 
 ## How it works
 

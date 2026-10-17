@@ -24,6 +24,7 @@ _session.headers["User-Agent"] = "CardLens-demo/1.0 (KTP interview prototype)"
 
 def load_catalogue() -> pd.DataFrame:
     df = pd.read_csv(DATA / "catalogue.csv", dtype=str).fillna("")
+    df["set_name"] = df["set_name"].replace({"Base": "Base Set"})
     df["label"] = df["name"] + " · " + df["set_name"] + " " + df["number"] + "/" + df["set_total"]
     return df
 
