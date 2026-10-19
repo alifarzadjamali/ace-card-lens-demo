@@ -1,4 +1,4 @@
-"""I built CardLens to explore how a photo can help identify a card and highlight details worth checking by eye."""
+"""I built ace-vision-demo to explore how a photo can help identify a card and highlight details worth checking by eye."""
 from __future__ import annotations
 
 import hashlib
@@ -11,13 +11,13 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from cardlens.catalogue import VectorIndex, fetch_image, load_catalogue, ocr_agreement, read_card_text, rerank
-from cardlens.defects import analyse
-from cardlens.detect import draw_quad, detect_card
-from cardlens.embed import BaselineEncoder, get_encoder
-from cardlens.synth import make_sample
+from ace_vision_demo.catalogue import VectorIndex, fetch_image, load_catalogue, ocr_agreement, read_card_text, rerank
+from ace_vision_demo.defects import analyse
+from ace_vision_demo.detect import draw_quad, detect_card
+from ace_vision_demo.embed import BaselineEncoder, get_encoder
+from ace_vision_demo.synth import make_sample
 
-st.set_page_config(page_title="CardLens | card check", page_icon="🔎", layout="wide",
+st.set_page_config(page_title="ace-vision-demo | card check", page_icon="🔎", layout="wide",
                    initial_sidebar_state="expanded")
 
 st.markdown("""
@@ -133,7 +133,7 @@ with st.sidebar:
                "A personal project by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
 # Page header
-st.markdown("""<div class="cl-hero"><h1>CardLens</h1>
+st.markdown("""<div class="cl-hero"><h1>ace-vision-demo</h1>
 <p>Find a card and see what might need a closer look. Built by
 <a href="https://github.com/alifarzadjamali" target="_blank">Ali (Farzad) Jamali</a>
 as a personal project.</p></div>""", unsafe_allow_html=True)
@@ -381,7 +381,7 @@ with t_rev:
     record = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "image_sha1": review_key,
-        "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "cardlens-demo-0.2"},
+        "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "ace-vision-demo-0.2"},
         "match": {"card_id": top[0] if top else None, "cosine": round(top[1], 4) if top else None,
                   "match_score": round(top[3], 4) if top else None, "grader": match_ok,
                   "corrected_card_id": corrected_id, "ocr_evidence": ocr_evidence.get(top[0]) if top else None},
@@ -392,7 +392,7 @@ with t_rev:
                       "grader": decisions.get(i)} for i, f in enumerate(flags)],
         "note": note,
     }
-    st.download_button("Download audit record (JSON)", json.dumps(record, indent=2), "cardlens_review.json",
+    st.download_button("Download audit record (JSON)", json.dumps(record, indent=2), "ace-vision-demo_review.json",
                        "application/json", disabled=match_ok == "No, I corrected it" and corrected_id is None)
 
 with t_how:

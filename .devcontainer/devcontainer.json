@@ -1,5 +1,5 @@
 {
-  "name": "Python 3",
+  "name": "ace-vision-demo",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bookworm",
   "customizations": {
@@ -23,7 +23,7 @@
   },
   "portsAttributes": {
     "8501": {
-      "label": "Application",
+      "label": "ace-vision-demo",
       "onAutoForward": "openPreview"
     }
   },

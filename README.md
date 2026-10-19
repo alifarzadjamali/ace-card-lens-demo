@@ -1,10 +1,10 @@
-# CardLens
+# ace-vision-demo
 
-Take a photo of a trading card. CardLens finds close matches in a small Pokémon card catalogue and marks spots you might want to check, such as white corners, worn edges or uneven centring. You can review each flag and download your notes.
+Take a photo of a trading card. ace-vision-demo finds close matches in a small Pokémon card catalogue and marks spots you might want to check, such as white corners, worn edges or uneven centring. You can review each flag and download your notes.
 
 I built this for my Ace Grading and University of Salford KTP interview. It's a working demo, not an Ace Grading product or a card grading service. The checks can be fooled by glare, sleeves and a bad photo. A grader still makes the call.
 
-[Open the demo](https://ace-card-lens-demo.streamlit.app/) or use the [QR code](assets/ace-card-lens-demo-qr.png).
+[Open the demo](https://ace-vision-demo.streamlit.app/) or use the [QR code](assets/ace-vision-demo-qr.png).
 
 ## Give it a go
 
@@ -48,18 +48,18 @@ python scripts/build_catalogue.py base1 base2 base3 base4 sv3pt5 swsh7   # any P
 
 ## Put up your own copy
 
-This demo runs on [Streamlit Community Cloud](https://share.streamlit.io). Connect your GitHub repo, choose `main` and `app.py`, and select Python 3.12. Check the new link in a private browser window, then try the sample and an upload. Open it before a presentation in case the app has gone to sleep.
+This demo runs on [Streamlit Community Cloud](https://share.streamlit.io). For this project, connect `alifarzadjamali/ace-vision-demo`, choose `main` and `app.py`, select Python 3.12, and set the custom subdomain to `ace-vision-demo`. For your own copy, connect your fork and choose an available subdomain. Check the new link in a private browser window, then try the sample and an upload. Open it before a presentation in case the app has gone to sleep.
 
 ## Where things live
 
 | File | What it does |
 | --- | --- |
 | `app.py` | The Streamlit screen and review flow |
-| `cardlens/detect.py` | Finds and straightens the card |
-| `cardlens/embed.py` | Turns the card image into a search vector |
-| `cardlens/catalogue.py` | Loads card details and images, searches the index and checks shortlisted matches |
-| `cardlens/defects.py` | Measures centring, corners, edges and surface marks |
-| `cardlens/synth.py` | Makes sample photos with known defects |
+| `ace_vision_demo/detect.py` | Finds and straightens the card |
+| `ace_vision_demo/embed.py` | Turns the card image into a search vector |
+| `ace_vision_demo/catalogue.py` | Loads card details and images, searches the index and checks shortlisted matches |
+| `ace_vision_demo/defects.py` | Measures centring, corners, edges and surface marks |
+| `ace_vision_demo/synth.py` | Makes sample photos with known defects |
 | `scripts/` | Rebuilds the catalogue and indexes |
 
 The card details come from the public [PokemonTCG data repository](https://github.com/PokemonTCG/pokemon-tcg-data). The card images are served from PokemonTCG.io and belong to Nintendo, Creatures, GAME FREAK and The Pokémon Company. They're used here for a non-commercial interview demo and aren't stored in this GitHub repo. Public access to an image isn't a licence to reuse it elsewhere. Please upload only photos you're allowed to share.

@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from cardlens.catalogue import VectorIndex, load_catalogue  # noqa: E402
-from cardlens.embed import get_encoder  # noqa: E402
+from ace_vision_demo.catalogue import VectorIndex, load_catalogue  # noqa: E402
+from ace_vision_demo.embed import get_encoder  # noqa: E402
 
 if __name__ == "__main__":
     df = load_catalogue()

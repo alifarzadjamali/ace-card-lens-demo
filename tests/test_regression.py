@@ -4,13 +4,13 @@ from types import SimpleNamespace
 import cv2
 import numpy as np
 
-from cardlens.catalogue import fetch_image, load_catalogue, ocr_agreement, read_card_text
-from cardlens.defects import analyse, measure_centering
-from cardlens.detect import CARD_H, CARD_W, detect_card
-from cardlens.synth import make_sample
+from ace_vision_demo.catalogue import fetch_image, load_catalogue, ocr_agreement, read_card_text
+from ace_vision_demo.defects import analyse, measure_centering
+from ace_vision_demo.detect import CARD_H, CARD_W, detect_card
+from ace_vision_demo.synth import make_sample
 
 
-class CardLensRegressionTests(unittest.TestCase):
+class AceVisionDemoRegressionTests(unittest.TestCase):
     def test_pikachu_outer_border_is_used(self):
         row = load_catalogue().set_index("card_id").loc["base1-58"]
         image = fetch_image("base1-58", row.image_small)

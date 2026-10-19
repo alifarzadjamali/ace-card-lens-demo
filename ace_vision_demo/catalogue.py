@@ -21,7 +21,7 @@ import requests
 DATA = Path(__file__).resolve().parents[1] / "data"
 CACHE = DATA / "img_cache"
 _session = requests.Session()
-_session.headers["User-Agent"] = "CardLens-demo/1.0 (KTP interview prototype)"
+_session.headers["User-Agent"] = "ace-vision-demo/1.0 (KTP interview prototype)"
 
 
 def load_catalogue() -> pd.DataFrame:
