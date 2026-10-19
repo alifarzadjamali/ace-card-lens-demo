@@ -4,9 +4,7 @@ Take a photo of a trading card. ace-vision-demo finds close matches in a small P
 
 I built this for my Ace Grading and University of Salford KTP interview. It's a working demo, not an Ace Grading product or a card grading service. The checks can be fooled by glare, sleeves and a bad photo. A grader still makes the call.
 
-[Open the demo](https://ace-card-lens-demo.streamlit.app/) or use the [QR code](assets/ace-vision-demo-qr.png).
-
-The app is named `ace-vision-demo`; its current hosted address still uses the original Streamlit subdomain.
+[Open the demo](https://ace-vision-demo.streamlit.app/) or use the [QR code](assets/ace-vision-demo-qr.png).
 
 ## Give it a go
 
