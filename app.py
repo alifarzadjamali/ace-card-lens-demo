@@ -18,7 +18,7 @@ from ace_vision_demo.embed import BaselineEncoder, get_encoder
 from ace_vision_demo.synth import make_sample
 
 st.set_page_config(page_title="ace-vision-demo | card check", page_icon="🔎", layout="wide",
-                   initial_sidebar_state="expanded")
+                   initial_sidebar_state="collapsed")
 
 st.markdown("""
 <style>
@@ -44,7 +44,7 @@ SAMPLES = {
 }
 DEFECTS = ["Off-centre", "Corner whitening", "Rounded corner", "Stain", "Edge wear"]
 SAMPLE_DEFAULTS = {
-    "base1-4": ["Off-centre"],
+    "base1-4": ["Off-centre", "Rounded corner", "Stain"],
     "base1-2": ["Corner whitening"],
     "base1-58": ["Rounded corner"],
     "base3-5": ["Stain"],
