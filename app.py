@@ -1,4 +1,4 @@
-"""I built ace-vision-demo to explore how a photo can help identify a card and highlight details worth checking by eye."""
+"""I built AceVision to explore how a photo can help identify a card and highlight details worth checking by eye."""
 from __future__ import annotations
 
 import hashlib
@@ -17,23 +17,12 @@ from ace_vision_demo.detect import draw_quad, detect_card
 from ace_vision_demo.embed import BaselineEncoder, get_encoder
 from ace_vision_demo.synth import make_sample
 
-st.set_page_config(page_title="ace-vision-demo | card check", page_icon="🔎", layout="wide",
+st.set_page_config(page_title="AceVision | Inspection studio", page_icon="🔎", layout="wide",
                    initial_sidebar_state="collapsed")
 
-st.markdown("""
-<style>
-.block-container {padding-top: 1.4rem; max-width: 1250px;}
-.cl-hero h1 {font-size: 1.9rem; margin: 0; letter-spacing: -0.01em;}
-.cl-hero p {opacity: .75; margin: .2rem 0 0 0;}
-.cl-step {display:inline-block; padding:.18rem .6rem; margin:.15rem .25rem .15rem 0; border-radius:999px;
-          border:1px solid rgba(232,185,49,.45); font-size:.8rem;}
-.cl-step.done {background: rgba(232,185,49,.16);}
-.cl-badge {padding: .1rem .5rem; border-radius: 6px; font-size: .78rem; font-weight: 600;}
-.sev-ok {background:#1f6f43; color:#fff;} .sev-minor {background:#b7791f; color:#fff;}
-.sev-major {background:#b42318; color:#fff;} .sev-na {background:#555; color:#fff;}
-.cl-card-meta {font-size:.82rem; line-height:1.35; opacity:.9}
-.cl-small {font-size:.8rem; opacity:.7}
-</style>""", unsafe_allow_html=True)
+from ace_vision_demo.ui import apply_style, hero, section, empty_state
+
+apply_style()
 
 SAMPLES = {
     "Charizard · Base Set (1999)": "base1-4",
@@ -133,16 +122,13 @@ with st.sidebar:
                "A personal project by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
 # Page header
-st.markdown("""<div class="cl-hero"><h1>ace-vision-demo</h1>
-<p>Find a card and see what might need a closer look. Built by
-<a href="https://github.com/alifarzadjamali" target="_blank">Ali (Farzad) Jamali</a>
-as a personal project.</p></div>""", unsafe_allow_html=True)
-st.write("")
+hero(len(df), df.set_name.nunique())
+section("01", "Bring a card into focus", "Choose a sample, upload a photo, or use your camera.")
 
 # Photo or sample
 tab_sample, tab_upload, tab_cam = st.tabs(["Try a sample", "Upload a photo", "Use camera"])
 with tab_sample:
-    c1, c2 = st.columns([1.1, 1])
+    c1, c2, preview = st.columns([1.25, 1, .65], gap="large")
     with c1:
         pick = st.selectbox("Card", list(SAMPLES.keys()))
         chosen = st.multiselect("Add sample defects", DEFECTS, default=SAMPLE_DEFAULTS[SAMPLES[pick]],
@@ -151,6 +137,12 @@ with tab_sample:
         bg = st.radio("Background", ["mat", "wood"], horizontal=True,
                       format_func=lambda b: {"mat": "Grading mat", "wood": "Desk"}[b])
         go = st.button("Generate photo & analyse", type="primary", width="stretch")
+    with preview:
+        sample_row = by_id.loc[SAMPLES[pick]]
+        sample_image = fetch_image(SAMPLES[pick], sample_row.image_small)
+        if sample_image is not None:
+            st.image(to_rgb(sample_image), width=120)
+        st.caption("CATALOGUE REFERENCE")
     st.caption("Samples are simulated. The off-centre shift may be too small to flag, and surface marks need a well-matched reference. Pale borders can make whitening not assessable.")
     if go:
         cid = SAMPLES[pick]
@@ -193,7 +185,7 @@ with tab_cam:
                                 cam_id=hashlib.md5(shot.getvalue()).hexdigest())
 
 if "query" not in st.session_state or st.session_state.query is None:
-    st.info("Pick a sample and press **Generate photo & analyse**, or upload a card photo.")
+    empty_state()
     st.stop()
 
 # Analyse the card
@@ -202,6 +194,13 @@ timings = {}
 t0 = time.perf_counter()
 det = detect_card(query)
 timings["detect + rectify"] = time.perf_counter() - t0
+
+if not det.edge_visible:
+    st.warning("We couldn't detect the card outline. Please try another photo.")
+    st.markdown("Place the card flat on a plain, contrasting background with all four corners visible. "
+                "Keep your hands outside the card's edges, avoid glare, and leave a little space around the card.")
+    st.caption("Analysis stopped. Upload a new photo or take another one using the camera tab above.")
+    st.stop()
 
 enc, enc_err = encoder(enc_key)
 if enc_err:
@@ -256,6 +255,7 @@ rep = analyse(det.card, det.mask, det.edge_visible, ref_bgr=ref, holo_hint=holo)
 timings["defect checks"] = time.perf_counter() - t0
 
 # Results
+section("02", "The inspection desk", "Identification and condition signals, ready for a closer look.")
 flags = [f for f in rep.findings if f.severity in ("minor", "major")]
 review_key = hashlib.sha1(cv2.imencode(".jpg", query)[1].tobytes()).hexdigest()
 match_review = st.session_state.get(f"{review_key}-match", "Not reviewed yet")
@@ -267,10 +267,9 @@ steps = ["① Detect & rectify", "② Embed", "③ Vector search", "④ Re-rank"
          "⑤ OCR", "⑥ Defect checks"]
 st.markdown("".join(f'<span class="cl-step done">{s}</span>' for s in steps), unsafe_allow_html=True)
 st.markdown(f'<span class="cl-step {"done" if review_complete else ""}">⑦ {"Grader review complete" if review_complete else "Awaiting grader review"}</span>', unsafe_allow_html=True)
-st.caption(f"Photo: {st.session_state.source} · outline: {det.method} · search: {enc.name} · "
+with st.expander("Processing details & timings"):
+    st.caption(f"Photo: {st.session_state.source} · outline: {det.method} · search: {enc.name} · "
            + " · ".join(f"{k_} {v * 1000:.0f} ms" for k_, v in timings.items()))
-if not det.edge_visible:
-    st.warning("I couldn't find the card outline, so I treated the whole image as the card. For corner checks, try one card on a plain background.")
 
 cen = rep.centering
 m1, m2, m3, m4 = st.columns(4)
@@ -279,21 +278,25 @@ m1.metric("Closest catalogue match", by_id.loc[top[0]]["name"] if top else "n/a"
 lr = "Not assessable" if np.isnan(cen["lr"]) else f"{cen['lr']:.0f}/{100 - cen['lr']:.0f}"
 tb = "Not assessable" if np.isnan(cen["tb"]) else f"{cen['tb']:.0f}/{100 - cen['tb']:.0f}"
 m2.metric("Centering L/R · T/B", f"{lr} · {tb}")
-m3.metric("Estimated centering band", cen["band"])
+m3.metric("Estimated centring band", cen["band"].split(" (")[0], "Photo-based estimate", delta_color="off")
 m4.metric("Findings to review", f"{len(flags)}", f"{sum(f.severity == 'major' for f in flags)} High-priority",
           delta_color="inverse" if flags else "off")
 
 c1, c2, c3 = st.columns(3)
-with c1:
+with c1, st.container(key="inspection_capture"):
+    st.markdown('<div class="cl-panel-label"><span>01 / CAPTURE</span> Detected outline</div>', unsafe_allow_html=True)
     st.image(to_rgb(draw_quad(query, det.quad)), caption="Input photo + detected card outline", width="stretch")
-with c2:
+with c2, st.container(key="inspection_rectified"):
+    st.markdown('<div class="cl-panel-label"><span>02 / INSPECT</span> Rectified card</div>', unsafe_allow_html=True)
     st.image(to_rgb(rep.overlay), caption="Straightened card with border lines and marked areas",
              width="stretch")
-with c3:
+with c3, st.container(key="inspection_surface"):
+    st.markdown('<div class="cl-panel-label"><span>03 / COMPARE</span> Surface differences</div>', unsafe_allow_html=True)
     st.image(to_rgb(rep.surface_heatmap), caption=f"Surface difference map ({rep.surface_mode})",
              width="stretch")
 
 # More detail
+section("03", "Evidence & review", "Explore the matches. Check the findings. Record your judgement.")
 t_sim, t_def, t_rev, t_how = st.tabs(["Similar cards", "Defect report",
                                      "Grader review complete" if review_complete else "Awaiting grader review", "How it works"])
 
@@ -311,10 +314,6 @@ with t_sim:
         st.caption("This score combines image similarity and, when enabled, geometric agreement. It isn't a probability. Check the set and card number before trusting a surface comparison.")
         if same_name and s1 - s2 < 0.05:
             st.warning("These printings look very similar. Check the set symbol and card number in the strips below.")
-        if st.session_state.get("true_id"):
-            hit = [i for i, r_ in enumerate(ranked) if r_[0] == st.session_state.true_id]
-            st.caption(f"Sample card: {st.session_state.true_id} → "
-                       + (f"found at rank {hit[0] + 1}" if hit else "not in shown results"))
         cols = st.columns(min(k, 6))
         for i, (cid, sim, geo, score) in enumerate(ranked[:k]):
             r = by_id.loc[cid]
@@ -381,7 +380,7 @@ with t_rev:
     record = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "image_sha1": review_key,
-        "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "ace-vision-demo-0.2"},
+        "model": {"encoder": enc.name, "rerank": use_rerank, "pipeline": "AceVision-0.2"},
         "match": {"card_id": top[0] if top else None, "cosine": round(top[1], 4) if top else None,
                   "match_score": round(top[3], 4) if top else None, "grader": match_ok,
                   "corrected_card_id": corrected_id, "ocr_evidence": ocr_evidence.get(top[0]) if top else None},
@@ -392,13 +391,13 @@ with t_rev:
                       "grader": decisions.get(i)} for i, f in enumerate(flags)],
         "note": note,
     }
-    st.download_button("Download audit record (JSON)", json.dumps(record, indent=2), "ace-vision-demo_review.json",
+    st.download_button("Download audit record (JSON)", json.dumps(record, indent=2), "AceVision_review.json",
                        "application/json", disabled=match_ok == "No, I corrected it" and corrected_id is None)
 
 with t_how:
     st.graphviz_chart("""
-digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,filled", fillcolor="#1d1f27",
- fontcolor="white", color="#e8b931", fontname="Helvetica", fontsize=11]; edge [color="#999"];
+digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,filled", fillcolor="#171C25",
+ fontcolor="white", color="#D5B26C", fontname="Helvetica", fontsize=11]; edge [color="#999"];
  photo [label="Photo / scan"]; det [label="Detect + rectify\\n63×88 mm, 10 px/mm"];
  emb [label="Embedding\\nDINOv2 or traditional features"]; ann [label="Vector index\\n(exact cosine search)"];
  ocr [label="OCR\\nname + card number"];

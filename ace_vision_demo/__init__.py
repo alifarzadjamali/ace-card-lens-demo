@@ -1,1 +1,1 @@
-"""ace-vision-demo: card detection, defect checks, embeddings and catalogue search."""
+"""AceVision: card detection, defect checks, embeddings and catalogue search."""

@@ -1,6 +1,6 @@
-# ace-vision-demo
+# AceVision
 
-Take a photo of a trading card. ace-vision-demo finds close matches in a small Pokémon card catalogue and marks spots you might want to check, such as white corners, worn edges or uneven centring. You can review each flag and download your notes.
+Take a photo of a trading card. AceVision finds close matches in a small Pokémon card catalogue and marks spots you might want to check, such as white corners, worn edges or uneven centring. You can review each flag and download your notes.
 
 I built this for my Ace Grading and University of Salford KTP interview. It's a working demo, not an Ace Grading product or a card grading service. The checks can be fooled by glare, sleeves and a bad photo. A grader still makes the call.
 
@@ -10,7 +10,7 @@ I built this for my Ace Grading and University of Salford KTP interview. It's a 
 
 Open the demo and click **Generate photo & analyse**. It starts with a catalogue card, adds some simulated wear and puts it on a desk background. You can choose a different card or change the defects before you run it.
 
-Got a card handy? Upload a photo or use your camera. One card on a plain background works best. You'll see the detected outline, a straightened view, a surface difference map and a shortlist of possible matches. The **Awaiting grader review** tab lets you confirm or reject findings, correct the catalogue card and download a JSON record. The app keeps uploaded photos in the current session; it doesn't save them to a database.
+Got a card handy? Upload a photo or use your camera. One card on a plain background works best. If the card outline cannot be detected, analysis stops and asks for another photo. Keep all four corners visible with some background around the card; tightly cropped scans may also be rejected. You'll see the detected outline, a straightened view, a surface difference map and a shortlist of possible matches. The **Awaiting grader review** tab lets you confirm or reject findings, correct the catalogue card and download a JSON record. The app keeps uploaded photos in the current session; it doesn't save them to a database.
 
 The five sample presets cover off-centre printing, corner whitening, corner rounding, stains and edge wear. Tests check the five card outlines and the whitening, rounding, stain and edge-wear examples. The off-centre shift is subtle and may not be flagged; a positive detection is not forced. A reference image must match closely before the app flags a surface mark. Whitening on pale borders and measurements without a clear card edge are shown as not assessable. Real wear and damage may look different.
 
@@ -55,6 +55,7 @@ This demo runs on [Streamlit Community Cloud](https://share.streamlit.io). For t
 | File | What it does |
 | --- | --- |
 | `app.py` | The Streamlit screen and review flow |
+| `ace_vision_demo/ui.py` | The graphite and gold theme and page components |
 | `ace_vision_demo/detect.py` | Finds and straightens the card |
 | `ace_vision_demo/embed.py` | Turns the card image into a search vector |
 | `ace_vision_demo/catalogue.py` | Loads card details and images, searches the index and checks shortlisted matches |
