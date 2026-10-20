@@ -1,7 +1,7 @@
 """Find the card in a photo and straighten it.
 
-The output is 630 x 880 pixels, based on a 63 x 88 mm card at 10 pixels per mm.
-That scale lets the later checks report widths and areas in physical units.
+The output is 630 x 880 pixels. Measurements in millimetres assume the card
+is 63 x 88 mm, giving a scale of 10 pixels per mm.
 """
 from __future__ import annotations
 
@@ -135,7 +135,7 @@ def detect_card(bgr: np.ndarray) -> Detection:
             best = (score, name, c, quad)
 
     if best is None or best[0] < 0.85:
-        # assume a flat scan / tightly cropped photo: the image *is* the card
+        # Return a whole-image fallback; the app stops when edge_visible is False.
         card = cv2.resize(bgr, (CARD_W, CARD_H), interpolation=cv2.INTER_AREA)
         if w0 > h0 * 1.1:
             card = cv2.resize(cv2.rotate(bgr, cv2.ROTATE_90_CLOCKWISE), (CARD_W, CARD_H))

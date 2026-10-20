@@ -108,9 +108,9 @@ def section(number, title, description):
 def empty_state():
     st.markdown("""
 <div class="cl-empty">
- <article><span>IDENTIFY</span><h3>A match worth checking.</h3><p>Visual search, printed details and readable text help shortlist the catalogue.</p></article>
- <article><span>INSPECT</span><h3>Small details, made visible.</h3><p>Explore centring, corners, edges and surface differences in the inspection view.</p></article>
- <article><span>REVIEW</span><h3>Your judgement, recorded.</h3><p>Confirm or reject findings, correct the match and export your review.</p></article>
+ <article><span>IDENTIFY</span><h3>Find your card</h3><p>Compare your photo with the catalogue. Check the printed details to see which match is right.</p></article>
+ <article><span>INSPECT</span><h3>Check its condition</h3><p>Look at the borders and marked areas for possible wear. The surface view shows differences from the reference card.</p></article>
+ <article><span>REVIEW</span><h3>Add your review</h3><p>Decide which findings you agree with, correct the card match if needed, and download your notes.</p></article>
 </div>
 <div class="cl-footer">Built by Ali (Farzad) Jamali · Independent concept for the Ace Grading / University of Salford KTP interview.<br>
 Photo-based condition signals for human review. This demo does not issue a final grade.</div>

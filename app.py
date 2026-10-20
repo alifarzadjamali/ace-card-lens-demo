@@ -255,7 +255,7 @@ rep = analyse(det.card, det.mask, det.edge_visible, ref_bgr=ref, holo_hint=holo)
 timings["defect checks"] = time.perf_counter() - t0
 
 # Results
-section("02", "The inspection desk", "Identification and condition signals, ready for a closer look.")
+section("02", "The inspection desk", "Check the detected outline and the areas marked for review.")
 flags = [f for f in rep.findings if f.severity in ("minor", "major")]
 review_key = hashlib.sha1(cv2.imencode(".jpg", query)[1].tobytes()).hexdigest()
 match_review = st.session_state.get(f"{review_key}-match", "Not reviewed yet")
@@ -296,7 +296,7 @@ with c3, st.container(key="inspection_surface"):
              width="stretch")
 
 # More detail
-section("03", "Evidence & review", "Explore the matches. Check the findings. Record your judgement.")
+section("03", "Evidence & review", "Compare the suggested matches and add your review below.")
 t_sim, t_def, t_rev, t_how = st.tabs(["Similar cards", "Defect report",
                                      "Grader review complete" if review_complete else "Awaiting grader review", "How it works"])
 
@@ -407,11 +407,11 @@ digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,f
  photo->det->emb->ann->rr; det->ocr->rr; meta->ann [style=dashed, label=" filters"]; rr->ref->dfx; det->dfx; rr->ui; dfx->ui->log;
 }""")
     st.markdown("""
-OpenCV finds the card outline and flattens the photo to 630 × 880 pixels. That gives the measurements a scale of 10 pixels per millimetre.
+OpenCV finds the card outline and straightens the photo to 630 × 880 pixels. Measurements assume a 63 × 88 mm card, giving a scale of 10 pixels per millimetre.
 
-DINOv2 uses learned visual features to find similar cards, including changes in photo lighting and angle. Traditional image features compare colour, layout and a perceptual hash; they are simpler but less flexible. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up. OCR reads the name and card number when legible and gives matching catalogue details a small score bonus. If OCR cannot read the text, image search continues unchanged.
+DINOv2 turns the card image into a vector for similarity search. The traditional option uses colour, layout and a perceptual hash. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up. OCR reads the name and card number when legible and gives matching catalogue details a small score bonus. If OCR cannot read the text, the image matches are still available.
 
-The condition checks measure border widths, look for pale marks near corners and edges, and estimate corner shape. The app compares surfaces with a catalogue image only when the printed details line up; ECC then aligns the images. Without a reliable reference, surface marks are not assessable. Estimated centering bands are guides, not final grades. A grader reviews the findings and catalogue choice before exporting decisions as JSON.
+The condition checks measure border widths, look for pale marks near corners and edges, and estimate corner shape. The app compares surfaces with a catalogue image only when the printed details line up; ECC then aligns the images. Without a reliable reference, surface marks are not assessable. Estimated centring bands are guides, not final grades. A grader reviews the findings and catalogue choice before exporting decisions as JSON.
 
 This small catalogue uses exact cosine search. A larger collection could use pgvector or FAISS with HNSW, with card IDs shared across the search index and card details.
 """)
