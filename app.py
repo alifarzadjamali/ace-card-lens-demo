@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import time
 from datetime import datetime, timezone
 
 import cv2
@@ -122,7 +121,7 @@ with st.sidebar:
                "A personal project by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
 # Page header
-hero(len(df), df.set_name.nunique())
+hero()
 section("01", "Bring a card into focus", "Choose a sample, upload a photo, or use your camera.")
 
 # Photo or sample
@@ -143,7 +142,6 @@ with tab_sample:
         if sample_image is not None:
             st.image(to_rgb(sample_image), width=120)
         st.caption("CATALOGUE REFERENCE")
-    st.caption("Samples are simulated. The off-centre shift may be too small to flag, and surface marks need a well-matched reference. Pale borders can make whitening not assessable.")
     if go:
         cid = SAMPLES[pick]
         row = by_id.loc[cid]
@@ -190,10 +188,7 @@ if "query" not in st.session_state or st.session_state.query is None:
 
 # Analyse the card
 query = st.session_state.query
-timings = {}
-t0 = time.perf_counter()
 det = detect_card(query)
-timings["detect + rectify"] = time.perf_counter() - t0
 
 if not det.edge_visible:
     st.warning("We couldn't detect the card outline. Please try another photo.")
@@ -207,9 +202,7 @@ if enc_err:
     st.warning(f"DINOv3 couldn't load, so we're using the basic image search. Details: {enc_err[:120]}")
 index = index_for(enc.key)
 
-t0 = time.perf_counter()
 qvec = enc.encode([det.card])[0]
-timings["embed"] = time.perf_counter() - t0
 
 mask = pd.Series(True, index=df.index)
 if f_sets:
@@ -220,17 +213,12 @@ if f_name:
     mask &= df["name"].str.contains(f_name, case=False, regex=False)
 allowed = set(df.card_id[mask]) if (f_sets or f_rarity or f_name) else None
 
-t0 = time.perf_counter()
 hits = index.search(qvec, allowed=allowed, k=max(k, 10))
-timings["vector search"] = time.perf_counter() - t0
 if use_rerank and hits:
-    t0 = time.perf_counter()
     ranked = rerank(det.card, hits, by_id)
-    timings["geometric re-rank"] = time.perf_counter() - t0
 else:
     ranked = [(c, s, None, s) for c, s in hits]
 
-t0 = time.perf_counter()
 card_text = read_card_text(det.card, text_reader(), df.name.unique().tolist())
 ocr_evidence = {}
 if card_text["status"] == "Read":
@@ -240,7 +228,6 @@ if card_text["status"] == "Read":
         ocr_evidence[cid] = evidence
         checked.append((cid, sim, geo, min(1.0, score + bonus)))
     ranked = sorted(checked, key=lambda item: -item[3])
-timings["OCR"] = time.perf_counter() - t0
 
 top = ranked[0] if ranked else None
 ref = None
@@ -249,10 +236,8 @@ ref = None
 if top and top[1] >= 0.55 and (top[2] or 0) >= 25:
     r = by_id.loc[top[0]]
     ref = fetch_image(top[0], r.image_large, size="large")
-t0 = time.perf_counter()
 holo = bool(top) and "Holo" in by_id.loc[top[0]].rarity
 rep = analyse(det.card, det.mask, det.edge_visible, ref_bgr=ref, holo_hint=holo)
-timings["defect checks"] = time.perf_counter() - t0
 
 # Results
 section("02", "The inspection desk", "Check the detected outline and the areas marked for review.")
@@ -263,14 +248,6 @@ review_complete = (match_review in ("Yes", "No, I corrected it")
                    and (match_review != "No, I corrected it" or st.session_state.get(f"{review_key}-correction"))
                    and all(st.session_state.get(f"{review_key}-dec{i}", "Not reviewed yet") != "Not reviewed yet"
                            for i in range(len(flags))))
-steps = ["① Detect & rectify", "② Embed", "③ Vector search", "④ Re-rank" if use_rerank else "④ (re-rank off)",
-         "⑤ OCR", "⑥ Defect checks"]
-st.markdown("".join(f'<span class="cl-step done">{s}</span>' for s in steps), unsafe_allow_html=True)
-st.markdown(f'<span class="cl-step {"done" if review_complete else ""}">⑦ {"Grader review complete" if review_complete else "Awaiting grader review"}</span>', unsafe_allow_html=True)
-with st.expander("Processing details & timings"):
-    st.caption(f"Photo: {st.session_state.source} · outline: {det.method} · search: {enc.name} · "
-           + " · ".join(f"{k_} {v * 1000:.0f} ms" for k_, v in timings.items()))
-
 cen = rep.centering
 m1, m2, m3, m4 = st.columns(4)
 m1.metric("Closest catalogue match", by_id.loc[top[0]]["name"] if top else "n/a",
@@ -282,7 +259,7 @@ m3.metric("Estimated centring band", cen["band"].split(" (")[0], "Photo-based es
 m4.metric("Findings to review", f"{len(flags)}", f"{sum(f.severity == 'major' for f in flags)} High-priority",
           delta_color="inverse" if flags else "off")
 
-c1, c2, c3 = st.columns(3)
+c1, c2, c3 = st.columns([0.85, 1.3, 0.85])
 with c1, st.container(key="inspection_capture"):
     st.markdown('<div class="cl-panel-label"><span>01 / CAPTURE</span> Detected outline</div>', unsafe_allow_html=True)
     st.image(to_rgb(draw_quad(query, det.quad)), caption="Input photo + detected card outline", width="stretch")
@@ -308,10 +285,6 @@ with t_sim:
         conf = "High" if s1 >= 0.80 and s1 - s2 >= 0.03 else ("Medium" if s1 >= 0.65 else "Low")
         same_name = len(ranked) > 1 and by_id.loc[ranked[0][0]]["name"] == by_id.loc[ranked[1][0]]["name"]
         st.markdown(f"Match signal (heuristic): **{conf}** · top match {s1:.3f}, gap to next {s1 - s2:+.3f}")
-        read_name = card_text["name"] or "Not readable"
-        read_number = (f"{card_text['number']}/{card_text['total']}" if card_text["number"] else "Not readable")
-        st.caption(f"OCR name: {read_name} · OCR card number: {read_number}. Readable text adds a small agreement bonus; unreadable text leaves the ranking unchanged.")
-        st.caption("This score combines image similarity and, when enabled, geometric agreement. It isn't a probability. Check the set and card number before trusting a surface comparison.")
         if same_name and s1 - s2 < 0.05:
             st.warning("These printings look very similar. Check the set symbol and card number in the strips below.")
         cols = st.columns(min(k, 6))
@@ -322,11 +295,23 @@ with t_sim:
                 st.image(to_rgb(thumb) if thumb is not None else r.image_small, width="stretch")
                 st.markdown(f"**{i + 1}. {r['name']}**")
                 st.progress(float(np.clip(score, 0, 1)))
-                geo_txt = f" · {geo} geometrically consistent matches" if geo is not None else ""
-                ocr_txt = f" · OCR: {ocr_evidence[cid]}" if cid in ocr_evidence else ""
-                st.markdown(f"""<div class="cl-card-meta">Match score: {score:.3f} · cosine: {sim:.3f}{geo_txt}<br>
-                Set: {r.set_name} · Card number: {r.number}/{r.set_total}<br>Rarity: {r.rarity or 'n/a'} · {r.release_date[:4]}<br>
-                <span class="cl-small">Illustrator: {r.artist or 'n/a'} · Catalogue ID: {cid}{ocr_txt}</span></div>""",
+                details = [
+                    f"Match score: {score:.3f}",
+                    f"Cosine: {sim:.3f}",
+                ]
+                if geo is not None:
+                    details.append(f"Geometrically consistent matches: {geo}")
+                details.extend([
+                    f"Set: {r.set_name}",
+                    f"Card number: {r.number}/{r.set_total}",
+                    f"Rarity: {r.rarity or 'n/a'}",
+                    f"Release year: {r.release_date[:4]}",
+                    f"<span class='cl-small'>Illustrator: {r.artist or 'n/a'}</span>",
+                    f"<span class='cl-small'>Catalogue ID: {cid}</span>",
+                ])
+                if cid in ocr_evidence:
+                    details.append(f"<span class='cl-small'>OCR: {ocr_evidence[cid]}</span>")
+                st.markdown('<div class="cl-card-meta">' + '<br>'.join(details) + '</div>',
                             unsafe_allow_html=True)
         st.markdown("##### Check the small print: set symbol, number and copyright line")
         strip_cols = st.columns(4)
