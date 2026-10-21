@@ -18,7 +18,7 @@ The five sample presets cover off-centre printing, corner whitening, corner roun
 
 ## How it works
 
-OpenCV finds the card and straightens it to a 630 × 880 pixel image. The app then compares it with 565 cards from Base Set, Jungle, Fossil, Base Set 2 and 151. DINOv2 uses learned visual features; the traditional option uses colour, layout and a perceptual hash. Set, rarity and name filters narrow the search. ORB and RANSAC check whether the printed layout of the closest cards lines up with the photo. RapidOCR reads the name and card number when legible, adding a small agreement bonus to matching catalogue entries. If text cannot be read, image search works as before.
+OpenCV finds the card and straightens it to a 630 × 880 pixel image. The app then compares it with 565 cards from Base Set, Jungle, Fossil, Base Set 2 and 151. DINOv3 uses learned visual features; the traditional option uses colour, layout and a perceptual hash. Set, rarity and name filters narrow the search. ORB and RANSAC check whether the printed layout of the closest cards lines up with the photo. RapidOCR reads the name and card number when legible, adding a small agreement bonus to matching catalogue entries. If text cannot be read, image search works as before.
 
 The condition checks compare border widths for centring, look for pale pixels near corners and edges, and measure visible corner shape. Measurements in millimetres assume a 63 × 88 mm card. The surface check uses a catalogue image only when enough printed details line up. Without a reliable reference, surface marks are not assessable. The centring band is an estimate, not a final grade. A grader reviews each finding and can correct the catalogue choice in the JSON record.
 
@@ -34,7 +34,7 @@ uv pip install --python .venv/Scripts/python.exe -r requirements.txt
 .venv/Scripts/python.exe -m streamlit run app.py
 ```
 
-Open the local address that Streamlit prints. The app needs internet access for card images. On its first DINOv2 run, it also downloads the model from Hugging Face. If that fails, you can use the baseline encoder.
+Open the local address that Streamlit prints. The app needs internet access for card images. On its first DINOv3 run, it also downloads the model from Hugging Face. If that fails, you can use the baseline encoder.
 
 If you change the catalogue, rebuild the indexes with:
 

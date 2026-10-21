@@ -1,7 +1,7 @@
 """Turn a card image into numbers the search index can compare.
 
 The basic encoder uses colour, layout and a perceptual hash. The other runs
-DINOv2 ViT-S/14 through ONNX Runtime on the CPU. Both return normalised vectors,
+DINOv3 ViT-S/16 through ONNX Runtime on the CPU. Both return normalised vectors,
 so a dot product gives cosine similarity.
 """
 from __future__ import annotations
@@ -38,23 +38,25 @@ class BaselineEncoder:
 
 
 class DinoEncoder:
-    name = "DINOv2-S/14 (self-supervised ViT, ONNX)"
-    key = "dinov2s"
-    REPOS = [("Xenova/dinov2-small", "onnx/model.onnx"), ("onnx-community/dinov2-small", "onnx/model.onnx")]
+    name = "DINOv3-S/16 (self-supervised ViT, ONNX)"
+    key = "dinov3s"
+    REPO = "onnx-community/dinov3-vits16-pretrain-lvd1689m-ONNX"
+    REVISION = "48988dfe73065df8d6f5ccc0edc7c8bcf307de41"
 
     def __init__(self, model_path: str | None = None):
         import onnxruntime as ort
         if model_path is None:
-            from huggingface_hub import hf_hub_download
-            err = None
-            for repo, fn in self.REPOS:
-                try:
-                    model_path = hf_hub_download(repo, fn)
-                    break
-                except Exception as e:  # Try the next model source.
-                    err = e
-            if model_path is None:
-                raise RuntimeError(f"could not download DINOv2 ONNX weights: {err}")
+            from huggingface_hub import snapshot_download
+            from pathlib import Path
+            try:
+                model_dir = snapshot_download(
+                    self.REPO,
+                    revision=self.REVISION,
+                    allow_patterns=["onnx/model_quantized.onnx", "onnx/model_quantized.onnx_data"],
+                )
+            except Exception as e:
+                raise RuntimeError(f"could not download DINOv3 ONNX weights: {e}") from e
+            model_path = str(Path(model_dir) / "onnx/model_quantized.onnx")
         so = ort.SessionOptions()
         so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
         self.sess = ort.InferenceSession(model_path, so, providers=["CPUExecutionProvider"])
@@ -75,7 +77,7 @@ class DinoEncoder:
             res = dict(zip(self.outs, self.sess.run(None, {self.inp: x})))
             tokens = res.get("last_hidden_state")
             if tokens is not None and tokens.ndim == 3:
-                cls, patch = tokens[:, 0], tokens[:, 1:].mean(1)
+                cls, patch = tokens[:, 0], tokens[:, 5:].mean(1)  # Skip four register tokens.
                 v = np.concatenate([_l2(cls), _l2(patch)], axis=1)   # Combine CLS and average patch features.
             else:
                 v = res.get("pooler_output", list(res.values())[0])
@@ -84,6 +86,6 @@ class DinoEncoder:
 
 
 def get_encoder(key: str):
-    if key == "dinov2s":
+    if key == "dinov3s":
         return DinoEncoder()
     return BaselineEncoder()

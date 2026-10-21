@@ -105,8 +105,8 @@ def decode_upload(data: bytes):
 df, by_id = catalogue()
 with st.sidebar:
     st.subheader("Search settings")
-    enc_key = st.radio("Image search", ["dinov2s", "baseline"],
-                       format_func=lambda k: {"dinov2s": "DINOv2 image model",
+    enc_key = st.radio("Image search", ["dinov3s", "baseline"],
+                       format_func=lambda k: {"dinov3s": "DINOv3 image model",
                                               "baseline": "Traditional image features (Colour + pHash)"}[k],
                        help="Try the image model or the simpler colour and pattern search.")
     use_rerank = st.toggle("Geometric re-ranking (ORB + RANSAC)", value=True,
@@ -204,7 +204,7 @@ if not det.edge_visible:
 
 enc, enc_err = encoder(enc_key)
 if enc_err:
-    st.warning(f"DINOv2 couldn't load, so we're using the basic image search. Details: {enc_err[:120]}")
+    st.warning(f"DINOv3 couldn't load, so we're using the basic image search. Details: {enc_err[:120]}")
 index = index_for(enc.key)
 
 t0 = time.perf_counter()
@@ -399,7 +399,7 @@ with t_how:
 digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,filled", fillcolor="#171C25",
  fontcolor="white", color="#D5B26C", fontname="Helvetica", fontsize=11]; edge [color="#999"];
  photo [label="Photo / scan"]; det [label="Detect + rectify\\n63×88 mm, 10 px/mm"];
- emb [label="Embedding\\nDINOv2 or traditional features"]; ann [label="Vector index\\n(exact cosine search)"];
+ emb [label="Embedding\\nDINOv3 or traditional features"]; ann [label="Vector index\\n(exact cosine search)"];
  ocr [label="OCR\\nname + card number"];
  meta [label="Card details\\nset · number · rarity", shape=cylinder]; rr [label="Re-rank\\ngeometric check"];
  ref [label="Reference image\\nof matched card"]; dfx [label="Defect checks\\ncentring · corners · edges · surface"];
@@ -409,7 +409,7 @@ digraph G { rankdir=LR; bgcolor="transparent"; node [shape=box, style="rounded,f
     st.markdown("""
 OpenCV finds the card outline and straightens the photo to 630 × 880 pixels. Measurements assume a 63 × 88 mm card, giving a scale of 10 pixels per millimetre.
 
-DINOv2 turns the card image into a vector for similarity search. The traditional option uses colour, layout and a perceptual hash. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up. OCR reads the name and card number when legible and gives matching catalogue details a small score bonus. If OCR cannot read the text, the image matches are still available.
+DINOv3 turns the card image into a vector for similarity search. The traditional option uses colour, layout and a perceptual hash. The app compares those vectors with the catalogue and applies any set, rarity or name filters you chose. For the closest matches, ORB and RANSAC check whether the printed details line up. OCR reads the name and card number when legible and gives matching catalogue details a small score bonus. If OCR cannot read the text, the image matches are still available.
 
 The condition checks measure border widths, look for pale marks near corners and edges, and estimate corner shape. The app compares surfaces with a catalogue image only when the printed details line up; ECC then aligns the images. Without a reliable reference, surface marks are not assessable. Estimated centring bands are guides, not final grades. A grader reviews the findings and catalogue choice before exporting decisions as JSON.
 
