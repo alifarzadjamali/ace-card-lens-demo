@@ -77,7 +77,7 @@ header[data-testid="stHeader"] {background:transparent;}
 </style>""", unsafe_allow_html=True)
 
 
-def hero():
+def hero(cards, sets):
     st.markdown(f"""
 <div class="cl-masthead">
  <div class="cl-brand"><b>◇</b> AceVision <small>INSPECTION STUDIO</small></div>

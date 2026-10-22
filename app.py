@@ -121,7 +121,7 @@ with st.sidebar:
                "A personal project by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
 # Page header
-hero()
+hero(len(df), df.set_name.nunique())
 section("01", "Bring a card into focus", "Choose a sample, upload a photo, or use your camera.")
 
 # Photo or sample
