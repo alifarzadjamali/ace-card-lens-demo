@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import importlib
 import json
 from datetime import datetime, timezone
 
@@ -19,9 +20,12 @@ from ace_vision_demo.synth import make_sample
 st.set_page_config(page_title="AceVision | Inspection studio", page_icon="🔎", layout="wide",
                    initial_sidebar_state="collapsed")
 
-from ace_vision_demo.ui import apply_style, hero, section, empty_state
+from ace_vision_demo import ui
 
-apply_style()
+# Streamlit Cloud can rerun app.py after a deploy while keeping imported modules in memory.
+ui = importlib.reload(ui)
+
+ui.apply_style()
 
 SAMPLES = {
     "Charizard · Base Set (1999)": "base1-4",
@@ -121,8 +125,8 @@ with st.sidebar:
                "A personal project by Ali (Farzad) Jamali; no Ace Grading affiliation.")
 
 # Page header
-hero(len(df), df.set_name.nunique())
-section("01", "Bring a card into focus", "Choose a sample, upload a photo, or use your camera.")
+ui.hero(len(df), df.set_name.nunique())
+ui.section("01", "Bring a card into focus", "Choose a sample, upload a photo, or use your camera.")
 
 # Photo or sample
 tab_sample, tab_upload, tab_cam = st.tabs(["Try a sample", "Upload a photo", "Use camera"])
@@ -183,7 +187,7 @@ with tab_cam:
                                 cam_id=hashlib.md5(shot.getvalue()).hexdigest())
 
 if "query" not in st.session_state or st.session_state.query is None:
-    empty_state()
+    ui.empty_state()
     st.stop()
 
 # Analyse the card
@@ -240,7 +244,7 @@ holo = bool(top) and "Holo" in by_id.loc[top[0]].rarity
 rep = analyse(det.card, det.mask, det.edge_visible, ref_bgr=ref, holo_hint=holo)
 
 # Results
-section("02", "The inspection desk", "Check the detected outline and the areas marked for review.")
+ui.section("02", "The inspection desk", "Check the detected outline and the areas marked for review.")
 flags = [f for f in rep.findings if f.severity in ("minor", "major")]
 review_key = hashlib.sha1(cv2.imencode(".jpg", query)[1].tobytes()).hexdigest()
 match_review = st.session_state.get(f"{review_key}-match", "Not reviewed yet")
@@ -273,7 +277,7 @@ with c3, st.container(key="inspection_surface"):
              width="stretch")
 
 # More detail
-section("03", "Evidence & review", "Compare the suggested matches and add your review below.")
+ui.section("03", "Evidence & review", "Compare the suggested matches and add your review below.")
 t_sim, t_def, t_rev, t_how = st.tabs(["Similar cards", "Defect report",
                                      "Grader review complete" if review_complete else "Awaiting grader review", "How it works"])
 
