@@ -78,14 +78,14 @@ header[data-testid="stHeader"] {background:transparent;}
 
 
 def hero(cards, sets):
-    st.markdown(f"""
+    st.markdown("""
 <div class="cl-masthead">
  <div class="cl-brand"><b>◇</b> AceVision <small>INSPECTION STUDIO</small></div>
  <div class="cl-live">INTERACTIVE DEMO</div>
 </div>
 <div class="cl-hero">
  <div>
-  <h1>Let's take a closer look at<br><em>what AceVision could look like.</em></h1>
+  <h1>Inspect a card photo.<br><em>Decide what needs a closer look.</em></h1>
  </div>
  <div class="cl-visual" aria-label="Illustrative card scanning graphic">
   <div class="cl-scan"></div><div class="cl-slab"><div class="cl-slab-label">ACEVISION / CONCEPT</div><div class="cl-slab-art"></div></div>
